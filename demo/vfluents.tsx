@@ -1,8 +1,8 @@
 /// <reference path="vfluents.d.tsx" />
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import initBrowsers from 'init-browsers'
 import { settings, routes, theme } from './config'
+import { vfluents } from '../components'
 import './styles/stylesheets.scss'
 
 export default function vfluentsMain() {
@@ -14,7 +14,7 @@ export default function vfluentsMain() {
                 next()
         })
 
-        initBrowsers(Object.assign(theme, {}))
+        vfluents.init(theme)
         new Vue({ router }).$mount('#' + settings.appID)
 }
 

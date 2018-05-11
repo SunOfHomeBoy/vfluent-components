@@ -5,3 +5,4 @@
 // 定義 vfluent-components 組件及其常用函數
 //
 // @authors hjboss <hongjiangproject@gmail.com> 2018-05 $$
+export { vfluents } from './vfluents'
