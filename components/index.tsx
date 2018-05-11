@@ -5,4 +5,5 @@
 // 定義 vfluent-components 組件及其常用函數
 //
 // @authors hjboss <hongjiangproject@gmail.com> 2018-05 $$
+import './styles/stylesheets.scss'
 export { vfluents } from './vfluents'

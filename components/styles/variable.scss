@@ -1,1 +1,28 @@
-$themePrefix: '' !default;
+$themePrefix: 'vfluents-';
+
+$themeColorBlue: #0078D7 !default;
+$themeColorIndigo: #6610f2 !default;
+$themeColorPurple: #6f42c1 !default;
+$themeColorPink: #e74856 !default;
+$themeColorRed: #e81123 !default;
+$themeColorOrange: #ff8c00 !default;
+$themeColorYellow: #ffb900 !default;
+$themeColorGreen: #107c10 !default;
+$themeColorTeal: #00cc6a !default;
+$themeColorCyan: #0099bc !default;
+
+$blue:   $themeColorBlue;
+$indigo: $themeColorIndigo;
+$purple: $themeColorPurple;
+$pink:   $themeColorPink;
+$red:    $themeColorRed;
+$orange: $themeColorOrange;
+$yellow: $themeColorYellow;
+$green:  $themeColorGreen;
+$teal:   $themeColorTeal;
+$cyan:   $themeColorCyan;
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/mixins';
+@import '../../node_modules/bootstrap/scss/utilities';

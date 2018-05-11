@@ -3,7 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { settings, routes, theme } from './config'
 import { vfluents } from '../components'
-import './styles/stylesheets.scss'
+import '../components/styles/stylesheets.scss'
 
 export default function vfluentsMain() {
         Vue.config.devtools = settings.debug

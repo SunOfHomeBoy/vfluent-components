@@ -1,3 +1,3 @@
 export const theme: any = {
-        themePrefix: 'demo-'
+        themePrefix: 'vfluentsDemo-'
 }
