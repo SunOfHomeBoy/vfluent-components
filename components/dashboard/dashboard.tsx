@@ -6,12 +6,16 @@ import './dashboard.scss'
 @Component
 export class Dashboard extends vfluents {
         public render(h: CreateElement) {
+                console.log(this.$el.innerHTML)
                 return (
                         <div class={vfluents.cls([
                                 'container-fluid',
                                 vfluents.themePrefix + 'dashboard',
                                 this.className
-                        ])}></div>
+                        ])}>
+                                <section></section>
+                                <main></main>
+                        </div>
                 )
         }
 }

@@ -7,7 +7,7 @@ import { vfluents, Dashboard } from '../../components'
 export default class Vfluents extends Vue {
         public render(h: CreateElement) {
                 return (
-                        <Dashboard className={vfluents.themePrefix}></Dashboard>
+                        <Dashboard className="vfluentsDemo">okko</Dashboard>
                 )
         }
 }

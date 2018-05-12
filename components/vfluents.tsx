@@ -9,7 +9,8 @@ export class vfluents extends Vue {
         public static useSVGElement: boolean = true
 
         @Prop() className: string
-        @Prop() style: any
+        @Prop() innerHtml: any
+
         public render(h: CreateElement) { }
 
         public static init(configures?: any) {
