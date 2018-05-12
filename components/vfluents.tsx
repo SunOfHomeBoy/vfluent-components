@@ -1,6 +1,7 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import initBrowsers from 'init-browsers'
+import { removeEmpty } from './utils'
 
 @Component
 export class vfluents extends Vue {
@@ -13,8 +14,11 @@ export class vfluents extends Vue {
 
         public static init(configures?: any) {
                 initBrowsers(Object.assign(Object.assign({}, configures), {
-                        themePrefix: vfluents.themePrefix,
-                        baseFontSize: 16
+                        themePrefix: vfluents.themePrefix
                 }))
+        }
+
+        public static cls(configures?: string[]): string {
+                return removeEmpty(configures).join(' ')
         }
 }

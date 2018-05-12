@@ -7,3 +7,4 @@
 // @authors hjboss <hongjiangproject@gmail.com> 2018-05 $$
 import './styles/stylesheets.scss'
 export { vfluents } from './vfluents'
+export { Dashboard } from './dashboard/dashboard'

@@ -1,4 +1,4 @@
-/// <reference path="vfluents.d.tsx" />
+/// <reference path="./vfluents.d.tsx" />
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { settings, routes, theme } from './config'
