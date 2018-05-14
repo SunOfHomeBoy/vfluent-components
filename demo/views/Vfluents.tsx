@@ -1,13 +1,9 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
-import { theme } from '../config'
 import { vfluents, Dashboard } from '../../components'
+import { theme } from '../config'
 
 @Component
-export default class Vfluents extends Vue {
-        public render(h: CreateElement) {
-                return (
-                        <Dashboard className="vfluentsDemo">okko</Dashboard>
-                )
-        }
+export default class Vfluents extends Dashboard {
+        public collapsed: boolean = false
 }

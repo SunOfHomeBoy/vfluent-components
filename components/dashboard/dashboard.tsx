@@ -5,17 +5,44 @@ import './dashboard.scss'
 
 @Component
 export class Dashboard extends vfluents {
-        public render(h: CreateElement) {
-                console.log(this.$el.innerHTML)
+        @Prop() collapsed: boolean
+
+        public component(h: CreateElement) {
                 return (
                         <div class={vfluents.cls([
                                 'container-fluid',
                                 vfluents.themePrefix + 'dashboard',
+                                this.collapsed
+                                        ? vfluents.themePrefix + 'dashboard-collapsed'
+                                        : '',
                                 this.className
                         ])}>
-                                <section></section>
-                                <main></main>
-                        </div>
+                                <div class="row">
+                                        <aside class={vfluents.cls([
+                                                'col-10',
+                                                'col-md-4',
+                                                'col-lg-3',
+                                                'col-xl-2',
+                                                'fadeinL',
+                                                vfluents.themePrefix + 'dashboard-side'
+                                        ])} onClick={this.closeCollapse}></aside>
+                                        <main class={vfluents.cls([
+                                                'col-12',
+                                                'col-md-8',
+                                                'col-lg-9',
+                                                'col-xl-10',
+                                                vfluents.themePrefix + 'dashboard-main'
+                                        ])} onClick={this.openCollapse}></main>
+                                </div>
+                        </div >
                 )
+        }
+
+        public closeCollapse() {
+                this.collapsed = false
+        }
+
+        public openCollapse() {
+                this.collapsed = true
         }
 }

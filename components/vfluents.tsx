@@ -9,9 +9,13 @@ export class vfluents extends Vue {
         public static useSVGElement: boolean = true
 
         @Prop() className: string
-        @Prop() innerHtml: any
+        protected innerHTML: any
+        public component(h: CreateElement): any { }
 
-        public render(h: CreateElement) { }
+        public render(h: CreateElement): any {
+                this.innerHTML = (this.$options as any)._renderChildren
+                return this.component(h)
+        }
 
         public static init(configures?: any) {
                 initBrowsers(Object.assign(Object.assign({}, configures), {

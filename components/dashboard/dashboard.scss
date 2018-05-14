@@ -1,5 +1,42 @@
 @import '../styles/variable.scss';
+@import '../styles/animation.scss';
 
 .#{$themePrefix}dashboard {
-        background-color: aquamarine;
+        &, .row {
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+        }
+
+        .#{$themePrefix}dashboard-side,
+        .#{$themePrefix}dashboard-main {
+                padding: 0 !important;
+        }
+
+        .#{$themePrefix}dashboard-side {
+                display: none;
+                background-color: aqua;
+        }
+
+        .#{$themePrefix}dashboard-main {
+                background-color: aquamarine;
+        }
+
+        &.#{$themePrefix}dashboard-collapsed {
+                .#{$themePrefix}dashboard-side {
+                        display: block;
+                        position: absolute;
+                        height: 100vh;
+                        z-index: $zindex-fixed;
+                        
+                }
+        }
+}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}dashboard {
+                .#{$themePrefix}dashboard-side {
+                        display: block;
+
+                }
+        }
 }
