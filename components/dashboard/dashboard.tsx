@@ -23,7 +23,6 @@ export class Dashboard extends vfluents {
                                                 'col-md-4',
                                                 'col-lg-3',
                                                 'col-xl-2',
-                                                'fadeinL',
                                                 vfluents.themePrefix + 'dashboard-side'
                                         ])} onClick={this.closeCollapse}></aside>
                                         <main class={vfluents.cls([

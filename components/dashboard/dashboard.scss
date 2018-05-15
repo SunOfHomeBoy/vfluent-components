@@ -1,5 +1,5 @@
+@import '../../node_modules/mixin-animations/sass/fadeinL.scss';
 @import '../styles/variable.scss';
-@import '../styles/animation.scss';
 
 .#{$themePrefix}dashboard {
         &, .row {
@@ -16,8 +16,10 @@
         .#{$themePrefix}dashboard-side {
                 display: none;
                 background-color: aqua;
+                @include fadeinL($themeAnimation);
         }
 
+        .row,
         .#{$themePrefix}dashboard-main {
                 background-color: aquamarine;
         }
@@ -28,7 +30,6 @@
                         position: absolute;
                         height: 100vh;
                         z-index: $zindex-fixed;
-                        
                 }
         }
 }
@@ -36,7 +37,24 @@
         .#{$themePrefix}dashboard {
                 .#{$themePrefix}dashboard-side {
                         display: block;
+                        animation-name: none;
+                }
 
+                &.#{$themePrefix}dashboard-collapsed {
+                        .row {
+                                flex-wrap: nowrap;
+                        }
+
+                        .#{$themePrefix}dashboard-side {
+                                position: relative;
+                                max-width: 3rem;
+                                @include fadeinL($themeAnimation);
+                        }
+
+                        .#{$themePrefix}dashboard-main {
+                                max-width: 100%;
+                                flex: auto;
+                        }
                 }
         }
 }
