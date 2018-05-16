@@ -1,0 +1,21 @@
+@import '../styles/variable.scss';
+
+.#{$themePrefix}navbar {
+        height: 3rem;
+        line-height: 3rem;
+
+        &.#{$themePrefix}navbar-small {
+                height: 2rem;
+                line-height: 2rem;
+        }
+
+        &.#{$themePrefix}navbar-large {
+                height: 4rem;
+                line-height: 4
+        }
+
+        &.#{$themePrefix}navbar-huge {
+                height: 5rem;
+                line-height: 5rem;
+        }
+}
