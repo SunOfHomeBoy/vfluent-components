@@ -2,7 +2,7 @@
 @import '../styles/variable.scss';
 
 .#{$themePrefix}dashboard {
-        &, .row {
+        .row {
                 width: 100vw;
                 height: 100vh;
                 overflow: hidden;
@@ -15,13 +15,29 @@
 
         .#{$themePrefix}dashboard-side {
                 display: none;
+                background-color: $themeColorGray100;
                 @include fadeinL($themeAnimation);
+
+                .#{$themePrefix}navbar {
+                        display: none;
+                        background-color: $themeColorBlueDark !important;
+                }
         }
 
         .#{$themePrefix}dashboard-main {
+                background-color: $themeColorGray50;
+
+                .#{$themePrefix}navbar {
+                        background-color: $themeColorBlue !important;
+                }
         }
 
         &.#{$themePrefix}dashboard-collapsed {
+                .#{$themePrefix}dashboard-side,
+                .#{$themePrefix}dashboard-main {
+                        border: 0;
+                }
+
                 .#{$themePrefix}dashboard-side {
                         display: block;
                         position: absolute;
@@ -29,54 +45,16 @@
                         z-index: $zindex-fixed;
                 }
         }
-
-        &.#{$themePrefix}dashboard-theme-default {
-                .#{$themePrefix}dashboard-side {
-                        .#{$themePrefix}navbar {
-                                background-color: darken($themeColorBlue, $themeColorWeight) !important;
-                        }
-                }
-
-                .#{$themePrefix}dashboard-main {
-                        .#{$themePrefix}navbar {
-                                background-color: $themeColorBlue !important;
-                        }
-                }
-        }
-
-        &.#{$themePrefix}dashboard-theme-light {
-                .#{$themePrefix}dashboard-side {
-                        .#{$themePrefix}navbar {
-                                background-color: $themeColorBlue !important;
-                        }
-                }
-
-                .#{$themePrefix}dashboard-main {
-                        .#{$themePrefix}navbar {
-                                background-color: $themeColorBlue !important;
-                        }
-                }
-        }
-
-        &.#{$themePrefix}dashboard-theme-dark {
-                .#{$themePrefix}dashboard-side {
-                        .#{$themePrefix}navbar {
-                                background-color: $themeColorBlue !important;
-                        }
-                }
-
-                .#{$themePrefix}dashboard-main {
-                        .#{$themePrefix}navbar {
-                                background-color: $themeColorBlue !important;
-                        }
-                }
-        }
 }
 @include media-breakpoint-up(md) {
         .#{$themePrefix}dashboard {
                 .#{$themePrefix}dashboard-side {
                         display: block;
-                        animation-name: none;
+                        animation: none;
+
+                        .#{$themePrefix}navbar {
+                                display: flex;
+                        }
                 }
 
                 &.#{$themePrefix}dashboard-collapsed {
@@ -87,7 +65,9 @@
                         .#{$themePrefix}dashboard-side {
                                 position: relative;
                                 max-width: 3rem;
-                                @include fadeinL($themeAnimation);
+                                animation: none;
+
+                                
                         }
 
                         .#{$themePrefix}dashboard-main {

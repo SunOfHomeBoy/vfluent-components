@@ -1,7 +1,6 @@
 import Vue, { CreateElement } from 'vue'
-import { Component, Prop } from 'vue-property-decorator'
+import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
-import './navbar.scss'
 
 @Component
 export class Navbar extends vfluents {
@@ -13,34 +12,46 @@ export class Navbar extends vfluents {
         @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
 
         public component(h: CreateElement) {
+                let clsFixed = ''
+                switch (this.fixed) {
+                        case 'top':
+                                clsFixed = 'fixed-top'
+                                break
+
+                        case 'bottom':
+                                clsFixed = 'fixed-bottom'
+                                break
+
+                        case 'sticky':
+                                clsFixed = 'sticky-top'
+                                break
+                }
+                let elementBrand = this.brandName || this.brandLogo
+                        ? this.componentBrand(h)
+                        : ''
                 return (
                         <nav class={vfluents.cls([
-                                'navbar',
-                                this.clsFixed(this.fixed),
+                                'navbar navbar-expand-md',
                                 this.dark
                                         ? 'navbar-dark bg-dark'
                                         : 'navbar-light bg-light',
-                                vfluents.themePrefix + 'navbar',
+                                clsFixed,
+                                `${vfluents.themePrefix}navbar`,
                                 ['small', 'large', 'huge'].indexOf(this.size) !== -1
                                         ? `${vfluents.themePrefix}navbar-${this.size}`
                                         : '',
                                 this.className
-                        ])}></nav>
+                        ])}>
+                                {elementBrand}
+                        </nav>
                 )
         }
 
-        private clsFixed(fixed: string): string {
-                switch (fixed) {
-                        case 'top':
-                                return 'fixed-top'
-
-                        case 'bottom':
-                                return 'fixed-bottom'
-
-                        case 'sticky':
-                                return 'sticky-top'
-                }
-
-                return ''
+        private componentBrand(h: CreateElement) {
+                return (
+                        <a class="navbar-brand" href="#">
+                                <span class="navbar-brand-text">{this.brandName}</span>
+                        </a>
+                )
         }
 }

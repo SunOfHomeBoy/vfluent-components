@@ -1,8 +1,20 @@
 @import '../styles/variable.scss';
+@import '../../node_modules/bootstrap/scss/nav';
+@import '../../node_modules/bootstrap/scss/navbar';
 
 .#{$themePrefix}navbar {
+        padding: 0;
         height: 3rem;
         line-height: 3rem;
+
+        .navbar-brand {
+                padding-top: 0;
+                padding-bottom: 0;
+        }
+
+        .navbar-brand {
+                margin-left: 0;
+        }
 
         &.#{$themePrefix}navbar-small {
                 height: 2rem;
