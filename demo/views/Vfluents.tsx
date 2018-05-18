@@ -5,9 +5,9 @@ import { theme } from '../config'
 
 @Component
 export default class Vfluents extends Dashboard {
-        @Provide() stateSize: string = 'huge'
-        @Provide() stateCollapsed: boolean = true
-        @Provide() stateBrandLogo: string = ''
+        @Provide() stateSize: string = 'default'
+        @Provide() stateCollapsed: boolean = false
+        @Provide() stateBrandLogo: string = 'home'
         @Provide() stateBrandName: string = 'Vfluents Component'
         @Provide() stateBrandHref: string = ''
 }

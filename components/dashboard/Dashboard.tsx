@@ -81,6 +81,11 @@ export class Dashboard extends vfluents {
                                 vfluents.themePrefix + 'dashboard-main'
                         ])} onClick={this.openCollapse}>
                                 {this.componentMainNavbar(h)}
+                                {this.componentMainTarbar(h)}
+                                <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}></div>
+                                <div class={vfluents.themePrefix + 'dashboard-main-inner'}>
+                                        <router-view></router-view>
+                                </div>
                         </main>
                 )
         }
@@ -91,6 +96,9 @@ export class Dashboard extends vfluents {
                                 size={this.stateSize}
                         />
                 )
+        }
+
+        private componentMainTarbar(h: CreateElement) {
         }
 
         public closeCollapse() {

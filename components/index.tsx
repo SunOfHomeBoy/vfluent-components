@@ -8,4 +8,5 @@
 import './styles/stylesheets.scss'
 export { vfluents } from './vfluents'
 export { Dashboard } from './dashboard'
+export { Icon } from './icon'
 export { Navbar } from './navbar'

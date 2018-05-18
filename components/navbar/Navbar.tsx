@@ -1,6 +1,7 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
+import { Icon } from '../icon'
 
 @Component
 export class Navbar extends vfluents {
@@ -10,6 +11,7 @@ export class Navbar extends vfluents {
         @Prop() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
         @Prop() brandName: string // 品牌名稱 可空 默認值：空字符串
         @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
+        @Prop() onBrand: Function // 品牌元素單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
                 let clsFixed = ''
@@ -48,9 +50,22 @@ export class Navbar extends vfluents {
         }
 
         private componentBrand(h: CreateElement) {
+                let elementImage: any
+                if (/\.(png|gif|jpg|jpeg|webp|svg)$/i.test(String(this.brandLogo).toLowerCase()) === false) {
+                        elementImage = (
+                                <Icon name={this.brandLogo} className="align-top navbar-brand-logo" />
+                        )
+                } else {
+                        elementImage = (
+                                <span class="d-inline-block align-top navbar-brand-logo"
+                                        style={{ backgroundImage: `url(${this.brandLogo})` }}
+                                ></span>
+                        )
+                }
+
                 return (
-                        <a class="navbar-brand" href="#">
-                                <span class="navbar-brand-text">{this.brandName}</span>
+                        <a class="navbar-brand" href={this.brandHref || '#'} onClick={this.onBrand}>
+                                {elementImage}<span class="navbar-brand-text">{this.brandName}</span>
                         </a>
                 )
         }

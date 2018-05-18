@@ -6,28 +6,61 @@
         padding: 0;
         height: 3rem;
         line-height: 3rem;
+        font-size: 0;
 
         .navbar-brand {
                 padding-top: 0;
                 padding-bottom: 0;
+                outline: 0;
         }
 
         .navbar-brand {
+                max-height: 100%;
                 margin-left: 0;
+                line-height: inherit;
+
+                .navbar-brand-logo {
+                        width: 2rem;
+                        height: 2rem;
+                        margin: 0.5rem;
+                        background-size: 100% 100%;
+                }
+
+                .navbar-brand-text {
+                        font-size: 1.25rem;
+                }
         }
 
         &.#{$themePrefix}navbar-small {
                 height: 2rem;
                 line-height: 2rem;
+
+                .navbar-brand {
+                        .navbar-brand-logo {
+                                margin: 0;
+                        }
+
+                        .navbar-brand-text {
+                                margin-left: 0.5rem;
+                        }
+                }
         }
 
         &.#{$themePrefix}navbar-large {
                 height: 4rem;
-                line-height: 4
+                line-height: 4rem;
+
+                .navbar-brand .navbar-brand-logo {
+                        margin: 1rem
+                }
         }
 
         &.#{$themePrefix}navbar-huge {
                 height: 5rem;
                 line-height: 5rem;
+
+                .navbar-brand .navbar-brand-logo {
+                        margin: 1.5rem
+                }
         }
 }

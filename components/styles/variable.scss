@@ -2,8 +2,10 @@ $themePrefix: 'vfluents-';
 $themeAnimation: 0.625s !default;
 $themeColorWeight: 6.25%;
 
-$themeColorBlue: #0078D7 !default;
-$themeColorBlueDark: #0063b1 !default;
+$themeColorAccentLight: #00aff0 !default;
+$themeColorAccentDark: darken($themeColorAccentLight, $themeColorWeight) !default;
+
+$themeColorBlue: #0078d7 !default;
 $themeColorIndigo: #6610f2 !default;
 $themeColorPurple: #6f42c1 !default;
 $themeColorPink: #e74856 !default;
@@ -14,8 +16,8 @@ $themeColorGreen: #107c10 !default;
 $themeColorTeal: #00cc6a !default;
 $themeColorCyan: #0099bc !default;
 $themeColorWhite:   #ffffff !default;
-$themeColorGray50:  #fefefe !default;
-$themeColorGray100: #f7f7f7 !default;
+$themeColorGray50:  #f8f8f8 !default;
+$themeColorGray100: #f4f4f4 !default;
 $themeColorGray200: #eaeaea !default;
 $themeColorGray300: #c8c8c8 !default;
 $themeColorGray400: #bdbdbd !default;

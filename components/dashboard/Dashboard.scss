@@ -7,7 +7,7 @@
                 height: 100vh;
                 overflow: hidden;
         }
-
+        
         .#{$themePrefix}dashboard-side,
         .#{$themePrefix}dashboard-main {
                 padding: 0 !important;
@@ -20,7 +20,16 @@
 
                 .#{$themePrefix}navbar {
                         display: none;
-                        background-color: $themeColorBlueDark !important;
+                        background-color: $themeColorAccentDark !important;
+
+                        .navbar-brand-logo {
+                                fill: $themeColorWhite;
+                                color: $themeColorWhite;
+                        }
+
+                        .navbar-brand-text {
+                                color: $themeColorWhite;
+                        }
                 }
         }
 
@@ -28,7 +37,16 @@
                 background-color: $themeColorGray50;
 
                 .#{$themePrefix}navbar {
-                        background-color: $themeColorBlue !important;
+                        background-color: $themeColorAccentLight !important;
+                }
+
+                .#{$themePrefix}dashboard-main-mask {
+                        display: none;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        background-color: rgba(0, 0, 0, 0.2);
                 }
         }
 
@@ -43,6 +61,18 @@
                         position: absolute;
                         height: 100vh;
                         z-index: $zindex-fixed;
+
+                        .#{$themePrefix}navbar {
+                                .navbar-brand-text {
+                                        display: none;
+                                }
+                        }
+                }
+
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}dashboard-main-mask {
+                                display: block;
+                        }
                 }
         }
 }
@@ -57,6 +87,18 @@
                         }
                 }
 
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}navbar {
+                                border-left: 1px solid $themeColorAccentDark;
+                        }
+
+                        .#{$themePrefix}dashboard-main-inner {
+                                height: 100%;
+                                padding: 1.5rem 2rem;
+                                border-left: 1px solid $themeColorGray200;
+                        }
+                }
+
                 &.#{$themePrefix}dashboard-collapsed {
                         .row {
                                 flex-wrap: nowrap;
@@ -66,13 +108,15 @@
                                 position: relative;
                                 max-width: 3rem;
                                 animation: none;
-
-                                
                         }
 
                         .#{$themePrefix}dashboard-main {
                                 max-width: 100%;
                                 flex: auto;
+
+                                .#{$themePrefix}dashboard-main-mask {
+                                        display: none;
+                                }
                         }
 
                         &.#{$themePrefix}dashboard-small .#{$themePrefix}dashboard-side {
