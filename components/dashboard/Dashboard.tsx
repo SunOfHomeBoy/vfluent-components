@@ -12,17 +12,10 @@ export class Dashboard extends vfluents {
         @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
         @Provide() stateSize: string = 'default'
         @Provide() stateCollapsed: boolean = false
-        @Provide() stateBrandLogo: string = ''
-        @Provide() stateBrandName: string = ''
-        @Provide() stateBrandHref: string = ''
-
 
         public created() {
                 this.stateSize = this.size || this.stateSize
                 this.stateCollapsed = this.collapsed || this.stateCollapsed
-                this.stateBrandLogo = this.brandLogo || this.stateBrandLogo
-                this.stateBrandName = this.brandName || this.stateBrandName
-                this.stateBrandHref = this.brandHref || this.stateBrandHref
         }
 
         public component(h: CreateElement) {
@@ -64,9 +57,9 @@ export class Dashboard extends vfluents {
                 return (
                         <Navbar
                                 size={this.stateSize}
-                                brandLogo={this.stateBrandLogo}
-                                brandName={this.stateBrandName}
-                                brandHref={this.stateBrandHref}
+                                brandLogo={this.brandLogo}
+                                brandName={this.brandName}
+                                brandHref={this.brandHref}
                         />
                 )
         }
@@ -83,9 +76,7 @@ export class Dashboard extends vfluents {
                                 {this.componentMainNavbar(h)}
                                 {this.componentMainTarbar(h)}
                                 <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}></div>
-                                <div class={vfluents.themePrefix + 'dashboard-main-inner'}>
-                                        <router-view></router-view>
-                                </div>
+                                <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{this.innerHTML}</div>
                         </main>
                 )
         }

@@ -10,4 +10,7 @@ export default class Vfluents extends Dashboard {
         @Provide() stateBrandLogo: string = 'home'
         @Provide() stateBrandName: string = 'Vfluents Component'
         @Provide() stateBrandHref: string = ''
+        public innerHTML: any = (
+                <router-view></router-view>
+        )
 }
