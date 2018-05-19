@@ -11,7 +11,7 @@ export class Navbar extends vfluents {
         @Prop() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
         @Prop() brandName: string // 品牌名稱 可空 默認值：空字符串
         @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
-        @Prop() onBrand: Function // 品牌元素單擊事件 可空 默認值：空值
+        @Prop() eventBrand: any // 品牌區域單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
                 let clsFixed = ''
@@ -64,7 +64,8 @@ export class Navbar extends vfluents {
                 }
 
                 return (
-                        <a class="navbar-brand" href={this.brandHref || '#'} onClick={this.onBrand}>
+                        <a class="navbar-brand" href={this.brandHref || '#'}
+                                onClick={vfluents.eventSafe(this.eventBrand)}>
                                 {elementImage}<span class="navbar-brand-text">{this.brandName}</span>
                         </a>
                 )

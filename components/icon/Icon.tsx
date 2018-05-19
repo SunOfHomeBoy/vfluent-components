@@ -5,11 +5,11 @@ import { vfluents } from '../vfluents'
 @Component
 export class Icon extends vfluents {
         @Prop() name: string // 圖標名稱 可空 默認值：空字符串
-        @Prop() size: string // 圖標尺寸 可空 默認值：default 可選值：default | small | large | huge
-        @Prop() onClick: Function // 單擊事件 可空 默認值：空值
+        @Prop() size: string // 圖標尺寸 可空 默認值：default 可選值：default | mini | small | large | huge
+        @Prop() eventClick: any // 單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
-                let clsSize = ['small', 'large', 'huge'].indexOf(this.size) !== -1
+                let clsSize = ['mini', 'small', 'large', 'huge'].indexOf(this.size) !== -1
                         ? `${vfluents.themePrefix}icon-${this.size}`
                         : ''
 
@@ -21,7 +21,7 @@ export class Icon extends vfluents {
                                         vfluents.themePrefix + 'icon',
                                         clsSize,
                                         this.className
-                                ])} aria-hidden="true" onClick={this.onClick}></span>
+                                ])} aria-hidden="true" onClick={vfluents.eventSafe(this.eventClick)}></span>
                         )
                 }
 
@@ -31,7 +31,7 @@ export class Icon extends vfluents {
                                 vfluents.themePrefix + 'icon-' + this.name,
                                 clsSize,
                                 this.className
-                        ])} onClick={this.onClick}>
+                        ])} onClick={vfluents.eventSafe(this.eventClick)}>
                                 <use xlinkHref={'#icon' + this.name.replace(/^icon/i, '').replace(/^[a-z]/i, s => s.toUpperCase())} />
                         </svg>
                 )

@@ -10,28 +10,22 @@ export class Dashboard extends vfluents {
         @Prop() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
         @Prop() brandName: string // 品牌名稱 可空 默認值：空字符串
         @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
-        @Provide() stateSize: string = 'default'
-        @Provide() stateCollapsed: boolean = false
-
-        public created() {
-                this.stateSize = this.size || this.stateSize
-                this.stateCollapsed = this.collapsed || this.stateCollapsed
-        }
+        @Prop() eventBrand: any // 品牌區域單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
                 return (
                         <div class={vfluents.cls([
                                 'container-fluid',
                                 vfluents.themePrefix + 'dashboard',
-                                ['small', 'large', 'huge'].indexOf(this.stateSize) !== -1
-                                        ? `${vfluents.themePrefix}dashboard-${this.stateSize}`
+                                ['small', 'large', 'huge'].indexOf(this.size) !== -1
+                                        ? `${vfluents.themePrefix}dashboard-${this.size}`
                                         : '',
-                                this.stateCollapsed
+                                this.collapsed
                                         ? vfluents.themePrefix + 'dashboard-collapsed'
                                         : '',
                                 this.className
                         ])}>
-                                <div class="row">
+                                <div class={`row ${vfluents.themePrefix}row`}>
                                         {this.componentSide(h)}
                                         {this.componentMain(h)}
                                 </div>
@@ -47,20 +41,8 @@ export class Dashboard extends vfluents {
                                 'col-lg-3',
                                 'col-xl-2',
                                 vfluents.themePrefix + 'dashboard-side'
-                        ])} onClick={this.closeCollapse}>
-                                {this.componentSideNavbar(h)}
+                        ])}>
                         </aside>
-                )
-        }
-
-        private componentSideNavbar(h: CreateElement) {
-                return (
-                        <Navbar
-                                size={this.stateSize}
-                                brandLogo={this.brandLogo}
-                                brandName={this.brandName}
-                                brandHref={this.brandHref}
-                        />
                 )
         }
 
@@ -72,7 +54,7 @@ export class Dashboard extends vfluents {
                                 'col-lg-9',
                                 'col-xl-10',
                                 vfluents.themePrefix + 'dashboard-main'
-                        ])} onClick={this.openCollapse}>
+                        ])}>
                                 {this.componentMainNavbar(h)}
                                 {this.componentMainTarbar(h)}
                                 <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}></div>
@@ -84,19 +66,19 @@ export class Dashboard extends vfluents {
         private componentMainNavbar(h: CreateElement) {
                 return (
                         <Navbar
-                                size={this.stateSize}
+                                size={this.size || 'default'}
+                                fixed="top"
+                                brandLogo={this.brandLogo}
+                                brandName={this.brandName}
+                                brandHref={this.brandHref}
+                                eventBrand={vfluents.eventSafe(this.eventBrand)}
                         />
                 )
         }
 
         private componentMainTarbar(h: CreateElement) {
-        }
-
-        public closeCollapse() {
-                this.stateCollapsed = false
-        }
-
-        public openCollapse() {
-                this.stateCollapsed = true
+                return (
+                        <div></div>
+                )
         }
 }

@@ -26,4 +26,12 @@ export class vfluents extends Vue {
         public static cls(configures?: string[]): string {
                 return removeEmpty(configures).join(' ')
         }
+
+        public static eventSafe(fn: any): Function {
+                return (e: Event) => {
+                        if (typeof (fn) === 'function') {
+                                fn(e)
+                        }
+                }
+        }
 }

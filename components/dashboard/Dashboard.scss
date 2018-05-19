@@ -2,7 +2,99 @@
 @import '../styles/variable.scss';
 
 .#{$themePrefix}dashboard {
-        .row {
+        .#{$themePrefix}dashboard-side,
+        .#{$themePrefix}dashboard-main {
+                height: 100vh;
+        }
+
+        .#{$themePrefix}dashboard-side {
+                display: none;
+                padding: 0;
+                background-color: $themeColorGray100;
+                @include fadeinL($themeAnimation);
+        }
+
+        .#{$themePrefix}dashboard-main {
+                padding: 3rem 0;
+                background-color: $themeColorGray50;
+
+                .#{$themePrefix}navbar {
+                        background-color: $themeColorAccentLight !important;
+
+                        .navbar-brand-logo,
+                        .navbar-brand-text {
+                                fill: $themeColorWhite;
+                                color: $themeColorWhite;
+                        }
+                }
+
+                .#{$themePrefix}dashboard-main-mask {
+                        display: none;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        background-color: rgba(0, 0, 0, 0.2);
+                }
+
+                .#{$themePrefix}dashboard-main-inner {
+                        height: 100%;
+                        padding: 0.625rem 0;
+                        overflow: auto;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-small {
+                .#{$themePrefix}dashboard-main {
+                        padding: 2rem 0;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-large {
+                .#{$themePrefix}dashboard-main {
+                        padding: 4rem 0;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-huge {
+                .#{$themePrefix}dashboard-main {
+                        padding: 5rem 0;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-collapsed {
+                .#{$themePrefix}dashboard-side {
+                        display: block;
+                        position: absolute;
+                        height: 100vh;
+                        background-color: $themeColorGray50;
+                        z-index: $zindex-fixed * 2;
+                }
+
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}dashboard-main-mask {
+                                display: block;
+                        }
+                }
+        }
+}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}dashboard {
+                .#{$themePrefix}dashboard-side {
+                        display: block;
+                        animation: none;
+                        border-right: 1px solid $themeColorGray200;
+                }
+
+                .#{$themePrefix}dashboard-main {
+                        padding-bottom: 0.625rem !important;
+                        background-color: $themeColorGray50;
+                }
+        }
+}
+/*
+.#{$themePrefix}dashboard {
+        .#{$themePrefix}row {
                 width: 100vw;
                 height: 100vh;
                 overflow: hidden;
@@ -34,9 +126,11 @@
         }
 
         .#{$themePrefix}dashboard-main {
+                position: relative;
                 background-color: $themeColorGray50;
 
                 .#{$themePrefix}navbar {
+                        position: absolute;
                         background-color: $themeColorAccentLight !important;
                 }
 
@@ -47,6 +141,30 @@
                         bottom: 0;
                         left: 0;
                         background-color: rgba(0, 0, 0, 0.2);
+                }
+
+                .#{$themePrefix}dashboard-main-inner {
+                }
+        }
+
+        &.#{$themePrefix}dashboard-small {
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}dashboard-main-inner {
+                        }
+                }
+        }
+
+        &.#{$themePrefix}dashboard-large {
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}dashboard-main-inner {
+                        }
+                }
+        }
+
+        &.#{$themePrefix}dashboard-huge {
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}dashboard-main-inner {
+                        }
                 }
         }
 
@@ -88,19 +206,21 @@
                 }
 
                 .#{$themePrefix}dashboard-main {
+                        border-left: 1px solid $themeColorGray200 !important;
+
                         .#{$themePrefix}navbar {
-                                border-left: 1px solid $themeColorAccentDark;
+                                margin-left: -1px;
+                                border-left: 1px solid $themeColorAccentDark !important;
                         }
 
                         .#{$themePrefix}dashboard-main-inner {
-                                height: 100%;
                                 padding: 1.5rem 2rem;
-                                border-left: 1px solid $themeColorGray200;
+                                bottom: 0 !important;
                         }
                 }
 
                 &.#{$themePrefix}dashboard-collapsed {
-                        .row {
+                        .#{$themePrefix}row {
                                 flex-wrap: nowrap;
                         }
 
@@ -133,3 +253,4 @@
                 }
         }
 }
+*/
