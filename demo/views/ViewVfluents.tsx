@@ -9,7 +9,7 @@ export default class ViewVfluents extends vfluents {
         public component(h: CreateElement) {
                 return (
                         <Dashboard
-                                size="small"
+                                size="default"
                                 collapsed={this.stateCollapsed}
                                 brandLogo="Hierarchy"
                                 brandName="Vfluents Component"

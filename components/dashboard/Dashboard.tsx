@@ -2,6 +2,7 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import { Navbar } from '../navbar'
+import { empty } from '../utils'
 
 @Component
 export class Dashboard extends vfluents {
@@ -10,6 +11,7 @@ export class Dashboard extends vfluents {
         @Prop() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
         @Prop() brandName: string // 品牌名稱 可空 默認值：空字符串
         @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
+        @Prop() tbarItems: any[] // 底部導航 可空 默認值：空字符串
         @Prop() eventBrand: any // 品牌區域單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
@@ -53,7 +55,10 @@ export class Dashboard extends vfluents {
                                 'col-md-8',
                                 'col-lg-9',
                                 'col-xl-10',
-                                vfluents.themePrefix + 'dashboard-main'
+                                vfluents.themePrefix + 'dashboard-main',
+                                empty(this.tbarItems)
+                                        ? `${vfluents.themePrefix}dashboard-bottom`
+                                        : ''
                         ])}>
                                 {this.componentMainNavbar(h)}
                                 {this.componentMainTarbar(h)}
@@ -68,6 +73,7 @@ export class Dashboard extends vfluents {
                         <Navbar
                                 size={this.size || 'default'}
                                 fixed="top"
+                                brandCls='col-10 col-md-4 col-lg-3 col-xl-2'
                                 brandLogo={this.brandLogo}
                                 brandName={this.brandName}
                                 brandHref={this.brandHref}

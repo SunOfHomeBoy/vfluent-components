@@ -7,3 +7,10 @@
                 text-align: center;
         }
 }
+.vfluents-browser-theme-dark {
+        .#{$themePrefix}view-icons {
+                .#{$themePrefix}unit {
+                        color: $themeColorGray200 !important;
+                }
+        }
+}

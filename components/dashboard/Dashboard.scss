@@ -2,6 +2,10 @@
 @import '../styles/variable.scss';
 
 .#{$themePrefix}dashboard {
+        .#{$themePrefix}row {
+                overflow: hidden;
+        }
+
         .#{$themePrefix}dashboard-side,
         .#{$themePrefix}dashboard-main {
                 height: 100vh;
@@ -18,13 +22,23 @@
                 padding: 3rem 0;
                 background-color: $themeColorGray50;
 
+                &.#{$themePrefix}dashboard-bottom {
+                        padding-bottom: 0 !important;
+                }
+
                 .#{$themePrefix}navbar {
                         background-color: $themeColorAccentLight !important;
 
-                        .navbar-brand-logo,
-                        .navbar-brand-text {
-                                fill: $themeColorWhite;
-                                color: $themeColorWhite;
+                        .navbar-brand {
+                                display: none;
+                                margin: 0;
+                                padding: 0;
+
+                                .navbar-brand-logo,
+                                .navbar-brand-text {
+                                        fill: $themeColorWhite;
+                                        color: $themeColorWhite;
+                                }
                         }
                 }
 
@@ -35,6 +49,7 @@
                         bottom: 0;
                         left: 0;
                         background-color: rgba(0, 0, 0, 0.2);
+                        z-index: $zindex-fixed;
                 }
 
                 .#{$themePrefix}dashboard-main-inner {
@@ -78,6 +93,30 @@
                 }
         }
 }
+.#{$themePrefix}browser-theme-light {
+        .#{$themePrefix}dashboard {
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}navbar {
+                                background-color: $themeColorWhite !important;
+                        }
+                }
+        }
+}
+.#{$themePrefix}browser-theme-dark {
+        .#{$themePrefix}dashboard {
+                .#{$themePrefix}dashboard-side {
+                        background-color: $themeColorGray900;
+                }
+
+                .#{$themePrefix}dashboard-main {
+                        background-color: $themeColorGray900;
+
+                        .#{$themePrefix}navbar {
+                                background-color: $themeColorBlack !important;
+                        }
+                }
+        }
+}
 @include media-breakpoint-up(md) {
         .#{$themePrefix}dashboard {
                 .#{$themePrefix}dashboard-side {
@@ -87,135 +126,12 @@
                 }
 
                 .#{$themePrefix}dashboard-main {
-                        padding-bottom: 0.625rem !important;
+                        padding-bottom: 0 !important;
                         background-color: $themeColorGray50;
-                }
-        }
-}
-/*
-.#{$themePrefix}dashboard {
-        .#{$themePrefix}row {
-                width: 100vw;
-                height: 100vh;
-                overflow: hidden;
-        }
-        
-        .#{$themePrefix}dashboard-side,
-        .#{$themePrefix}dashboard-main {
-                padding: 0 !important;
-        }
 
-        .#{$themePrefix}dashboard-side {
-                display: none;
-                background-color: $themeColorGray100;
-                @include fadeinL($themeAnimation);
-
-                .#{$themePrefix}navbar {
-                        display: none;
-                        background-color: $themeColorAccentDark !important;
-
-                        .navbar-brand-logo {
-                                fill: $themeColorWhite;
-                                color: $themeColorWhite;
-                        }
-
-                        .navbar-brand-text {
-                                color: $themeColorWhite;
-                        }
-                }
-        }
-
-        .#{$themePrefix}dashboard-main {
-                position: relative;
-                background-color: $themeColorGray50;
-
-                .#{$themePrefix}navbar {
-                        position: absolute;
-                        background-color: $themeColorAccentLight !important;
-                }
-
-                .#{$themePrefix}dashboard-main-mask {
-                        display: none;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                        background-color: rgba(0, 0, 0, 0.2);
-                }
-
-                .#{$themePrefix}dashboard-main-inner {
-                }
-        }
-
-        &.#{$themePrefix}dashboard-small {
-                .#{$themePrefix}dashboard-main {
-                        .#{$themePrefix}dashboard-main-inner {
-                        }
-                }
-        }
-
-        &.#{$themePrefix}dashboard-large {
-                .#{$themePrefix}dashboard-main {
-                        .#{$themePrefix}dashboard-main-inner {
-                        }
-                }
-        }
-
-        &.#{$themePrefix}dashboard-huge {
-                .#{$themePrefix}dashboard-main {
-                        .#{$themePrefix}dashboard-main-inner {
-                        }
-                }
-        }
-
-        &.#{$themePrefix}dashboard-collapsed {
-                .#{$themePrefix}dashboard-side,
-                .#{$themePrefix}dashboard-main {
-                        border: 0;
-                }
-
-                .#{$themePrefix}dashboard-side {
-                        display: block;
-                        position: absolute;
-                        height: 100vh;
-                        z-index: $zindex-fixed;
-
-                        .#{$themePrefix}navbar {
-                                .navbar-brand-text {
-                                        display: none;
-                                }
-                        }
-                }
-
-                .#{$themePrefix}dashboard-main {
-                        .#{$themePrefix}dashboard-main-mask {
-                                display: block;
-                        }
-                }
-        }
-}
-@include media-breakpoint-up(md) {
-        .#{$themePrefix}dashboard {
-                .#{$themePrefix}dashboard-side {
-                        display: block;
-                        animation: none;
-
-                        .#{$themePrefix}navbar {
-                                display: flex;
-                        }
-                }
-
-                .#{$themePrefix}dashboard-main {
-                        border-left: 1px solid $themeColorGray200 !important;
-
-                        .#{$themePrefix}navbar {
-                                margin-left: -1px;
-                                border-left: 1px solid $themeColorAccentDark !important;
-                        }
-
-                        .#{$themePrefix}dashboard-main-inner {
-                                padding: 1.5rem 2rem;
-                                bottom: 0 !important;
+                        .navbar-brand {
+                                display: inline-block !important;
+                                background-color: $themeColorAccentDark;
                         }
                 }
 
@@ -227,30 +143,109 @@
                         .#{$themePrefix}dashboard-side {
                                 position: relative;
                                 max-width: 3rem;
+                                background-color: $themeColorGray100;
                                 animation: none;
+                                z-index: $zindex-fixed;
                         }
 
                         .#{$themePrefix}dashboard-main {
                                 max-width: 100%;
                                 flex: auto;
 
+                                .navbar-brand {
+                                        max-width: 3rem;
+
+                                        .navbar-brand-text {
+                                                display: none;
+                                        }
+                                }
+
                                 .#{$themePrefix}dashboard-main-mask {
                                         display: none;
                                 }
                         }
 
-                        &.#{$themePrefix}dashboard-small .#{$themePrefix}dashboard-side {
-                                max-width: 2rem;
+                        &.#{$themePrefix}dashboard-small {
+                                .#{$themePrefix}dashboard-side {
+                                        max-width: 2rem;
+                                }
+
+                                .#{$themePrefix}dashboard-main {
+                                        .navbar-brand {
+                                                max-width: 2rem;
+                                        }
+                                }
                         }
 
-                        &.#{$themePrefix}dashboard-large .#{$themePrefix}dashboard-side {
-                                max-width: 4rem;
+                        &.#{$themePrefix}dashboard-large {
+                                .#{$themePrefix}dashboard-side {
+                                        max-width: 4rem;
+                                }
+
+                                .#{$themePrefix}dashboard-main {
+                                        .navbar-brand {
+                                                max-width: 4rem;
+                                        }
+                                }
                         }
 
-                        &.#{$themePrefix}dashboard-huge .#{$themePrefix}dashboard-side {
-                                max-width: 5rem;
+                        &.#{$themePrefix}dashboard-huge {
+                                .#{$themePrefix}dashboard-side {
+                                        max-width: 5rem;
+                                }
+
+                                .#{$themePrefix}dashboard-main {
+                                        .navbar-brand {
+                                                max-width: 5rem;
+                                        }
+                                }
+                        }
+                }
+        }
+
+        .#{$themePrefix}browser-theme-light {
+                .#{$themePrefix}dashboard {
+                        .#{$themePrefix}dashboard-side {
+                                background-color: $themeColorGray100;
+                                border-right: 0;
+                        }
+        
+                        .#{$themePrefix}dashboard-main {
+                                background-color: $themeColorWhite;
+
+                                .navbar-brand {
+                                        background-color: $themeColorGray100 !important;
+
+                                        .navbar-brand-logo,
+                                        .navbar-brand-text {
+                                                color: $themeColorGray700;
+                                                fill: $themeColorGray700;
+                                        }
+                                }
+                        }
+                }
+        }
+        .#{$themePrefix}browser-theme-dark {
+                .#{$themePrefix}dashboard {
+                        .#{$themePrefix}dashboard-side {
+                                background-color: $themeColorGray900;
+                                border-right: 0;
+                        }
+        
+                        .#{$themePrefix}dashboard-main {
+                                background-color: $themeColorBlack;
+
+                                .navbar-brand {
+                                        background-color: $themeColorGray900 !important;
+
+                                        .navbar-brand-logo,
+                                        .navbar-brand-text {
+                                                color: $themeColorGray200;
+                                                fill: $themeColorGray200;
+                                        }
+                                }
                         }
                 }
         }
 }
-*/
+

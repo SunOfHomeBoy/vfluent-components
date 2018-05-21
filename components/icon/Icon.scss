@@ -5,6 +5,8 @@
         width: 2rem;
         height: 2rem;
         font-size: 2rem;
+        color: $themeColorGray700;
+        fill: $themeColorGray700;
 
         use {
                 margin: -2px 0 0 -2px;
@@ -32,5 +34,11 @@
                 width: 4rem;
                 height: 4rem;
                 font-size: 4rem;
+        }
+}
+.#{$themePrefix}browser-theme-dark {
+        .#{$themePrefix}icon {
+                color: $themeColorGray200;
+                fill: $themeColorGray200;
         }
 }
