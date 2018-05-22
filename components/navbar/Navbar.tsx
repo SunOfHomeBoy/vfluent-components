@@ -12,6 +12,9 @@ export class Navbar extends vfluents {
         @Prop() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
         @Prop() brandName: string // 品牌名稱 可空 默認值：空字符串
         @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
+        @Prop() itemsLeft: any[] // 左側導航項 可空 默認值：空數組
+        @Prop() itemsMiddle: any[] // 中間導航項 可空 默認值：空數組
+        @Prop() itemsRight: any[] // 右側導航項 可空 默認值：空數組
         @Prop() eventBrand: any // 品牌區域單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
@@ -46,6 +49,9 @@ export class Navbar extends vfluents {
                                 this.className
                         ])}>
                                 {elementBrand}
+                                <div class="navbar-left">{this.itemsLeft}</div>
+                                <div class="navbar-middle">{this.itemsMiddle}</div>
+                                <div class="navbar-right">{this.itemsRight}</div>
                         </nav>
                 )
         }

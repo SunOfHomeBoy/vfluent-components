@@ -1,12 +1,10 @@
 @import '../styles/variable.scss';
-@import '../../node_modules/bootstrap/scss/nav';
 @import '../../node_modules/bootstrap/scss/navbar';
 
 .#{$themePrefix}navbar {
         padding: 0;
         height: 3rem;
         line-height: 3rem;
-        font-size: 0;
 
         .navbar-brand {
                 padding-top: 0;
@@ -29,6 +27,16 @@
                 .navbar-brand-text {
                         font-size: 1.25rem;
                 }
+        }
+
+        .navbar-left,
+        .navbar-right,
+        .navbar-middle {
+                height: 100%;
+        }
+
+        .navbar-middle {
+                flex: 1;
         }
 
         &.#{$themePrefix}navbar-small {

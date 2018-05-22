@@ -1,18 +1,19 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
+import { Button } from '../button'
 import { Navbar } from '../navbar'
 import { empty } from '../utils'
 
 @Component
 export class Dashboard extends vfluents {
-        @Prop() size: string // 導航尺寸 可空 默認值：default 可選值：default | small | large | huge
-        @Prop() collapsed: boolean // 側欄折疊 可空 默認值：false
-        @Prop() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
-        @Prop() brandName: string // 品牌名稱 可空 默認值：空字符串
-        @Prop() brandHref: string // 品牌鏈接 可空 默認值：空字符串
-        @Prop() tbarItems: any[] // 底部導航 可空 默認值：空字符串
-        @Prop() eventBrand: any // 品牌區域單擊事件 可空 默認值：空值
+        @Provide() size: string // 導航尺寸 可空 默認值：default 可選值：default | small | large | huge
+        @Provide() collapsed: boolean // 側欄折疊 可空 默認值：FALSE
+        @Provide() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
+        @Provide() brandName: string // 品牌名稱 可空 默認值：空字符串
+        @Provide() brandHref: string // 品牌鏈接 可空 默認值：空字符串
+        @Provide() menuIcon: string // 菜單圖標 可空 默認值：空字符串
+        @Provide() tbarItems: any[] // 底部導航 可空 默認值：空字符串
 
         public component(h: CreateElement) {
                 return (
@@ -77,7 +78,10 @@ export class Dashboard extends vfluents {
                                 brandLogo={this.brandLogo}
                                 brandName={this.brandName}
                                 brandHref={this.brandHref}
-                                eventBrand={vfluents.eventSafe(this.eventBrand)}
+                                eventBrand={vfluents.eventSafe(this.eventCollapsed)}
+                                itemsLeft={[
+                                        (<Button icon={this.menuIcon || 'Hierarchy'} text="TEST" />)
+                                ]}
                         />
                 )
         }
@@ -86,5 +90,9 @@ export class Dashboard extends vfluents {
                 return (
                         <div></div>
                 )
+        }
+
+        public eventCollapsed() {
+                this.collapsed = !this.collapsed
         }
 }
