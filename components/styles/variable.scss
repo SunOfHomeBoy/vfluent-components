@@ -2,8 +2,8 @@ $themePrefix: 'vfluents-';
 $themeAnimation: 0.625s !default;
 $themeColorWeight: 6.25%;
 
-$themeColorAccentLight: #3498db !default;
-$themeColorAccentDark: #2980b9 !default;
+$themeColorAccentLight: #00aff0 !default;
+$themeColorAccentDark: darken($themeColorAccentLight, $themeColorWeight) !default;
 
 $themeColorBlue: #0078d7 !default;
 $themeColorIndigo: #6610f2 !default;

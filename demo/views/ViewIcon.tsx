@@ -4,7 +4,7 @@ import { vfluents, Icon } from '../../components'
 import { theme } from '../config'
 
 @Component
-export default class ViewIcons extends vfluents {
+export default class ViewIcon extends vfluents {
         public component(h: CreateElement) {
                 let elementIcons = []
                 for (let name in theme.icons) {

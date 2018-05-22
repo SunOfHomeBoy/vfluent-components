@@ -1,5 +1,6 @@
 import ViewVfluents from '../views/ViewVfluents'
-import ViewIcons from '../views/ViewIcons'
+import ViewButton from '../views/ViewButton'
+import ViewIcon from '../views/ViewIcon'
 
 export const routes: any[] = [
         {
@@ -7,8 +8,12 @@ export const routes: any[] = [
                 component: ViewVfluents,
                 children: [
                         {
+                                path: 'btn',
+                                component: ViewButton
+                        },
+                        {
                                 path: 'icons',
-                                component: ViewIcons
+                                component: ViewIcon
                         }
                 ]
         },

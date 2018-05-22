@@ -1,1 +1,1 @@
-export default {}
+export { ViewCommon } from './ViewCommon'
