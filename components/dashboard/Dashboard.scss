@@ -20,7 +20,7 @@
 
         .#{$themePrefix}dashboard-main {
                 padding: 3rem 0;
-                background-color: $themeColorGray50;
+                background-color: $themeColorGray100;
 
                 &.#{$themePrefix}dashboard-bottom {
                         padding-bottom: 0 !important;
@@ -54,7 +54,7 @@
 
                 .#{$themePrefix}dashboard-main-inner {
                         height: 100%;
-                        padding: 0.625rem 0;
+                        padding: 0.625rem 0.9375rem;
                         overflow: auto;
                 }
         }
@@ -82,7 +82,7 @@
                         display: block;
                         position: absolute;
                         height: 100vh;
-                        background-color: $themeColorGray50;
+                        background-color: $themeColorGray100;
                         z-index: $zindex-fixed * 2;
                 }
 
@@ -127,11 +127,15 @@
 
                 .#{$themePrefix}dashboard-main {
                         padding-bottom: 0 !important;
-                        background-color: $themeColorGray50;
+                        background-color: $themeColorWhite;
 
                         .navbar-brand {
                                 display: inline-block !important;
                                 background-color: $themeColorAccentDark;
+                        }
+
+                        .#{$themePrefix}dashboard-main-inner {
+                                padding: 1.25rem 1.875rem;
                         }
                 }
 
@@ -222,6 +226,11 @@
                                                 fill: $themeColorGray700;
                                         }
                                 }
+
+                                .#{$themePrefix}dashboard-main-inner {
+                                        padding-top: 0;
+                                        padding-bottom: 0;
+                                }
                         }
                 }
         }
@@ -243,6 +252,11 @@
                                                 color: $themeColorGray200;
                                                 fill: $themeColorGray200;
                                         }
+                                }
+
+                                .#{$themePrefix}dashboard-main-inner {
+                                        padding-top: 0;
+                                        padding-bottom: 0;
                                 }
                         }
                 }

@@ -2,4 +2,39 @@
 @import './variable.scss';
 
 .#{$themePrefix}view-common {
+        .#{$themePrefix}view-header {
+                small {
+                        display: block;
+                        font-size: 1.25rem;
+                        line-height: 1.5rem;
+                }
+        }
+
+        article {
+                section, code {
+                        padding: 1.5rem;
+                        border: 0.125rem solid $themeColorGray200;
+                }
+
+                section {
+                        table {
+                                width: 100%;
+                        }
+                }
+
+                code {
+                        display: block;
+                        position: relative;
+                        background-color: $themeColorGray200;
+                }
+        }
+}
+.vfluents-browser-theme-dark .#{$themePrefix}view-common {
+        section, code {
+                border-color: $themeColorGray800;
+        }
+
+        code {
+                background-color: $themeColorGray800;
+        }
 }

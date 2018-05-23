@@ -5,10 +5,10 @@ import { Icon } from '../icon'
 
 @Component
 export class Button extends vfluents {
-        @Prop() size: string // 按鈕尺寸 可空 默認值：default 可選值：default | small | large | huge
+        @Prop() size: string // 按鈕尺寸 可空 默認值：Default 可選值：Default | Small | Large | Huge
         @Prop() text: string // 按鈕文本 可空 默認值：空字符串
         @Prop() icon: string // 按鈕圖標 可空 默認值：空字符串
-        @Prop() type: string // 按鈕類型 可空 默認值：default 可選值：default | primary | secondary | success | danger | warning | info | light | dark |  link
+        @Prop() type: string // 按鈕類型 可空 默認值：Default 可選值：Default | Primary | Secondary | Success | Danger | Warning | Info | Light | Dark |  Link
         @Prop() active: boolean // 激活狀態 可空 默認值：FALSE
         @Prop() disabled: boolean // 禁用狀態 可空 默認值：FALSE
         @Prop() eventClick: any // 單擊事件 可空 默認值：空值

@@ -4,7 +4,7 @@ import { vfluents } from '../vfluents'
 import { Icon } from '../icon'
 
 @Component
-export class Navbar extends vfluents {
+export class NavBar extends vfluents {
         @Prop() size: string // 行高尺寸 可空 默認值：default 可選值：default | small | large | huge
         @Prop() dark: boolean // 深色背景 可空 默認值：FALSE
         @Prop() fixed: string // 固定位置 可空 默認值：default 可選值：default | top | bottom | sticky

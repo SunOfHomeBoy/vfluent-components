@@ -2,7 +2,7 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import { Button } from '../button'
-import { Navbar } from '../navbar'
+import { NavBar } from '../navbar'
 import { empty } from '../utils'
 
 @Component
@@ -50,6 +50,11 @@ export class Dashboard extends vfluents {
         }
 
         private componentMain(h: CreateElement) {
+                if (!this.innerHTML) {
+                        this.innerHTML = (
+                                <router-view></router-view>
+                        )
+                }
                 return (
                         <main class={vfluents.cls([
                                 'col-12',
@@ -71,10 +76,10 @@ export class Dashboard extends vfluents {
 
         private componentMainNavbar(h: CreateElement) {
                 return (
-                        <Navbar
+                        <NavBar
                                 size={this.size || 'default'}
                                 fixed="top"
-                                brandCls='col-10 col-md-4 col-lg-3 col-xl-2'
+                                brandCls="col-10 col-md-4 col-lg-3 col-xl-2"
                                 brandLogo={this.brandLogo}
                                 brandName={this.brandName}
                                 brandHref={this.brandHref}

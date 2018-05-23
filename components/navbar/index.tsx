@@ -1,2 +1,2 @@
-import './Navbar.scss'
-export { Navbar } from './Navbar'
+import './NavBar.scss'
+export { NavBar } from './NavBar'
