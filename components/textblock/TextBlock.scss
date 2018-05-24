@@ -3,8 +3,36 @@
 .#{$themePrefix}textblock {
         text-align: left;
 
-        &.#{$themePrefix}textblock-indent {
+        &.#{$themePrefix}textblock-indent1 {
+                text-indent: 0.5em;
+        }
+
+        &.#{$themePrefix}textblock-indent2 {
+                text-indent: 1em;
+        }
+
+        &.#{$themePrefix}textblock-indent3 {
+                text-indent: 1.5em;
+        }
+
+        &.#{$themePrefix}textblock-indent4 {
                 text-indent: 2em;
+        }
+
+        &.#{$themePrefix}textblock-indent5 {
+                text-indent: 2.5em;
+        }
+
+        &.#{$themePrefix}textblock-indent6 {
+                text-indent: 3em;
+        }
+
+        &.#{$themePrefix}textblock-indent7 {
+                text-indent: 3.5em;
+        }
+
+        &.#{$themePrefix}textblock-indent8 {
+                text-indent: 4em;
         }
 
         &.#{$themePrefix}textblock-middle {

@@ -2,7 +2,6 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents, TextBlock } from '../../components'
 import { ViewCommon } from '../components'
-import { theme } from '../config'
 
 @Component
 export default class ViewTextBlock extends ViewCommon {
@@ -74,6 +73,13 @@ export default class ViewTextBlock extends ViewCommon {
                                                         </tr>
                                                         <tr>
                                                                 <td>
+                                                                        <TextBlock type="Default" indent={4}>TextIndent4</TextBlock>
+                                                                </td>
+                                                                <td>15px</td>
+                                                                <td>20px</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>
                                                                         <TextBlock type="Default" align="Left">TextLeft</TextBlock>
                                                                 </td>
                                                                 <td>15px</td>
@@ -81,14 +87,14 @@ export default class ViewTextBlock extends ViewCommon {
                                                         </tr>
                                                         <tr>
                                                                 <td>
-                                                                        <TextBlock type="Default" align="Right">TextRight</TextBlock>
+                                                                        <TextBlock type="Default" align="Middle">TextMiddle</TextBlock>
                                                                 </td>
                                                                 <td>15px</td>
                                                                 <td>20px</td>
                                                         </tr>
                                                         <tr>
                                                                 <td>
-                                                                        <TextBlock type="Default" align="Middle">TextMiddle</TextBlock>
+                                                                        <TextBlock type="Default" align="Right">TextRight</TextBlock>
                                                                 </td>
                                                                 <td>15px</td>
                                                                 <td>20px</td>
@@ -162,6 +168,14 @@ export default class ViewTextBlock extends ViewCommon {
                                         </TextBlock>
                                         <TextBlock>
                                                 <span class="nt">&lt;TextBlock</span>
+                                                <span class="na">indent=</span>
+                                                <span class="s">&#123;4&#125;</span>
+                                                <span class="nt">&gt;</span>
+                                                <span class="i">TextIndent4</span>
+                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                        </TextBlock>
+                                        <TextBlock>
+                                                <span class="nt">&lt;TextBlock</span>
                                                 <span class="na">align=</span>
                                                 <span class="s">&quot;Left&quot;</span>
                                                 <span class="nt">&gt;</span>
@@ -200,14 +214,43 @@ export default class ViewTextBlock extends ViewCommon {
                                         <table class="attrs">
                                                 <thead>
                                                         <tr>
-                                                                <th width="20%">參數</th>
-                                                                <th width="10%">類型</th>
-                                                                <th width="35%">說明</th>
-                                                                <th width="25%">可選值</th>
-                                                                <th width="10%">默認值</th>
+                                                                <th width="15%">參數</th>
+                                                                <th width="15%">類型</th>
+                                                                <th width="25%">說明</th>
+                                                                <th width="30%">可選值</th>
+                                                                <th width="15%">默認值</th>
                                                         </tr>
                                                 </thead>
-                                                <tbody></tbody>
+                                                <tbody>
+                                                        <tr>
+                                                                <td>type</td>
+                                                                <td>String</td>
+                                                                <td>文本組件類型</td>
+                                                                <td>Default | Header | SubHeader | Title | SubTitle | Base | Caption | Footer</td>
+                                                                <td>Default</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>align</td>
+                                                                <td>String</td>
+                                                                <td>文本對齊方向</td>
+                                                                <td>Left | Middle | Right</td>
+                                                                <td>Left</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>indent</td>
+                                                                <td>Boolean</td>
+                                                                <td>啟用文首縮進 即默認兩個字符縮進</td>
+                                                                <td>-</td>
+                                                                <td>false</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>links</td>
+                                                                <td>Array</td>
+                                                                <td>底部鏈接元素數組 注意：僅隊type=Footer有效</td>
+                                                                <td>-</td>
+                                                                <td>[]</td>
+                                                        </tr>
+                                                </tbody>
                                         </table>
                                 </section>
                         </article >

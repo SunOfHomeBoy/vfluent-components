@@ -13,11 +13,11 @@ export const routes: any[] = [
                                 component: ViewButton
                         },
                         {
-                                path: 'icon',
+                                path: 'Icon',
                                 component: ViewIcon
                         },
                         {
-                                path: 'textblock',
+                                path: 'TextBlock',
                                 component: ViewTextBlock
                         }
                 ]

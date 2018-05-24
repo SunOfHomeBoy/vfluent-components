@@ -210,7 +210,7 @@
         .#{$themePrefix}browser-theme-light {
                 .#{$themePrefix}dashboard {
                         .#{$themePrefix}dashboard-side {
-                                background-color: $themeColorGray100;
+                                background-color: $themeColorGray200;
                                 border-right: 0;
                         }
         
@@ -218,7 +218,7 @@
                                 background-color: $themeColorGray50;
 
                                 .navbar-brand {
-                                        background-color: $themeColorGray100 !important;
+                                        background-color: $themeColorGray200 !important;
 
                                         .navbar-brand-logo,
                                         .navbar-brand-text {
