@@ -36,8 +36,8 @@
 
                                 .navbar-brand-logo,
                                 .navbar-brand-text {
-                                        fill: $themeColorWhite;
-                                        color: $themeColorWhite;
+                                        fill: $themeColorGray50;
+                                        color: $themeColorGray50;
                                 }
                         }
                 }
@@ -97,7 +97,7 @@
         .#{$themePrefix}dashboard {
                 .#{$themePrefix}dashboard-main {
                         .#{$themePrefix}navbar {
-                                background-color: $themeColorWhite !important;
+                                background-color: $themeColorGray50 !important;
                         }
                 }
         }
@@ -127,7 +127,7 @@
 
                 .#{$themePrefix}dashboard-main {
                         padding-bottom: 0 !important;
-                        background-color: $themeColorWhite;
+                        background-color: $themeColorGray50;
 
                         .navbar-brand {
                                 display: inline-block !important;
@@ -215,7 +215,7 @@
                         }
         
                         .#{$themePrefix}dashboard-main {
-                                background-color: $themeColorWhite;
+                                background-color: $themeColorGray50;
 
                                 .navbar-brand {
                                         background-color: $themeColorGray100 !important;

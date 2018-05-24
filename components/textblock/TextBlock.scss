@@ -33,14 +33,14 @@
                 margin-bottom: 0.75rem;
                 font-size: 1.5rem;
                 line-height: 1.75rem;
-                font-weight: lighter;
+                font-weight: normal;
         }
 
         &.#{$themePrefix}textblock-subtitle {
                 margin-bottom: 0.5rem;
                 font-size: 1.25rem;
                 line-height: 1.5rem;
-                font-weight: lighter;
+                font-weight: normal;
         }
 
         &.#{$themePrefix}textblock-base {
@@ -58,22 +58,42 @@
         }
 
         &.#{$themePrefix}textblock-footer {
-                position: relative;
+                color: $themeColorGray600;
                 font-size: 0.75rem;
-                line-height: 0.875rem;
+                line-height: 1.25rem;
                 font-weight: normal;
                 text-align: center !important;
 
-                a {
-                        margin: 0 0.5rem;
-                        color: $themeColorBlue;
-                        text-decoration: none;
+                .#{$themePrefix}textblock-footer-links,
+                .#{$themePrefix}textblock-footer-text {
+                        display: block;
+                }
 
-                        &::before {
-                                content: ' ';
-                                border-left: 1px solid $themeColorGray300;
+                .#{$themePrefix}textblock-footer-links {
+                        a {
+                                display: inline-block;
+                                position: relative;
+                                margin: 0 0.5rem;
+                                color: $themeColorBlue !important;
+                                text-decoration: none;
+                                cursor: pointer;
+        
+                                &::before {
+                                        content: ' ';
+                                        position: absolute;
+                                        left: -0.65em;
+                                        top: 0.36em;
+                                        bottom: 0.36em;
+                                        border-left: 1px solid $themeColorGray300;
+                                        background-color: $themeColorGray600;
+                                }
+                        }
+
+                        a:first-child::before {
+                                border-left: 0;
                         }
                 }
+                
         }
 
         &.#{$themePrefix}textblock-paragraph {

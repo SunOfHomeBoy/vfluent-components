@@ -7,7 +7,7 @@ import { empty } from '../utils'
 
 @Component
 export class Dashboard extends vfluents {
-        @Provide() size: string // 導航尺寸 可空 默認值：default 可選值：default | small | large | huge
+        @Provide() size: string // 導航尺寸 可空 默認值：Default 可選值：Default | Small | Large | Huge
         @Provide() collapsed: boolean // 側欄折疊 可空 默認值：FALSE
         @Provide() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
         @Provide() brandName: string // 品牌名稱 可空 默認值：空字符串
@@ -20,8 +20,8 @@ export class Dashboard extends vfluents {
                         <div class={vfluents.cls([
                                 'container-fluid',
                                 vfluents.themePrefix + 'dashboard',
-                                ['small', 'large', 'huge'].indexOf(this.size) !== -1
-                                        ? `${vfluents.themePrefix}dashboard-${this.size}`
+                                ['Small', 'Large', 'Huge'].indexOf(this.size) !== -1
+                                        ? `${vfluents.themePrefix}dashboard-${this.size.toLowerCase()}`
                                         : '',
                                 this.collapsed
                                         ? vfluents.themePrefix + 'dashboard-collapsed'
@@ -77,15 +77,15 @@ export class Dashboard extends vfluents {
         private componentMainNavbar(h: CreateElement) {
                 return (
                         <NavBar
-                                size={this.size || 'default'}
-                                fixed="top"
+                                size={this.size || 'Default'}
+                                fixed="Top"
                                 brandCls="col-10 col-md-4 col-lg-3 col-xl-2"
                                 brandLogo={this.brandLogo}
                                 brandName={this.brandName}
                                 brandHref={this.brandHref}
                                 eventBrand={vfluents.eventSafe(this.eventCollapsed)}
                                 itemsLeft={[
-                                        (<Button icon={this.menuIcon || 'Hierarchy'} text="TEST" />)
+                                        (<Button icon={this.menuIcon || 'Hierarchy'} text="THEME" eventClick={this.changeTheme} />)
                                 ]}
                         />
                 )
@@ -99,5 +99,18 @@ export class Dashboard extends vfluents {
 
         public eventCollapsed() {
                 this.collapsed = !this.collapsed
+        }
+
+        public changeTheme() {
+                switch (vfluents.theme()) {
+                        case 'default':
+                                return vfluents.theme('light')
+
+                        case 'light':
+                                return vfluents.theme('dark')
+
+                        case 'dark':
+                                return vfluents.theme('default')
+                }
         }
 }

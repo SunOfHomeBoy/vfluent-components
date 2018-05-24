@@ -5,20 +5,57 @@
         .#{$themePrefix}view-header {
                 small {
                         display: block;
+                        color: $themeColorGray700;
                         font-size: 1.25rem;
-                        line-height: 1.5rem;
+                        line-height: 1.75rem;
                 }
         }
 
         article {
+                padding-bottom: 2rem;
+                padding-bottom: 1.5rem;
+
+                h4 {
+                        margin-top: 1rem;
+                }
+
                 section, code {
                         padding: 1.5rem;
                         border: 0.125rem solid $themeColorGray200;
+                        overflow: auto;
                 }
 
                 section {
                         table {
                                 width: 100%;
+
+                                th {
+                                        font-weight: normal;
+                                }
+                        }
+
+                        &.attrs {
+                                border: 0;
+
+                                table {
+                                        width: 100%;
+                                        min-width: 50rem;
+
+                                        tr {
+                                                border-bottom: 1px solid $themeColorGray300;
+                                        }
+
+                                        th, td {
+                                                padding: 0.375em 0;
+                                        }
+
+                                        th,
+                                        td:nth-child(2),
+                                        td:nth-child(4),
+                                        td:nth-child(5) {
+                                                text-align: center;
+                                        }
+                                }
                         }
                 }
 
@@ -27,6 +64,31 @@
                         position: relative;
                         background-color: $themeColorGray200;
                 }
+
+                code.language-html {
+                        p {
+                                white-space:nowrap;
+                        }
+
+                        .nt {
+                                color: $themeColorBlue;
+                        }
+
+                        .na {
+                                color: $themeColorCyan;
+                                padding-left: 0.5em;
+                        }
+
+                        .s {
+                                color: $themeColorPink;
+                        }
+
+                        .i {
+                                color: $themeColorGray600;
+                        }
+                }
+
+                
         }
 }
 .vfluents-browser-theme-dark .#{$themePrefix}view-common {

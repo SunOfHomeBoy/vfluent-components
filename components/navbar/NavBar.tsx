@@ -5,9 +5,9 @@ import { Icon } from '../icon'
 
 @Component
 export class NavBar extends vfluents {
-        @Prop() size: string // 行高尺寸 可空 默認值：default 可選值：default | small | large | huge
+        @Prop() size: string // 行高尺寸 可空 默認值：Default 可選值：Default | Small | Large | Huge
         @Prop() dark: boolean // 深色背景 可空 默認值：FALSE
-        @Prop() fixed: string // 固定位置 可空 默認值：default 可選值：default | top | bottom | sticky
+        @Prop() fixed: string // 固定位置 可空 默認值：default 可選值：Default | Top | Bottom | Sticky
         @Prop() brandCls: string // 品牌樣式 可空 默認值：空字符串
         @Prop() brandLogo: string // 品牌LOGO 可空 默認值：空字符串
         @Prop() brandName: string // 品牌名稱 可空 默認值：空字符串
@@ -20,15 +20,15 @@ export class NavBar extends vfluents {
         public component(h: CreateElement) {
                 let clsFixed = ''
                 switch (this.fixed) {
-                        case 'top':
+                        case 'Top':
                                 clsFixed = 'fixed-top'
                                 break
 
-                        case 'bottom':
+                        case 'Bottom':
                                 clsFixed = 'fixed-bottom'
                                 break
 
-                        case 'sticky':
+                        case 'Sticky':
                                 clsFixed = 'sticky-top'
                                 break
                 }
@@ -43,8 +43,8 @@ export class NavBar extends vfluents {
                                         : 'navbar-light bg-light',
                                 clsFixed,
                                 `${vfluents.themePrefix}navbar`,
-                                ['small', 'large', 'huge'].indexOf(this.size) !== -1
-                                        ? `${vfluents.themePrefix}navbar-${this.size}`
+                                ['Small', 'Large', 'Huge'].indexOf(this.size) !== -1
+                                        ? `${vfluents.themePrefix}navbar-${this.size.toLowerCase()}`
                                         : '',
                                 this.className
                         ])}>

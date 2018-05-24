@@ -5,7 +5,7 @@ import { vfluents } from '../vfluents'
 @Component
 export class Icon extends vfluents {
         @Prop() name: string // 圖標名稱 可空 默認值：空字符串
-        @Prop() size: string // 圖標尺寸 可空 默認值：default 可選值：default | mini | small | large | huge
+        @Prop() size: string // 圖標尺寸 可空 默認值：Default 可選值：Default | Mini | Small | Large | Huge
         @Prop() eventClick: any // 單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {

@@ -7,6 +7,7 @@ export class TextBlock extends vfluents {
         @Prop() type: string // 文本類型 可空 默認值：default 可選值：default | Header | SubHeader | Title | SubTitle | Base | Caption | Footer
         @Prop() align: string // 文本對齊 可空 默認值：Left 可選值： Left | Middle | Right
         @Prop() indent: boolean // 文本縮進 可空 默認值：FALSE
+        @Prop() links: any[] // 底部鏈接 可空 默認值：空數組 注意：僅對type=Footer有效
 
         public component(h: CreateElement) {
                 let cls = vfluents.cls([
@@ -52,7 +53,10 @@ export class TextBlock extends vfluents {
 
                         case 'Footer':
                                 return (
-                                        <footer class={cls.replace('%TYPE%', 'footer')}>{this.innerHTML}</footer>
+                                        <footer class={cls.replace('%TYPE%', 'footer')}>
+                                                <span class={vfluents.themePrefix + 'textblock-footer-links'}>{this.links}</span>
+                                                <span class={vfluents.themePrefix + 'textblock-footer-text'}>{this.innerHTML}</span>
+                                        </footer>
                                 )
                 }
 

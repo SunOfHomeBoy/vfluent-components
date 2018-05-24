@@ -1,7 +1,7 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import initBrowsers from 'init-browsers'
-import { removeEmpty } from './utils'
+import { empty, removeEmpty } from './utils'
 
 @Component
 export class vfluents extends Vue {
@@ -25,6 +25,17 @@ export class vfluents extends Vue {
 
         public static cls(configures?: string[]): string {
                 return removeEmpty(configures).join(' ')
+        }
+
+        public static theme(name?: string) {
+                let reg = /theme-[A-Za-z0-9]{1,}/i
+                let cls = document.documentElement.getAttribute('class')
+
+                if (empty(name)) {
+                        return cls.match(reg).toString().replace('theme-', '')
+                }
+
+                return document.documentElement.setAttribute('class', cls.replace(reg, `theme-${name}`))
         }
 
         public static eventSafe(fn: any): Function {
