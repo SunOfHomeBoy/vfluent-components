@@ -18,7 +18,8 @@ export class TextBlock extends vfluents {
                         [1, 2, 3, 4, 5, 6, 7, 8].indexOf(this.indent) !== -1
                                 ? `${vfluents.themePrefix}textblock-indent${this.indent}`
                                 : '',
-                        vfluents.themePrefix + 'textblock-%TYPE%'
+                        vfluents.themePrefix + 'textblock-%TYPE%',
+                        this.className
                 ])
                 switch (this.type) {
                         case 'Header':

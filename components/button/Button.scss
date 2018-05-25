@@ -2,28 +2,55 @@
 @import '../../node_modules/bootstrap/scss/buttons';
 
 .#{$themePrefix}button {
-        border-radius: 0;
+        position: relative;
         height: 3rem;
-        line-height: 2.25rem;
         font-size: 1.125rem;
-        background-color: rgba(0, 0, 0, 0);
-        vertical-align: top !important;
+        line-height: 2.25rem;
         border: 0;
+        border-radius: 0;
 
-        span {
-                display: inline-block;
-                
-        }
         .#{$themePrefix}icon {
-                margin-top: 0.125rem;
+                position: absolute;
         }
 
-        &:focus {
-                box-shadow: none;
+        &.btn-primary {
+
         }
 
-        &.#{$themePrefix}button-icon {
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
+        &.btn-secondary {
+
+        }
+
+        &.btn-success {
+
+        }
+
+        &.btn-danger {
+
+        }
+
+        &.btn-warning {}
+
+        &.btn-info {}
+
+        &.btn-light {}
+
+        &.btn-dark {}
+
+        &.btn-link {}
+
+        &.#{$themePrefix}button-small {
+                height: 2rem;
+                line-height: 1.25rem;
+        }
+
+        &.#{$themePrefix}button-large {
+                height: 4rem;
+                line-height: 3.25rem;
+        }
+
+        &.#{$themePrefix}button-huge {
+                height: 5rem;
+                line-height: 4.25rem;
         }
 }

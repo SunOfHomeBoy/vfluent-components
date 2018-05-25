@@ -114,99 +114,99 @@ export default class ViewTextBlock extends ViewCommon {
                                 </section>
                                 <code class="language-html">
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">type=</span>
-                                                <span class="s">&quot;Header&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">type=</span>
+                                                <span class="v">&quot;Header&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">Header</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">type=</span>
-                                                <span class="s">&quot;SubHeader&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">type=</span>
+                                                <span class="v">&quot;SubHeader&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">SubHeader</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">type=</span>
-                                                <span class="s">&quot;Title&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">type=</span>
+                                                <span class="v">&quot;Title&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">Title</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">type=</span>
-                                                <span class="s">&quot;SubTitle&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">type=</span>
+                                                <span class="v">&quot;SubTitle&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">SubTitle</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">type=</span>
-                                                <span class="s">&quot;Base&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">type=</span>
+                                                <span class="v">&quot;Base&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">Base</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">type=</span>
-                                                <span class="s">&quot;Caption&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">type=</span>
+                                                <span class="v">&quot;Caption&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">Caption</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                                 <span class="i">Paragraph</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">indent=</span>
-                                                <span class="s">&#123;4&#125;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">indent=</span>
+                                                <span class="v">&#123;4&#125;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">TextIndent4</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">align=</span>
-                                                <span class="s">&quot;Left&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">align=</span>
+                                                <span class="v">&quot;Left&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">TextLeft</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">align=</span>
-                                                <span class="s">&quot;Middle&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">align=</span>
+                                                <span class="v">&quot;Middle&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">TextMiddle</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">align=</span>
-                                                <span class="s">&quot;Right&quot;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">align=</span>
+                                                <span class="v">&quot;Right&quot;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">TextRight</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
-                                                <span class="nt">&lt;TextBlock</span>
-                                                <span class="na">type=</span>
-                                                <span class="s">&quot;Footer&quot;</span>
-                                                <span class="na">links=</span>
-                                                <span class="s">&#123;eLinks&#125;</span>
-                                                <span class="nt">&gt;</span>
+                                                <span class="t">&lt;TextBlock</span>
+                                                <span class="a">type=</span>
+                                                <span class="v">&quot;Footer&quot;</span>
+                                                <span class="a">links=</span>
+                                                <span class="v">&#123;eLinks&#125;</span>
+                                                <span class="t">&gt;</span>
                                                 <span class="i">Copyright © 2018 hjboss.github.io</span>
-                                                <span class="nt">&lt;TextBlock&gt;</span>
+                                                <span class="t">&lt;TextBlock&gt;</span>
                                         </TextBlock>
                                 </code>
                                 <h4>組件參數</h4>

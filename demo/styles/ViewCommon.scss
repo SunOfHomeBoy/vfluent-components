@@ -23,6 +23,10 @@
                         padding: 1.5rem;
                         border: 0.125rem solid $themeColorGray200;
                         overflow: auto;
+
+                        p {
+                                white-space:nowrap;
+                        }
                 }
 
                 section {
@@ -54,10 +58,6 @@
                                         td {
                                                 color: $themeColorGray600;
                                         }
-
-                                        td:nth-child(3) {
-                                                text-align: left;
-                                        }
                                 }
                         }
                 }
@@ -67,23 +67,30 @@
                         position: relative;
                         margin-bottom: 1.5rem;
                         background-color: $themeColorGray200;
+
+                        &, p, span {
+                                font-family: $font-family-monospace !important;
+                        }
+
+                        em {
+                                padding-left: 0.75em;
+                                padding-bottom: 0.75em;
+                                font-weight: bold;
+                                font-style: normal;
+                        }
                 }
 
                 code.language-html {
-                        p {
-                                white-space:nowrap;
-                        }
-
-                        .nt {
+                        .t {
                                 color: $themeColorBlue;
                         }
 
-                        .na {
+                        .a {
                                 color: $themeColorCyan;
                                 padding-left: 0.5em;
                         }
 
-                        .s {
+                        .v {
                                 color: $themeColorPink;
                         }
 
@@ -92,12 +99,49 @@
                         }
                 }
 
-                
+                code.language-typescript {
+                        .c {
+                                color: $themeColorGray600;
+                        }
+
+                        .n {
+                                color: $themeColorBlue;
+                        }
+
+                        .s {
+                                color: $themeColorGray600;
+                        }
+
+                        .e {
+                                color: $themeColorOrange;
+                        }
+
+                        .w {
+                                color: $themeColorCyan;
+                        }
+
+                        .t {
+                                color: $themeColorBlue;
+                        }
+
+                        .a {
+                                color: $themeColorCyan;
+                                padding-left: 0.5em;
+                        }
+
+                        .v {
+                                color: $themeColorPink;
+                        }
+
+                        .i {
+                                color: $themeColorGray600;
+                        }
+                }
         }
 }
 .vfluents-browser-theme-dark .#{$themePrefix}view-common {
-        section, code {
-                border-color: $themeColorGray800;
+        section, code, tr {
+                border-color: $themeColorGray800 !important;
         }
 
         code {

@@ -9,8 +9,8 @@ export class Icon extends vfluents {
         @Prop() eventClick: any // 單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
-                let clsSize = ['mini', 'small', 'large', 'huge'].indexOf(this.size) !== -1
-                        ? `${vfluents.themePrefix}icon-${this.size}`
+                let clsSize = ['Mini', 'Small', 'Large', 'Huge'].indexOf(this.size) !== -1
+                        ? `${vfluents.themePrefix}icon-${this.size.toLowerCase()}`
                         : ''
 
                 if (!vfluents.useSVGElement) {
