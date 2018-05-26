@@ -10,6 +10,9 @@ export class Button extends vfluents {
         @Prop() icon: string // 按鈕圖標 可空 默認值：空字符串
         @Prop() type: string // 按鈕類型 可空 默認值：Default 可選值：Default | Primary | Secondary | Success | Danger | Warning | Info | Light | Dark |  Link
         @Prop() align: string // 對齊方向 可空 默認值：Default 可選值：Default | Top | Right | Bottom | Left
+        @Prop() round: boolean // 邊框圓角 可空 默認值：FALSE
+        @Prop() circle: boolean // 圓形按鈕 可空 默認值：FALSE
+        @Prop() outline: boolean // 邊框模式 可空 默認值：FALSE
         @Prop() active: boolean // 激活狀態 可空 默認值：FALSE
         @Prop() disabled: boolean // 禁用狀態 可空 默認值：FALSE
         @Prop() eventClick: any // 單擊事件 可空 默認值：空值
@@ -18,19 +21,32 @@ export class Button extends vfluents {
                 let cls = [
                         'btn',
                         'btn-%TYPE%',
-                        `${vfluents.themePrefix}button`
+                        `${vfluents.themePrefix}btn`
                 ]
 
                 if (['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Light', 'Dark', 'Link'].indexOf(this.type) !== -1) {
-                        cls[1] = cls[1].replace('%TYPE%', this.type.toLowerCase())
+                        cls[1] = cls[1].replace('%TYPE%', this.outline ? `outline-${this.type.toLowerCase()}` : this.type.toLowerCase())
+                } else {
+                        cls[1] = cls[1].replace('%TYPE%', this.outline ? 'outline-default' : 'default')
                 }
 
                 if (['Small', 'Large', 'Huge'].indexOf(this.size) !== -1) {
-                        cls.push(`${vfluents.themePrefix}button-${this.size.toLowerCase()}`)
+                        cls.push(`${vfluents.themePrefix}btn-${this.size.toLowerCase()}`)
+                }
+
+                if (this.circle) {
+                        cls.push(vfluents.themePrefix + 'btn-circle')
+                } else if (this.round) {
+                        cls.push(vfluents.themePrefix + 'btn-round')
                 }
 
                 this.innerHTML = this.componentText(h)
                 if (this.icon) {
+                        cls.push(vfluents.themePrefix + 'btn-icon')
+                        if (!this.text) {
+                                cls.push(vfluents.themePrefix + 'btn-icon-only')
+                        }
+
                         this.innerHTML = this.align === 'Top' || this.align === 'Right'
                                 ? [this.componentText(h), this.componentIcon(h)]
                                 : [this.componentIcon(h), this.componentText(h)]
@@ -53,7 +69,7 @@ export class Button extends vfluents {
         private componentText(h: CreateElement) {
                 return (
                         <span class={vfluents.cls([
-                                vfluents.themePrefix + 'button-text'
+                                vfluents.themePrefix + 'btn-text'
                         ])}>{this.text}</span>
                 )
         }

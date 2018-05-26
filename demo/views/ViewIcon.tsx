@@ -59,7 +59,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="v">&quot;Summary&quot;</span>
                                                 <span class="a">size=</span>
                                                 <span class="v">&quot;Mini&quot;</span>
-                                                <span class="t">&#47;&gt;</span>
+                                                <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
                                                 <span class="t">&lt;Icon</span>
@@ -67,7 +67,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="v">&quot;Summary&quot;</span>
                                                 <span class="a">size=</span>
                                                 <span class="v">&quot;Small&quot;</span>
-                                                <span class="t">&#47;&gt;</span>
+                                                <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
                                                 <span class="t">&lt;Icon</span>
@@ -75,7 +75,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="v">&quot;Summary&quot;</span>
                                                 <span class="a">size=</span>
                                                 <span class="v">&quot;Default&quot;</span>
-                                                <span class="t">&#47;&gt;</span>
+                                                <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
                                                 <span class="t">&lt;Icon</span>
@@ -83,7 +83,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="v">&quot;Summary&quot;</span>
                                                 <span class="a">size=</span>
                                                 <span class="v">&quot;Large&quot;</span>
-                                                <span class="t">&#47;&gt;</span>
+                                                <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
                                                 <span class="t">&lt;Icon</span>
@@ -91,7 +91,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="v">&quot;Summary&quot;</span>
                                                 <span class="a">size=</span>
                                                 <span class="v">&quot;Huge&quot;</span>
-                                                <span class="t">&#47;&gt;</span>
+                                                <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
                                                 <span class="t">&lt;Icon</span>
@@ -101,7 +101,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="v">&quot;Huge&quot;</span>
                                                 <span class="a">style=</span>
                                                 <span class="v">&#123;&#123;&nbsp;fill: '#0078d7', color: '#0078d7'&nbsp;&#125;&#125;</span>
-                                                <span class="t">&#47;&gt;</span>
+                                                <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                         <TextBlock>
                                                 <span class="t">&lt;Icon</span>
@@ -111,7 +111,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="v">&quot;Huge&quot;</span>
                                                 <span class="a">eventClick=</span>
                                                 <span class="v">&#123;&nbsp;() => alert('IconClick')&nbsp;&#125;</span>
-                                                <span class="t">&#47;&gt;</span>
+                                                <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                 </code>
                                 <h4>組件參數</h4>
@@ -156,7 +156,7 @@ export default class ViewIcon extends ViewCommon {
                                         <TextBlock className="c">&#47;&#47; Icon組件支持SVGSprite和IconFont兩種模式，且默認啓用SVGSprite模式</TextBlock>
                                         <TextBlock className="c">&#47;&#47; 若啓用IconFont模式則必須設置<em><span class="n">vfluents</span><span class="s">.</span><span class="n">useSVGElement</span><span class="e"> = </span><span class="w">false</span></em></TextBlock>
                                         <TextBlock className="c">&#47;&#47; Icon組件的IconFont模式則要求圖標CSS類命名需要符合Bootstrap規範即</TextBlock>
-                                        <TextBlock className="c">&#47;&#47; <span class="t">&lt;span</span><span class="a">class=</span><span class="v">&quot;glyphicon glyphicon-name ...&quot;</span><span class="a">aria-hidden=</span><span class="v">&quot;true&quot;</span><span class="t">&#47;&gt;</span></TextBlock>
+                                        <TextBlock className="c">&#47;&#47; <span class="t">&lt;span</span><span class="a">class=</span><span class="v">&quot;glyphicon glyphicon-name ...&quot;</span><span class="a">aria-hidden=</span><span class="v">&quot;true&quot;</span><span class="t">&nbsp;&#47;&gt;</span></TextBlock>
                                         <TextBlock className="c">&#47;&#47; Icon組件的SVGSprite模式則要求將相關SVG圖標進行按需預加載，如下：</TextBlock>
                                         <TextBlock><span class="e">import&nbsp;</span><span class="s">&#123;</span><span class="n">&nbsp;iconAside,&nbsp;iconBook,&nbsp;iconChat&nbsp;</span><span class="s">&#125;</span><span class="e">&nbsp;from&nbsp;</span><span class="s">&#39;</span><span class="n"></span>vfluent-components/icons<span class="s">&#39;</span><span class="c">&nbsp;&#47;&#47; 允許自定義SVGSprite替換內置圖標&nbsp;</span></TextBlock>
                                         <TextBlock><span class="e">import&nbsp;</span><span class="s">&#123;</span><span class="n">&nbsp;vfluents&nbsp;</span><span class="s">&#125;</span><span class="e">&nbsp;from&nbsp;</span><span class="s">&#39;</span><span class="n"></span>vfluent-components<span class="s">&#39;</span></TextBlock>
