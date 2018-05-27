@@ -11,7 +11,7 @@ export default class ViewIcon extends ViewCommon {
 
         public componentView(h: CreateElement) {
                 let elementIcons = []
-                for (let name in theme.icons) {
+                for (let name of Object.keys(theme.icons).sort()) {
                         elementIcons.push(
                                 <div class={`col-4 col-md-1 ${theme.themePrefix}unit`}>
                                         <Icon name={name} size="Huge" />
@@ -19,6 +19,7 @@ export default class ViewIcon extends ViewCommon {
                                 </div>
                         )
                 }
+
                 return (
                         <article>
                                 <h4>基本用法</h4>
@@ -48,7 +49,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <h5>80px</h5>
                                         </span>
                                         <span class="d-inline-block text-center">
-                                                <Icon name="Summary" size="Huge" eventClick={() => alert('IconClick')} />
+                                                <Icon name="Summary" size="Huge" eventClick={() => alert('ClickEvent')} />
                                                 <h5>80px</h5>
                                         </span>
                                 </section>
@@ -110,7 +111,7 @@ export default class ViewIcon extends ViewCommon {
                                                 <span class="a">size=</span>
                                                 <span class="v">&quot;Huge&quot;</span>
                                                 <span class="a">eventClick=</span>
-                                                <span class="v">&#123;&nbsp;() => alert('IconClick')&nbsp;&#125;</span>
+                                                <span class="v">&#123;&nbsp;() => alert('ClickEvent')&nbsp;&#125;</span>
                                                 <span class="t">&nbsp;&#47;&gt;</span>
                                         </TextBlock>
                                 </code>

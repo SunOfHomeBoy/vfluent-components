@@ -3,7 +3,9 @@ import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import { Button } from '../button'
 import { NavBar } from '../navbar'
-import { empty } from '../utils'
+import * as utils from '../utils'
+import { iconCog, iconHierarchy } from '../icons'
+vfluents.useIcons({ iconCog, iconHierarchy })
 
 @Component
 export class Dashboard extends vfluents {
@@ -21,7 +23,7 @@ export class Dashboard extends vfluents {
                                 'container-fluid',
                                 vfluents.themePrefix + 'dashboard',
                                 ['Small', 'Large', 'Huge'].indexOf(this.size) !== -1
-                                        ? `${vfluents.themePrefix}dashboard-${this.size.toLowerCase()}`
+                                        ? vfluents.themePrefix + 'dashboard-' + this.size.toLowerCase()
                                         : '',
                                 this.collapsed
                                         ? vfluents.themePrefix + 'dashboard-collapsed'
@@ -29,88 +31,60 @@ export class Dashboard extends vfluents {
                                 this.className
                         ])}>
                                 <div class={`row ${vfluents.themePrefix}row`}>
-                                        {this.componentSide(h)}
-                                        {this.componentMain(h)}
+                                        <aside class={vfluents.cls([
+                                                'col-10',
+                                                'col-md-4',
+                                                'col-lg-3',
+                                                'col-xl-2',
+                                                vfluents.themePrefix + 'dashboard-side'
+                                        ])}>
+                                        </aside>
+                                        <main class={vfluents.cls([
+                                                'col-12',
+                                                'col-md-8',
+                                                'col-lg-9',
+                                                'col-xl-10',
+                                                vfluents.themePrefix + 'dashboard-main',
+                                                utils.empty(this.tbarItems)
+                                                        ? vfluents.themePrefix + 'dashboard-bottom'
+                                                        : ''
+                                        ])}>
+                                                <NavBar
+                                                        size={this.size || 'Default'}
+                                                        fixed="Top"
+                                                        brandCls="col-10 col-md-4 col-lg-3 col-xl-2"
+                                                        brandLogo={this.brandLogo}
+                                                        brandName={this.brandName}
+                                                        brandHref={this.brandHref}
+                                                        eventBrand={vfluents.eventSafe(this.eventCollapsed)}
+                                                        itemsLeft={[
+                                                                /*(
+                                                                        <Button
+                                                                                type="Primary"
+                                                                                icon={this.menuIcon || 'Hierarchy'}
+                                                                                eventClick={() => alert('ok')}
+                                                                                className={vfluents.themePrefix + 'dashboard-startmenu'}
+                                                                        />
+                                                                ),*/
+                                                                (
+                                                                        <span onClick={() => alert('ok')}>TEST</span>
+                                                                )
+                                                        ]}
+
+                                                />
+                                                <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}></div>
+                                                <div class={vfluents.themePrefix + 'dashboard-main-inner'}>
+                                                        <router-view></router-view>
+                                                </div>
+                                        </main>
                                 </div>
                         </div>
                 )
         }
 
-        private componentSide(h: CreateElement) {
-                return (
-                        <aside class={vfluents.cls([
-                                'col-10',
-                                'col-md-4',
-                                'col-lg-3',
-                                'col-xl-2',
-                                vfluents.themePrefix + 'dashboard-side'
-                        ])}>
-                        </aside>
-                )
-        }
-
-        private componentMain(h: CreateElement) {
-                if (!this.innerHTML) {
-                        this.innerHTML = (
-                                <router-view></router-view>
-                        )
-                }
-                return (
-                        <main class={vfluents.cls([
-                                'col-12',
-                                'col-md-8',
-                                'col-lg-9',
-                                'col-xl-10',
-                                vfluents.themePrefix + 'dashboard-main',
-                                empty(this.tbarItems)
-                                        ? `${vfluents.themePrefix}dashboard-bottom`
-                                        : ''
-                        ])}>
-                                {this.componentMainNavbar(h)}
-                                {this.componentMainTarbar(h)}
-                                <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}></div>
-                                <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{this.innerHTML}</div>
-                        </main>
-                )
-        }
-
-        private componentMainNavbar(h: CreateElement) {
-                return (
-                        <NavBar
-                                size={this.size || 'Default'}
-                                fixed="Top"
-                                brandCls="col-10 col-md-4 col-lg-3 col-xl-2"
-                                brandLogo={this.brandLogo}
-                                brandName={this.brandName}
-                                brandHref={this.brandHref}
-                                eventBrand={vfluents.eventSafe(this.eventCollapsed)}
-                                itemsLeft={[
-                                        (<Button icon={this.menuIcon || 'Hierarchy'} text="THEME" eventClick={this.changeTheme} />)
-                                ]}
-                        />
-                )
-        }
-
-        private componentMainTarbar(h: CreateElement) {
-                return (
-                        <div></div>
-                )
-        }
-
         public eventCollapsed() {
-                this.collapsed = !this.collapsed
-        }
-
-        public changeTheme() {
-                switch (vfluents.theme()) {
-                        case 'default':
-                                return vfluents.theme('light')
-
-                        case 'light':
-                                return vfluents.theme('dark')
-
-                        case 'dark':
-                                return vfluents.theme('default')
-                }
+                //alert('ok')
+                console.log('ok')
+                //this.collapsed = !this.collapsed
         }
 }

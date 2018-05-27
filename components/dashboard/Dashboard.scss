@@ -40,6 +40,18 @@
                                         color: $themeColorGray50;
                                 }
                         }
+
+                        .#{$themePrefix}btn {
+                                //vertical-align: top;
+                                //background-color: rgba(0, 0, 0, 0);
+                                //border-color: rgba(0, 0, 0, 0);
+                                //box-shadow: none !important;
+                                //z-index: 100000 !important;
+                        }
+
+                        .#{$themePrefix}dashboard-startmenu {
+                                //position: absolute;
+                        }
                 }
 
                 .#{$themePrefix}dashboard-main-mask {
@@ -136,6 +148,14 @@
 
                         .#{$themePrefix}dashboard-main-inner {
                                 padding: 1.25rem 1.875rem;
+                        }
+
+                        .#{$themePrefix}navbar-startmenu {
+                                //display: none;
+                        }
+
+                        .#{$themePrefix}navbar-brand {
+                                display: none;
                         }
                 }
 

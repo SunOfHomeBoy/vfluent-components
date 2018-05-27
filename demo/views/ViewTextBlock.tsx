@@ -225,28 +225,28 @@ export default class ViewTextBlock extends ViewCommon {
                                                         <tr>
                                                                 <td>type</td>
                                                                 <td>String</td>
-                                                                <td>文本組件類型</td>
+                                                                <td>文本類型</td>
                                                                 <td>Default | Header | SubHeader | Title | SubTitle | Base | Caption | Footer</td>
                                                                 <td>Default</td>
                                                         </tr>
                                                         <tr>
                                                                 <td>align</td>
                                                                 <td>String</td>
-                                                                <td>文本對齊方向</td>
+                                                                <td>對齊方向</td>
                                                                 <td>Left | Middle | Right</td>
                                                                 <td>Left</td>
                                                         </tr>
                                                         <tr>
                                                                 <td>indent</td>
-                                                                <td>Boolean</td>
-                                                                <td>啟用文首縮進 即默認兩個字符縮進</td>
-                                                                <td>-</td>
-                                                                <td>false</td>
+                                                                <td>Number</td>
+                                                                <td>文首縮進</td>
+                                                                <td>0 | 1 | 2 | 3 | 4 | 5 | 7 | 8</td>
+                                                                <td>0</td>
                                                         </tr>
                                                         <tr>
                                                                 <td>links</td>
                                                                 <td>Array</td>
-                                                                <td>底部鏈接元素數組 注意：僅隊type=Footer有效</td>
+                                                                <td>底部鏈接 注意：僅隊type=Footer有效</td>
                                                                 <td>-</td>
                                                                 <td>[]</td>
                                                         </tr>

@@ -1,12 +1,13 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import initBrowsers from 'init-browsers'
-import { empty, removeEmpty } from './utils'
+import * as utils from './utils'
 
 @Component
 export class vfluents extends Vue {
         public static themePrefix: string = 'vfluents-'
         public static useSVGElement: boolean = true
+        public static iconElements: any = {}
 
         @Prop() className: string
         protected innerHTML: any
@@ -18,20 +19,22 @@ export class vfluents extends Vue {
         }
 
         public static init(configures?: any) {
+                configures.icons = configures.icons || {}
+                configures.icons = Object.assign(vfluents.iconElements, configures.icons)
                 initBrowsers(Object.assign(Object.assign({}, configures), {
                         themePrefix: vfluents.themePrefix
                 }))
         }
 
         public static cls(configures?: string[]): string {
-                return removeEmpty(configures).join(' ')
+                return utils.removeEmpty(configures).join(' ')
         }
 
         public static theme(name?: string) {
                 let reg = /theme-[A-Za-z0-9]{1,}/i
                 let cls = document.documentElement.getAttribute('class')
 
-                if (empty(name)) {
+                if (utils.empty(name)) {
                         return cls.match(reg).toString().replace('theme-', '')
                 }
 
@@ -44,5 +47,9 @@ export class vfluents extends Vue {
                                 fn(e)
                         }
                 }
+        }
+
+        public static useIcons(icons: any) {
+                vfluents.iconElements = Object.assign(vfluents.iconElements, icons || {})
         }
 }

@@ -7,5 +7,5 @@ export default class ViewVfluents extends Dashboard {
         @Provide() size: string = 'Default'
         @Provide() collapsed: boolean = false
         @Provide() brandLogo: string = 'Hierarchy'
-        @Provide() brandName: string = 'Vfluents Component'
+        @Provide() brandName: string = 'vFluents Component'
 }

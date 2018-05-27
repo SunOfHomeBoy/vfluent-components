@@ -9,7 +9,8 @@ export class Button extends vfluents {
         @Prop() text: string // 按鈕文本 可空 默認值：空字符串
         @Prop() icon: string // 按鈕圖標 可空 默認值：空字符串
         @Prop() type: string // 按鈕類型 可空 默認值：Default 可選值：Default | Primary | Secondary | Success | Danger | Warning | Info | Light | Dark |  Link
-        @Prop() align: string // 對齊方向 可空 默認值：Default 可選值：Default | Top | Right | Bottom | Left
+        @Prop() align: string // 圖標對齊 可空 默認值：Default 可選值：Default | Top | Right | Bottom | Left
+        @Prop() block: boolean // 水平擴展 可空 默認值：FALSE
         @Prop() round: boolean // 邊框圓角 可空 默認值：FALSE
         @Prop() circle: boolean // 圓形按鈕 可空 默認值：FALSE
         @Prop() outline: boolean // 邊框模式 可空 默認值：FALSE
@@ -18,73 +19,16 @@ export class Button extends vfluents {
         @Prop() eventClick: any // 單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
-                let cls = [
-                        'btn',
-                        'btn-%TYPE%',
-                        `${vfluents.themePrefix}btn`
-                ]
+                console.log('eventClick', this.eventClick)
+                let innerElement: any = (<span class={vfluents.themePrefix + 'btn-text'}>{this.text}</span>)
 
-                if (['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Light', 'Dark', 'Link'].indexOf(this.type) !== -1) {
-                        cls[1] = cls[1].replace('%TYPE%', this.outline ? `outline-${this.type.toLowerCase()}` : this.type.toLowerCase())
-                } else {
-                        cls[1] = cls[1].replace('%TYPE%', this.outline ? 'outline-default' : 'default')
-                }
-
-                if (['Small', 'Large', 'Huge'].indexOf(this.size) !== -1) {
-                        cls.push(`${vfluents.themePrefix}btn-${this.size.toLowerCase()}`)
-                }
-
-                if (this.circle) {
-                        cls.push(vfluents.themePrefix + 'btn-circle')
-                } else if (this.round) {
-                        cls.push(vfluents.themePrefix + 'btn-round')
-                }
-
-                this.innerHTML = this.componentText(h)
                 if (this.icon) {
-                        cls.push(vfluents.themePrefix + 'btn-icon')
-                        if (!this.text) {
-                                cls.push(vfluents.themePrefix + 'btn-icon-only')
-                        }
+                        let iconElement = (<Icon name={this.icon} size={this.size === 'Small' ? 'Mini' : 'Small'} />)
+                        let textElement = (<span class={vfluents.themePrefix + 'btn-text'}>{this.text}</span>)
 
-                        this.innerHTML = this.align === 'Top' || this.align === 'Right'
-                                ? [this.componentText(h), this.componentIcon(h)]
-                                : [this.componentIcon(h), this.componentText(h)]
-                }
-
-                return (
-                        <button
-                                type="button"
-                                class={vfluents.cls(cls)}
-                        >{this.innerHTML}</button>
-                )
-        }
-
-        private componentIcon(h: CreateElement) {
-                return (
-                        <Icon name={this.icon} size={this.size === 'Small' ? 'Mini' : 'Small'} />
-                )
-        }
-
-        private componentText(h: CreateElement) {
-                return (
-                        <span class={vfluents.cls([
-                                vfluents.themePrefix + 'btn-text'
-                        ])}>{this.text}</span>
-                )
-        }
-
-        public component0(h: CreateElement) {
-                let elementIcon: any
-                if (this.icon) {
-                        elementIcon = (
-                                <Icon name={this.icon} />
-                        )
-                }
-
-                let clsSize = ''
-                switch (this.size) {
-
+                        innerElement = this.align === 'Bottom' || this.align === 'Right'
+                                ? [textElement, iconElement]
+                                : [iconElement, textElement]
                 }
 
                 return (
@@ -92,14 +36,39 @@ export class Button extends vfluents {
                                 type="button"
                                 class={vfluents.cls([
                                         'btn',
-                                        vfluents.themePrefix + 'button',
+                                        ['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Light', 'Dark', 'Link'].indexOf(this.type) !== -1
+                                                ? `btn-${this.outline ? 'outline-' : ''}${this.type.toLowerCase()}`
+                                                : `btn-${this.outline ? 'outline-' : ''}default`,
+                                        this.block
+                                                ? 'btn-block'
+                                                : '',
+                                        this.active && !this.disabled
+                                                ? 'active'
+                                                : '',
+                                        vfluents.themePrefix + 'btn',
+                                        ['Small', 'Large', 'Huge'].indexOf(this.size) !== -1
+                                                ? vfluents.themePrefix + 'btn-' + this.size.toLowerCase()
+                                                : '',
+                                        this.text && ['Top', 'Right', 'Bottom', 'Left'].indexOf(this.align) !== -1
+                                                ? vfluents.themePrefix + 'btn-' + this.align.toLowerCase()
+                                                : '',
+                                        this.circle && !this.round
+                                                ? vfluents.themePrefix + 'btn-circle'
+                                                : '',
+                                        this.round && !this.circle
+                                                ? vfluents.themePrefix + 'btn-round'
+                                                : '',
+                                        this.icon
+                                                ? vfluents.themePrefix + 'btn-icon'
+                                                : '',
                                         this.icon && !this.text
-                                                ? `${vfluents.themePrefix}button-icon`
+                                                ? vfluents.themePrefix + 'btn-icon-only'
                                                 : '',
                                         this.className
                                 ])}
-                                onClick={vfluents.eventSafe(this.eventClick)}
-                        >{elementIcon}<span>{this.text}</span></button>
+                                disabled={this.disabled && !this.active}
+                                onClick={vfluents.eventSafe(() => { console.log(this.eventClick); this.eventClick() })}
+                        >{innerElement}</button>
                 )
         }
 }

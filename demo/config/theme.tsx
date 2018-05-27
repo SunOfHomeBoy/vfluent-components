@@ -4,5 +4,5 @@ export const theme: any = {
         themePrefix: 'vfluentsDemo-',
         themeName: 'default',
         stylesheets: '',
-        icons
+        icons: icons
 }
