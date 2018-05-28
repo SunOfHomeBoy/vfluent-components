@@ -19,11 +19,12 @@
         }
 
         &:after {
-                content: 'Copyright © 2018 hjboss.github.io All rights reserved';
+                content: 'Copyright © 2018 hjboss.github.io';
                 position: fixed;
-                bottom: 2rem;
+                bottom: 1rem;
                 width: 100vw;
                 color: $themeColorWhite;
+                font-family: $font-family-monospace;
                 font-size: 0.8125rem;
                 text-align: center;
         }

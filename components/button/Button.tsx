@@ -19,7 +19,6 @@ export class Button extends vfluents {
         @Prop() eventClick: any // 單擊事件 可空 默認值：空值
 
         public component(h: CreateElement) {
-                console.log('eventClick', this.eventClick)
                 let innerElement: any = (<span class={vfluents.themePrefix + 'btn-text'}>{this.text}</span>)
 
                 if (this.icon) {

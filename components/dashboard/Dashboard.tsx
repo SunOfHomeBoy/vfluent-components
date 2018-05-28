@@ -22,10 +22,20 @@ export class Dashboard extends vfluents {
         @Provide() tbarSystem: boolean // 啓用頂部導航系統項 可空 默認值：TRUE
         @Provide() tbarTitle: string // 主標題 可空 默認值：空字符串 註釋：僅限移動端可見
         @Provide() bbarItems: any[] // 底部導航項 可空 默認值：空數組 註釋：僅限移動端可見
+        @Provide() clsMounted: string // 加載成功時BODY元素樣式名稱 可空 默認值：空字符串
 
-        public eventCollapsed() { }
+        private touchPosition: { x: number, y: number } = { x: 0, y: 0 }
+        private countCollapsed: number = -1
+        private readonly touchTarget: string = vfluents.themePrefix + 'aside-touch'
+
+        public eventCollapsed() {
+                this.countCollapsed = this.countCollapsed + 1
+                this.collapsed = !this.collapsed
+        }
 
         public eventUserInfo() { }
+
+        public eventSetting() { }
 
         public eventSignout() { }
 
@@ -45,17 +55,22 @@ export class Dashboard extends vfluents {
                                         : '',
                                 this.collapsed
                                         ? vfluents.themePrefix + 'dashboard-collapsed'
-                                        : '',
+                                        : vfluents.themePrefix + 'dashboard-uncollapsed' + (this.countCollapsed === -1 ? '-first' : ''),
+
                                 this.className
                         ])}>
                                 <div class={`row ${vfluents.themePrefix}row`}>
-                                        <aside class={vfluents.cls([
-                                                'col-10',
-                                                'col-md-4',
-                                                'col-lg-3',
-                                                'col-xl-2',
-                                                vfluents.themePrefix + 'dashboard-side'
-                                        ])}>
+                                        <aside
+                                                id={this.touchTarget}
+                                                class={vfluents.cls([
+                                                        'col-10',
+                                                        'col-md-4',
+                                                        'col-lg-3',
+                                                        'col-xl-2',
+                                                        vfluents.themePrefix + 'dashboard-side'
+                                                ])}
+                                        >
+                                                <Button text="Click" eventClick={() => { alert('ok'); this.eventCollapsed() }} type="Primary" size="Huge" block={true} />
                                         </aside>
                                         <main id="main" class={vfluents.cls([
                                                 'col-12',
@@ -105,8 +120,8 @@ export class Dashboard extends vfluents {
                                                                                 type="Primary"
                                                                                 icon="Cog"
                                                                                 size={this.size}
-                                                                                eventClick={vfluents.eventSafe(this.eventCollapsed)}
-                                                                                className={vfluents.themePrefix + 'dashboard-settings'}
+                                                                                eventClick={vfluents.eventSafe(this.eventSetting)}
+                                                                                className={vfluents.themePrefix + 'dashboard-setting'}
                                                                         />
                                                                 ),
                                                                 (this.tbarSystem === false || !this.headerImg) ? null : (
@@ -145,5 +160,28 @@ export class Dashboard extends vfluents {
                                 </div>
                         </div>
                 )
+        }
+
+        public mounted() {
+                document.addEventListener('touchstart', (e: any) => {
+                        this.touchPosition.x = e.touches[0].clientX || 0
+                        this.touchPosition.y = e.touches[0].clientY || 0
+                }, false)
+                document.addEventListener('touchmove', (e: any) => {
+                        e.preventDefault()
+                        let x = e.touches[0].clientX - this.touchPosition.x
+                        let y = e.touches[0].clientY - this.touchPosition.y
+
+                        if ((Math.abs(x) > Math.abs(y)) && x < 0) {
+                                if (this.collapsed) {
+                                        this.collapsed = false
+                                }
+                        } else if ((Math.abs(x) > Math.abs(y)) && x > 0) {
+                                if (!this.collapsed) {
+                                        this.collapsed = true
+                                }
+                        }
+                }, false)
+                document.body.setAttribute('class', this.clsMounted || (vfluents.themePrefix + 'mounted-success'))
         }
 }
