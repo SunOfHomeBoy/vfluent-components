@@ -1,9 +1,10 @@
 $themePrefix: 'vfluents-';
 $themeAnimation: 0.625s !default;
 $themeColorWeight: 6.25%;
-$themeFontFamily: 'Segoe UI', SegoeUI, 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+//$themeFontFamily: 'Segoe UI', SegoeUI, 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$themeFontFamily: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 
-$themeColorAccentLight: #55acee !default;
+$themeColorAccentLight: #2a579a !default;
 $themeColorAccentDark: darken($themeColorAccentLight, $themeColorWeight) !default;
 $themeColorBlue:    #0078d7 !default;
 $themeColorIndigo:  #0063b1 !default;

@@ -14,7 +14,7 @@
         .#{$themePrefix}dashboard-side {
                 display: none;
                 padding: 0;
-                background-color: $themeColorGray100;
+                background-color: rgba($themeColorGray100, 0.8);
                 @include fadeinL($themeAnimation);
         }
 
@@ -28,6 +28,7 @@
 
                 .#{$themePrefix}navbar {
                         background-color: $themeColorAccentLight !important;
+                        flex-wrap: nowrap;
 
                         .navbar-brand {
                                 display: none;
@@ -42,15 +43,30 @@
                         }
 
                         .#{$themePrefix}btn {
-                                //vertical-align: top;
-                                //background-color: rgba(0, 0, 0, 0);
-                                //border-color: rgba(0, 0, 0, 0);
-                                //box-shadow: none !important;
-                                //z-index: 100000 !important;
+                                vertical-align: top;
+                                background-color: rgba(0, 0, 0, 0);
+                                border-color: rgba(0, 0, 0, 0);
+                                box-shadow: none !important;
+
+                                &.btn-primary {
+                                        &:hover, &:focus, &:active {
+                                                background-color: darken($themeColorAccentLight, $themeColorWeight);
+                                        }
+                                }
                         }
 
-                        .#{$themePrefix}dashboard-startmenu {
-                                //position: absolute;
+                        .#{$themePrefix}dashboard-headerimg,
+                        .#{$themePrefix}dashboard-userinfo,
+                        .#{$themePrefix}dashboard-quit {
+                                display: none;
+                        }
+
+                        .#{$themePrefix}dashboard-headerimg {
+                                background-size: 100% 100%;
+                        }
+
+                        .#{$themePrefix}dashboard-brand {
+                                font-size: 1.125rem;
                         }
                 }
 
@@ -150,12 +166,15 @@
                                 padding: 1.25rem 1.875rem;
                         }
 
-                        .#{$themePrefix}navbar-startmenu {
-                                //display: none;
+                        .#{$themePrefix}dashboard-startmenu,
+                        .#{$themePrefix}dashboard-brand {
+                                display: none;
                         }
 
-                        .#{$themePrefix}navbar-brand {
-                                display: none;
+                        .#{$themePrefix}dashboard-headerimg,
+                        .#{$themePrefix}dashboard-userinfo,
+                        .#{$themePrefix}dashboard-quit {
+                                display: inline-block !important;
                         }
                 }
 

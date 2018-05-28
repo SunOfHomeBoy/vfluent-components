@@ -67,7 +67,7 @@ export class Button extends vfluents {
                                         this.className
                                 ])}
                                 disabled={this.disabled && !this.active}
-                                onClick={vfluents.eventSafe(() => { console.log(this.eventClick); this.eventClick() })}
+                                onClick={vfluents.eventSafe(this.eventClick)}
                         >{innerElement}</button>
                 )
         }

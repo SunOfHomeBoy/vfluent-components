@@ -1,10 +1,3 @@
-// Copyright 2017 The HongJiang Library Authors. All right reserved.
-// Use of this source that is governed by a Apache-style
-// license that can be found in the LICENSE file.
-//
-// 定義vfluents組件默認圖標 詳見: http://genericons.com/
-//
-// @authors hjboss <hongjiangproject@gmail.com> 2018-04 $$
 export { iconActivity } from './Activity'
 export { iconAnchor } from './Anchor'
 export { iconAside } from './Aside'
@@ -39,6 +32,7 @@ export { iconFeed } from './Feed'
 export { iconFlag } from './Flag'
 export { iconFullscreen } from './Fullscreen'
 export { iconGallery } from './Gallery'
+export { iconGithub } from './Github'
 export { iconHeart } from './Heart'
 export { iconHelp } from './Help'
 export { iconHide } from './Hide'
@@ -69,6 +63,7 @@ export { iconPlugin } from './Plugin'
 export { iconPlus } from './Plus'
 export { iconPrevious } from './Previous'
 export { iconPrint } from './Print'
+export { iconQuit } from './Quit'
 export { iconQuote } from './Quote'
 export { iconRefresh } from './Refresh'
 export { iconReply } from './Reply'

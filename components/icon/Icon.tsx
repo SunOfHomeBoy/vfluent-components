@@ -28,7 +28,7 @@ export class Icon extends vfluents {
                 return (
                         <svg class={vfluents.cls([
                                 vfluents.themePrefix + 'icon',
-                                vfluents.themePrefix + 'icon-' + this.name,
+                                vfluents.themePrefix + 'icon-' + this.name.replace(/^icon/i, ''),
                                 clsSize,
                                 this.className
                         ])} onClick={vfluents.eventSafe(this.eventClick)}>

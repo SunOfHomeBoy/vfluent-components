@@ -18,5 +18,5 @@ export default function vfluentsMain() {
 }
 
 if (typeof (process.env.production) !== 'undefined') {
-        vfluentsMain()
+        window.setTimeout(vfluentsMain, 1000000)
 }
