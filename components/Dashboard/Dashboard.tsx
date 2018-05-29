@@ -1,8 +1,8 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
-import { Button } from '../button'
-import { NavBar } from '../navbar'
+import { Button } from '../Button'
+import { NavBar } from '../NavBar'
 import * as utils from '../utils'
 import { iconCog, iconHierarchy, iconQuit, iconUser } from '../icons'
 vfluents.useIcons({ iconCog, iconHierarchy, iconQuit, iconUser })
@@ -17,6 +17,7 @@ export class Dashboard extends vfluents {
         @Provide() menuIcon: string // 菜單圖標 可空 默認值：空字符串
         @Provide() account: string // 用戶賬號 可空 默認值：空字符串
         @Provide() headerImg: string // 用戶頭銜 可空 默認值：空字符串
+        @Provide() sideItems: any[] // 左側導航項 可空 默認值：空數組
         @Provide() tbarLeft: any[] // 頂部導航左側項 可空 默認值：空數組
         @Provide() tbarRight: any[] // 頂部導航右側項 可空 默認值：空數組
         @Provide() tbarSystem: boolean // 啓用頂部導航系統項 可空 默認值：TRUE
@@ -55,7 +56,7 @@ export class Dashboard extends vfluents {
                                         : '',
                                 this.collapsed
                                         ? vfluents.themePrefix + 'dashboard-collapsed'
-                                        : vfluents.themePrefix + 'dashboard-uncollapsed' + (this.countCollapsed === -1 ? '-first' : ''),
+                                        : vfluents.themePrefix + 'dashboard-uncollapsed' + (this.countCollapsed === -1 ? '-init' : ''),
 
                                 this.className
                         ])}>
@@ -63,14 +64,14 @@ export class Dashboard extends vfluents {
                                         <aside
                                                 id={this.touchTarget}
                                                 class={vfluents.cls([
-                                                        'col-10',
+                                                        'col-9',
                                                         'col-md-4',
                                                         'col-lg-3',
                                                         'col-xl-2',
                                                         vfluents.themePrefix + 'dashboard-side'
                                                 ])}
                                         >
-                                                <Button text="Click" eventClick={() => { alert('ok'); this.eventCollapsed() }} type="Primary" size="Huge" block={true} />
+                                                <Button text="Click" eventClick={() => { alert('okki'); this.eventCollapsed() }} type="Primary" size="Huge" block={true} />
                                         </aside>
                                         <main id="main" class={vfluents.cls([
                                                 'col-12',
@@ -148,13 +149,15 @@ export class Dashboard extends vfluents {
                                                                                 type="Primary"
                                                                                 icon="Quit"
                                                                                 size={this.size}
+                                                                                eventClick={vfluents.eventSafe(this.eventSignout)}
                                                                                 className={vfluents.themePrefix + 'dashboard-quit'}
                                                                         />
                                                                 )
                                                         ]}
 
                                                 />
-                                                <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}></div>
+                                                <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}
+                                                        onClick={vfluents.eventSafe(this.eventCollapsed)}></div>
                                                 <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{this.innerHTML}</div>
                                         </main>
                                 </div>
@@ -163,25 +166,6 @@ export class Dashboard extends vfluents {
         }
 
         public mounted() {
-                document.addEventListener('touchstart', (e: any) => {
-                        this.touchPosition.x = e.touches[0].clientX || 0
-                        this.touchPosition.y = e.touches[0].clientY || 0
-                }, false)
-                document.addEventListener('touchmove', (e: any) => {
-                        e.preventDefault()
-                        let x = e.touches[0].clientX - this.touchPosition.x
-                        let y = e.touches[0].clientY - this.touchPosition.y
-
-                        if ((Math.abs(x) > Math.abs(y)) && x < 0) {
-                                if (this.collapsed) {
-                                        this.collapsed = false
-                                }
-                        } else if ((Math.abs(x) > Math.abs(y)) && x > 0) {
-                                if (!this.collapsed) {
-                                        this.collapsed = true
-                                }
-                        }
-                }, false)
                 document.body.setAttribute('class', this.clsMounted || (vfluents.themePrefix + 'mounted-success'))
         }
 }

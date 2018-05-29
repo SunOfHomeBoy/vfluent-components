@@ -1,5 +1,5 @@
-@import '../../node_modules/mixin-animations/sass/fadeinL.scss';
-@import '../../node_modules/mixin-animations/sass/fadeoutL.scss';
+@import '../../node_modules/mixin-animations/sass/touchinL';
+@import '../../node_modules/mixin-animations/sass/touchoutL';
 @import '../styles/variable.scss';
 
 .#{$themePrefix}dashboard {
@@ -13,6 +13,7 @@
         }
 
         .#{$themePrefix}dashboard-side {
+                display: none;
                 padding: 0;
                 background-color: $themeColorGray100;
         }
@@ -75,7 +76,7 @@
                         right: 0;
                         bottom: 0;
                         left: 0;
-                        background-color: rgba(0, 0, 0, 0.2);
+                        background-color: rgba(0, 0, 0, 0.45);
                         z-index: $zindex-fixed;
                 }
 
@@ -111,7 +112,7 @@
                         height: 100vh;
                         background-color: $themeColorGray100;
                         z-index: $zindex-fixed * 2;
-                        @include fadeinL($themeAnimation);
+                        @include touchinL($themeAnimation);
                 }
 
                 .#{$themePrefix}dashboard-main {
@@ -121,15 +122,19 @@
                 }
         }
 
-        &.#{$themePrefix}dashboard-uncollapsed {
+        &.#{$themePrefix}dashboard-uncollapsed-init {
                 .#{$themePrefix}dashboard-side {
-                        @include fadeoutL($themeAnimation);
+                        max-width: 0;
                 }
         }
 
-        &.#{$themePrefix}dashboard-uncollapsed-first {
+        &.#{$themePrefix}dashboard-uncollapsed {
                 .#{$themePrefix}dashboard-side {
-                        max-width: 0;
+                        position: absolute;
+                        display: block;
+                        z-index: $zindex-fixed * 2;
+                        @include touchoutL($themeAnimation);
+                       
                 }
         }
 }
@@ -257,15 +262,17 @@
                         }
                 }
 
-                &.#{$themePrefix}dashboard-uncollapsed {
-                        .#{$themePrefix}dashboard-side {
-                                animation: none !important;
-                        }
-                }
-        
-                &.#{$themePrefix}dashboard-uncollapsed-first {
+                &.#{$themePrefix}dashboard-uncollapsed-init {
                         .#{$themePrefix}dashboard-side {
                                 max-width: 33.3333% !important;
+                        }
+                }
+
+                &.#{$themePrefix}dashboard-uncollapsed {
+                        .#{$themePrefix}dashboard-side {
+                                position: relative;
+                                animation: none;
+                                z-index: auto;
                         }
                 }
         }
@@ -327,7 +334,7 @@
 }
 @include media-breakpoint-up(lg) {
         .#{$themePrefix}dashboard {
-                &.#{$themePrefix}dashboard-uncollapsed-first {
+                &.#{$themePrefix}dashboard-uncollapsed-init {
                         .#{$themePrefix}dashboard-side {
                                 max-width: 25% !important;
                         }
@@ -337,7 +344,7 @@
 
 @include media-breakpoint-up(xl) {
         .#{$themePrefix}dashboard {
-                &.#{$themePrefix}dashboard-uncollapsed-first {
+                &.#{$themePrefix}dashboard-uncollapsed-init {
                         .#{$themePrefix}dashboard-side {
                                 max-width: 16.6667% !important;
                         }

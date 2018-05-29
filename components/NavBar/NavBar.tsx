@@ -1,7 +1,7 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
-import { Icon } from '../icon'
+import { Icon } from '../Icon'
 
 @Component
 export class NavBar extends vfluents {

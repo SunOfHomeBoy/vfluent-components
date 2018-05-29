@@ -7,8 +7,8 @@
 // @authors hjboss <hongjiangproject@gmail.com> 2018-05 $$
 import './styles/stylesheets.scss'
 export { vfluents } from './vfluents'
-export { Button } from './button'
-export { Dashboard } from './dashboard'
-export { Icon } from './icon'
-export { NavBar } from './navbar'
-export { TextBlock } from './textblock'
+export { Button } from './Button'
+export { Dashboard } from './Dashboard'
+export { Icon } from './Icon'
+export { NavBar } from './NavBar'
+export { TextBlock } from './TextBlock'
