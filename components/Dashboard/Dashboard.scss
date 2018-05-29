@@ -16,6 +16,11 @@
                 display: none;
                 padding: 0;
                 background-color: $themeColorGray100;
+
+                .#{$themePrefix}navigation {
+                        height: 100%;
+                        overflow: auto;
+                }
         }
 
         .#{$themePrefix}dashboard-main {
@@ -165,6 +170,7 @@
 @include media-breakpoint-up(md) {
         .#{$themePrefix}dashboard {
                 .#{$themePrefix}dashboard-side {
+                        padding-top: 3rem;
                         display: block;
                         animation: none;
                         border-right: 1px solid $themeColorGray200;
@@ -228,6 +234,10 @@
                         &.#{$themePrefix}dashboard-small {
                                 .#{$themePrefix}dashboard-side {
                                         max-width: 2rem;
+
+                                        .#{$themePrefix}navigation {
+                                                margin-top: 2rem;
+                                        }
                                 }
 
                                 .#{$themePrefix}dashboard-main {
@@ -240,6 +250,10 @@
                         &.#{$themePrefix}dashboard-large {
                                 .#{$themePrefix}dashboard-side {
                                         max-width: 4rem;
+
+                                        .#{$themePrefix}navigation {
+                                                margin-top: 4rem;
+                                        }
                                 }
 
                                 .#{$themePrefix}dashboard-main {
@@ -252,6 +266,10 @@
                         &.#{$themePrefix}dashboard-huge {
                                 .#{$themePrefix}dashboard-side {
                                         max-width: 5rem;
+
+                                        .#{$themePrefix}navigation {
+                                                margin-top: 5rem;
+                                        }
                                 }
 
                                 .#{$themePrefix}dashboard-main {

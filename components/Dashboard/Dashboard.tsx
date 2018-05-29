@@ -3,6 +3,7 @@ import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import { Button } from '../Button'
 import { NavBar } from '../NavBar'
+import { NavigationView, INavigationView } from '../NavigationView'
 import * as utils from '../utils'
 import { iconCog, iconHierarchy, iconQuit, iconUser } from '../icons'
 vfluents.useIcons({ iconCog, iconHierarchy, iconQuit, iconUser })
@@ -24,10 +25,10 @@ export class Dashboard extends vfluents {
         @Provide() tbarTitle: string // 主標題 可空 默認值：空字符串 註釋：僅限移動端可見
         @Provide() bbarItems: any[] // 底部導航項 可空 默認值：空數組 註釋：僅限移動端可見
         @Provide() clsMounted: string // 加載成功時BODY元素樣式名稱 可空 默認值：空字符串
+        @Provide() menuItems: INavigationView[] // 左側導航項 可空 默認值：空數組
 
         private touchPosition: { x: number, y: number } = { x: 0, y: 0 }
         private countCollapsed: number = -1
-        private readonly touchTarget: string = vfluents.themePrefix + 'aside-touch'
 
         public eventCollapsed() {
                 this.countCollapsed = this.countCollapsed + 1
@@ -39,6 +40,8 @@ export class Dashboard extends vfluents {
         public eventSetting() { }
 
         public eventSignout() { }
+
+        public eventOpenMenu() { this.collapsed = false }
 
         public component(h: CreateElement) {
                 if (utils.empty(this.innerHTML)) {
@@ -62,7 +65,6 @@ export class Dashboard extends vfluents {
                         ])}>
                                 <div class={`row ${vfluents.themePrefix}row`}>
                                         <aside
-                                                id={this.touchTarget}
                                                 class={vfluents.cls([
                                                         'col-9',
                                                         'col-md-4',
@@ -71,7 +73,13 @@ export class Dashboard extends vfluents {
                                                         vfluents.themePrefix + 'dashboard-side'
                                                 ])}
                                         >
-                                                <Button text="Click" eventClick={() => { alert('okki'); this.eventCollapsed() }} type="Primary" size="Huge" block={true} />
+                                                <NavigationView
+                                                        size={this.size}
+                                                        collapsed={this.collapsed}
+                                                        items={this.menuItems || []}
+                                                        active={2}
+                                                        eventLinks={this.eventOpenMenu}
+                                                />
                                         </aside>
                                         <main id="main" class={vfluents.cls([
                                                 'col-12',

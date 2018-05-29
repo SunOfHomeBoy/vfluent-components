@@ -14,7 +14,7 @@ export class vfluents extends Vue {
         public component(h: CreateElement): any { }
 
         public render(h: CreateElement): any {
-                this.innerHTML = (this.$options as any)._renderChildren
+                this.innerHTML = (this.$options as any)._renderChildren || []
                 return this.component(h)
         }
 

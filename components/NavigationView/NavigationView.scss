@@ -1,0 +1,93 @@
+@import '../styles/variable.scss';
+@import '../../node_modules/bootstrap/scss/_list-group.scss';
+
+.#{$themePrefix}navigation {
+        background-color: $themeColorGray100;
+
+        .list-group-item,
+        .#{$themePrefix}btn {
+                background-color: rgba(0, 0, 0, 0);
+        }
+
+        .#{$themePrefix}navigation-item {
+                padding: 0;
+                border: 0;
+                cursor: pointer;
+
+                .#{$themePrefix}btn,
+                .#{$themePrefix}btn:hover,
+                .#{$themePrefix}btn:focus,
+                .#{$themePrefix}btn:active {
+                        background-color: rgba(0, 0, 0, 0);
+                        box-shadow: none;
+                }
+
+                .#{$themePrefix}navigation-text {
+                        color: $themeColorGray600;
+                        line-height: 3rem;
+                        vertical-align: middle;
+                }
+
+                .#{$themePrefix}navigation-subitems {
+                        display: none;
+                        background-color: $themeColorGray100;
+
+                        .list-group-item {
+                                display: block;
+                                padding: 0 0 0 3rem;
+                                color: $themeColorGray600;
+                                font-size: 0.9375rem;
+                                line-height: 3em;
+                                background-color: rgba(0, 0, 0, 0);
+                                outline: 0;
+                                border: 0;
+
+                                &.#{$themePrefix}navigation-active {
+                                        color: $themeColorBlue;
+                                }
+
+                                &:active {
+                                        background-color: $themeColorGray300;
+                                }
+                        }
+                }
+
+                .#{$themePrefix}navigation-item-first {
+                        display: block;
+                        text-decoration: none;
+                }
+
+                &:hover {
+                        .#{$themePrefix}navigation-item-first {
+                                background-color: $themeColorGray300;
+                        }
+                }
+
+                &:focus, 
+                &:active,
+                &.#{$themePrefix}navigation-active {
+                        .#{$themePrefix}navigation-item-first {
+                                background-color: $themeColorGray200;
+                        }
+                }
+
+                &.#{$themePrefix}navigation-active {
+                        .#{$themePrefix}navigation-subitems {
+                                display: block;
+                        }
+                }
+        }
+}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}navigation {
+                &.#{$themePrefix}navigation-collapsed {
+                        overflow-x: hidden !important;
+                        margin-left: -1px;
+        
+                        .#{$themePrefix}navigation-text,
+                        .#{$themePrefix}navigation-subitems {
+                                display: none !important;
+                        }
+                }
+        }
+}
