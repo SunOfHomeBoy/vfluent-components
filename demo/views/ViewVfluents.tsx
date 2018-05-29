@@ -2,7 +2,6 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents, Dashboard, INavigationView } from '../../components'
 
-
 @Component
 export default class ViewVfluents extends Dashboard {
         @Provide() size: string = 'Default'
