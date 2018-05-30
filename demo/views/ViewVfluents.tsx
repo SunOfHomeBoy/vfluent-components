@@ -1,6 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { Component, Prop, Provide } from 'vue-property-decorator'
-import { vfluents, Dashboard, INavigationView } from '../../components'
+import { vfluents, Dashboard, INavigationView, ITabBar } from '../../components'
 
 @Component
 export default class ViewVfluents extends Dashboard {
@@ -13,105 +13,61 @@ export default class ViewVfluents extends Dashboard {
         @Provide() headerImg: string = 'https://avatars1.githubusercontent.com/u/20560933?s=460&v=4'
         @Provide() menuItems: INavigationView[] = [
                 {
-                        icon: 'Home',
+                        icon: 'Dashboard',
                         text: '儀錶盤',
-                        link: 'Button'
+
                 },
                 {
-                        icon: 'Activity',
+                        icon: 'Component',
                         text: '常用組件',
                         items: [
                                 {
-                                        text: '文本 TextBlock',
-                                        link: '/TextBlock'
+                                        text: '按鈕Button',
+                                        link: 'Button'
                                 },
                                 {
-                                        text: '圖標 Icon',
+                                        text: '圖標Icon',
                                         link: 'Icon'
                                 },
                                 {
-                                        text: '按鈕 Button',
-                                        link: 'Button'
+                                        text: '導航欄NavBar',
+                                        link: 'NavBar'
+                                },
+                                {
+                                        text: '導航視圖NavigationView',
+                                        link: 'NavigationView'
+                                },
+                                {
+                                        text: '文本TextBlock',
+                                        link: 'TextBlock'
                                 }
                         ]
                 },
                 {
-                        icon: 'Activity',
-                        text: '常用組件',
-                        items: [
-                                {
-                                        text: '文本 TextBlock',
-                                        link: 'TextBlock'
-                                },
-                                {
-                                        text: '圖標 Icon',
-                                        link: 'Icon'
-                                },
-                                {
-                                        text: '按鈕 Button',
-                                        link: 'Button'
-                                },
-                                {
-                                        text: '文本 TextBlock',
-                                        link: 'TextBlock'
-                                },
-                                {
-                                        text: '圖標 Icon',
-                                        link: 'Icon'
-                                },
-                                {
-                                        text: '按鈕 Button',
-                                        link: 'Button'
-                                },
-                                {
-                                        text: '文本 TextBlock',
-                                        link: 'TextBlock'
-                                },
-                                {
-                                        text: '圖標 Icon',
-                                        link: 'Icon'
-                                },
-                                {
-                                        text: '按鈕 Button',
-                                        link: 'Button'
-                                },
-                                {
-                                        text: '文本 TextBlock',
-                                        link: 'TextBlock'
-                                },
-                                {
-                                        text: '圖標 Icon',
-                                        link: 'Icon'
-                                },
-                                {
-                                        text: '按鈕 Button',
-                                        link: 'Button'
-                                },
-                                {
-                                        text: '文本 TextBlock',
-                                        link: 'TextBlock'
-                                },
-                                {
-                                        text: '圖標 Icon',
-                                        link: 'Icon'
-                                },
-                                {
-                                        text: '按鈕 Button',
-                                        link: 'Button'
-                                },
-                                {
-                                        text: '文本 TextBlock',
-                                        link: 'TextBlock'
-                                },
-                                {
-                                        text: '圖標 Icon',
-                                        link: 'Icon'
-                                },
-                                {
-                                        text: '按鈕 Button',
-                                        link: 'Button'
-                                }
-                        ]
+                        icon: '',
+                        text: '常用頁面'
+                }
+        ]
+        @Provide() bbarItems: ITabBar[] = [
+                {
+                        icon: 'Cog',
+                        text: '主頁'
+                },
+                {
+                        icon: 'Mail',
+                        text: '消息'
+                },
+                {
+                        icon: 'Plus',
+                        text: '家裡'
+                },
+                {
+                        icon: 'Search',
+                        text: '搜索'
+                },
+                {
+                        icon: 'User',
+                        text: '我'
                 }
         ]
 }

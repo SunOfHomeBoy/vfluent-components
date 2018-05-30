@@ -418,7 +418,7 @@
 
         &.#{$themePrefix}btn-top,
         &.#{$themePrefix}btn-bottom {
-                height: auto !important;
+                height: auto;
 
                 .#{$themePrefix}icon,
                 .#{$themePrefix}btn-text {
@@ -445,56 +445,4 @@
                         line-height: 1.875rem;
                 }
         }
-
-        /*&.#{$themePrefix}btn-bottom {
-                height: 4rem !important;
-
-                .#{$themePrefix}icon {
-                        position: relative;
-                        margin: 0 !important;
-                        line-height: 1.5rem !important;
-                        vertical-align: bottom;
-                }
-
-                .#{$themePrefix}btn-text {
-                        display: block;
-                        height: 1.75rem !important;
-                        margin: 0;
-                }
-
-                &.#{$themePrefix}btn-small {
-                        height: 3rem !important;
-
-                        .#{$themePrefix}icon {
-                                line-height: 1rem !important;
-                        }
-
-                        .#{$themePrefix}btn-text {
-                                height: 1.25rem !important;
-                        }
-                }
-
-                &.#{$themePrefix}btn-large {
-                        height: 5rem !important;
-                
-                        .#{$themePrefix}btn-text {
-                                height: 2.25rem !important;
-                        }
-                }
-
-                &.#{$themePrefix}btn-huge {
-                        height: 6rem !important;
-
-                        .#{$themePrefix}btn-text {
-                                height: 2.75rem !important;
-                        }
-                }
-        }
-
-        &.#{$themePrefix}btn-top {
-                .#{$themePrefix}icon,
-                .#{$themePrefix}btn-text {
-                        vertical-align: top !important;
-                }
-        }*/
 }

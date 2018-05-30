@@ -4,6 +4,7 @@ import { vfluents } from '../vfluents'
 import { Button } from '../Button'
 import { NavBar } from '../NavBar'
 import { NavigationView, INavigationView } from '../NavigationView'
+import { TabBar, ITabBar } from '../TabBar'
 import * as utils from '../utils'
 import { iconCog, iconHierarchy, iconQuit, iconUser } from '../icons'
 vfluents.useIcons({ iconCog, iconHierarchy, iconQuit, iconUser })
@@ -24,10 +25,10 @@ export class Dashboard extends vfluents {
         @Provide() tbarRight: any[] // 頂部導航右側項 可空 默認值：空數組
         @Provide() tbarSystem: boolean // 啓用頂部導航系統項 可空 默認值：TRUE
         @Provide() tbarTitle: string // 主標題 可空 默認值：空字符串 註釋：僅限移動端可見
-        @Provide() bbarItems: any[] // 底部導航項 可空 默認值：空數組 註釋：僅限移動端可見
-        @Provide() clsMounted: string // 加載成功時BODY元素樣式名稱 可空 默認值：空字符串
+        @Provide() bbarItems: ITabBar[] // 底部導航項 可空 默認值：空數組 註釋：僅限移動端可見
         @Provide() menuItems: INavigationView[] // 左側導航項 可空 默認值：空數組
         @Provide() links: { userinfo: string, setting: string, signin: string }
+        @Provide() clsMounted: string // 加載成功時BODY元素樣式名稱 可空 默認值：空字符串
 
         private touchPosition: { x: number, y: number } = { x: 0, y: 0 }
         private countCollapsed: number = -1
@@ -191,14 +192,14 @@ export class Dashboard extends vfluents {
                                                                         />
                                                                 )
                                                         ]}
-
                                                 />
+                                                <TabBar items={this.bbarItems} />
                                                 <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}
                                                         onClick={vfluents.eventSafe(this.eventCollapsed)}></div>
                                                 <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{this.innerHTML}</div>
                                         </main>
                                 </div>
-                        </div>
+                        </div >
                 )
         }
 

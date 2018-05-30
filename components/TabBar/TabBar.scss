@@ -1,0 +1,7 @@
+@import '../styles/variable.scss';
+
+.#{$themePrefix}tabbar {
+        .#{$themePrefix}btn {
+                flex: 1;
+        }
+}

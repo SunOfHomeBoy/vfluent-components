@@ -15,7 +15,7 @@ export default class ViewIcon extends ViewCommon {
                         elementIcons.push(
                                 <div class={`col-4 col-md-1 ${theme.themePrefix}unit`}>
                                         <Icon name={name} size="Huge" />
-                                        <h5>{String(name).replace(/^icon/i, '')}</h5>
+                                        <h6>{String(name).replace(/^icon/i, '')}</h6>
                                 </div>
                         )
                 }

@@ -88,6 +88,41 @@
         }
 }
 .#{$themePrefix}browser-theme-dark {
+        .#{$themePrefix}navigation {
+                background-color: $themeColorGray900;
+
+                .#{$themePrefix}navigation-item {
+                        &.#{$themePrefix}navigation-active {
+                                .#{$themePrefix}navigation-item-first {
+                                        background-color: $themeColorGray800;
+                                }
+
+                                .#{$themePrefix}navigation-subitems {
+                                        background-color: $themeColorGray900;
+
+                                        .list-group-item:hover,
+                                        .list-group-item:active,
+                                        .list-group-item.#{$themePrefix}navigation-active {
+                                                color: $themeColorGray500;
+                                                background-color: $themeColorGray900;
+                                        }
+                                }
+                        }
+
+                        &:hover {
+                                .#{$themePrefix}navigation-item-first {
+                                        background-color: $themeColorGray700;
+                                }
+                        }
+
+                        &:focus,
+                        &:active {
+                                .#{$themePrefix}navigation-item-first {
+                                        background-color: $themeColorGray800;
+                                }
+                        }
+                }
+        }
 }
 @include media-breakpoint-up(md) {
         .#{$themePrefix}navigation {

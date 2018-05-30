@@ -216,6 +216,14 @@
         .#{$themePrefix}dashboard {
                 .#{$themePrefix}dashboard-side {
                         background-color: $themeColorGray900;
+
+                        .#{$themePrefix}dashboard-userinfo {
+                                background-color: $themeColorGray900 !important;
+
+                                section {
+                                        color: $themeColorGray600;
+                                }
+                        }
                 }
 
                 .#{$themePrefix}dashboard-main {
@@ -223,6 +231,16 @@
 
                         .#{$themePrefix}navbar {
                                 background-color: $themeColorBlack !important;
+
+                                .#{$themePrefix}btn:hover,
+                                .#{$themePrefix}btn:focus,
+                                .#{$themePrefix}btn:active {
+                                        background-color: $themeColorGray800;
+                                }
+
+                                .#{$themePrefix}dashboard-brand {
+                                        background-color: rgba(0, 0, 0, 0) !important;
+                                }
                         }
                 }
         }
