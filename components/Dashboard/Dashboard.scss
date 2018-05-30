@@ -22,7 +22,7 @@
                         overflow: auto;
                 }
 
-                .#{$themePrefix}userinfo {
+                .#{$themePrefix}dashboard-userinfo {
                         position: absolute;
                         top: 0;
                         width: 100%;
@@ -176,9 +176,38 @@
 }
 .#{$themePrefix}browser-theme-light {
         .#{$themePrefix}dashboard {
+                .#{$themePrefix}dashboard-side {
+                        .#{$themePrefix}dashboard-userinfo {
+                                background-color: $themeColorGray100 !important;
+
+                                section {
+                                        color: $themeColorGray600;
+                                }
+                        }
+                }
+
                 .#{$themePrefix}dashboard-main {
                         .#{$themePrefix}navbar {
                                 background-color: $themeColorGray50 !important;
+
+                                .#{$themePrefix}dashboard-headerimg {
+                                        border-radius: 50%;
+                                }
+
+                                .#{$themePrefix}btn {
+                                        color: $themeColorGray600;
+
+                                        .#{$themePrefix}icon {
+                                                color: $themeColorGray600;
+                                                fill: $themeColorGray600;
+                                        }
+
+                                        &:hover,
+                                        &:focus,
+                                        &:active {
+                                                background-color: $themeColorGray100;
+                                        }
+                                }
                         }
                 }
         }
@@ -206,7 +235,7 @@
                         animation: none;
                         border-right: 1px solid $themeColorGray200;
 
-                        .#{$themePrefix}userinfo {
+                        .#{$themePrefix}dashboard-userinfo {
                                 display: none;
                         }
                 }
@@ -333,7 +362,6 @@
         .#{$themePrefix}browser-theme-light {
                 .#{$themePrefix}dashboard {
                         .#{$themePrefix}dashboard-side {
-                                background-color: $themeColorGray200;
                                 border-right: 0;
                         }
         
@@ -341,7 +369,7 @@
                                 background-color: $themeColorGray50;
 
                                 .navbar-brand {
-                                        background-color: $themeColorGray200 !important;
+                                        background-color: $themeColorGray100 !important;
 
                                         .navbar-brand-logo,
                                         .navbar-brand-text {

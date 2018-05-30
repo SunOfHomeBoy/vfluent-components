@@ -89,7 +89,7 @@ export class Dashboard extends vfluents {
                                                         vfluents.themePrefix + 'dashboard-side'
                                                 ])}
                                         >
-                                                <div class={`${vfluents.themePrefix}userinfo`}>
+                                                <div class={`${vfluents.themePrefix}dashboard-userinfo`}>
                                                         <Button
                                                                 type="Info"
                                                                 icon="None"

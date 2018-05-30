@@ -78,6 +78,17 @@
                 }
         }
 }
+.#{$themePrefix}browser-theme-light {
+        .#{$themePrefix}navigation {
+                .#{$themePrefix}navigation-subitems {
+                        .#{$themePrefix}navigation-active {
+                                color: $themeColorGray900 !important;
+                        }
+                }
+        }
+}
+.#{$themePrefix}browser-theme-dark {
+}
 @include media-breakpoint-up(md) {
         .#{$themePrefix}navigation {
                 &.#{$themePrefix}navigation-collapsed {
