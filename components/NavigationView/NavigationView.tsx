@@ -20,7 +20,7 @@ export class NavigationView extends vfluents {
         @Prop() active: number // 已點擊導航項 可空 默認值：0 注釋：編碼從1，2，3。。。
         @Prop() items: INavigationView[] // 導航項數組 可空 默認值：空數組
         @Prop() eventLinks: any // 鏈接事件 可空 默認值：空值
-        @Provide() stateActive: { n: number, m: number } = { n: 0, m: 0 }
+        @Provide() stateActive: { x: number, y: number } = { x: 0, y: 0 }
 
         public component(h: CreateElement) {
                 for (let i = 0; i < this.items.length; i++) {
@@ -31,7 +31,7 @@ export class NavigationView extends vfluents {
                                                 <span
                                                         class={vfluents.cls([
                                                                 'list-group-item',
-                                                                this.stateActive.n === i && this.stateActive.m === j + 1
+                                                                this.stateActive.x === i && this.stateActive.y === j + 1
                                                                         ? vfluents.themePrefix + 'navigation-active'
                                                                         : ''
                                                         ])}
@@ -48,7 +48,7 @@ export class NavigationView extends vfluents {
                                         class={vfluents.cls([
                                                 'list-group-item',
                                                 vfluents.themePrefix + 'navigation-item',
-                                                this.stateActive.n === i
+                                                this.stateActive.x === i
                                                         ? vfluents.themePrefix + 'navigation-active'
                                                         : ''
                                         ])}>
@@ -78,7 +78,7 @@ export class NavigationView extends vfluents {
         }
 
         public created() {
-                this.stateActive = { n: this.active || 0, m: 0 }
+                this.stateActive = { x: this.active || 0, y: 0 }
         }
 
         public eventOpenMenu(i: number, j: number) {
@@ -87,8 +87,8 @@ export class NavigationView extends vfluents {
                         : this.items[i].items[j - 1]
 
                 cfg.link = String(cfg.link || '')
-                this.$set(this.stateActive, 'n', i)
-                this.$set(this.stateActive, 'm', j)
+                this.$set(this.stateActive, 'x', i)
+                this.$set(this.stateActive, 'y', j)
 
                 if (cfg.link.indexOf('http') !== -1) {
                         window.location.href = cfg.link

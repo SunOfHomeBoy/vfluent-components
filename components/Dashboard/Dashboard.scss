@@ -14,12 +14,43 @@
 
         .#{$themePrefix}dashboard-side {
                 display: none;
-                padding: 0;
+                padding: 5rem 0 0 0;
                 background-color: $themeColorGray100;
 
                 .#{$themePrefix}navigation {
                         height: 100%;
                         overflow: auto;
+                }
+
+                .#{$themePrefix}userinfo {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 5rem;
+                        padding: 1rem 0.75rem;
+                        background-color: $themeColorAccentLight;
+
+                        .#{$themePrefix}btn {
+                                position: absolute;
+                                background-size: 100% 100%;
+
+                                &, &:hover, &:focus, &:active {
+                                        border: 0;
+                                        box-shadow: none;
+                                }
+                        }
+
+                        section {
+                                margin-left: 3.5rem;
+                                color: $themeColorWhite;
+                                cursor: pointer;
+                                overflow: hidden;
+
+                                h6 {
+                                        margin-top: 0.25rem;
+                                        margin-bottom: 0;
+                                }
+                        }
                 }
         }
 
@@ -174,6 +205,10 @@
                         display: block;
                         animation: none;
                         border-right: 1px solid $themeColorGray200;
+
+                        .#{$themePrefix}userinfo {
+                                display: none;
+                        }
                 }
 
                 .#{$themePrefix}dashboard-main {
