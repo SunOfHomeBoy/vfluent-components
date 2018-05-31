@@ -80,15 +80,9 @@ module.exports = function (webpackConfig) {
                                 },
                                 {
                                         test: /\.tsx?$/,
-                                        exclude: /node_modules/,
                                         use: [
                                                 'babel-loader',
-                                                {
-                                                        loader: 'ts-loader',
-                                                        options: {
-                                                                appendTsSuffixTo: [/\.vue$/]
-                                                        }
-                                                }
+                                                'awesome-typescript-loader'
                                         ]
                                 },
                                 {
