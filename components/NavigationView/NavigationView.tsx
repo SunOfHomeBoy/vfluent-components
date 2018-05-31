@@ -3,7 +3,6 @@ import { Component, Prop, Provide, Watch } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import { Button } from '../Button'
 import * as utils from '../utils'
-import { link, watch } from 'fs';
 
 export interface INavigationView {
         text: string
