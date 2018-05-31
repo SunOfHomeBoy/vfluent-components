@@ -58,16 +58,16 @@ export default class ViewVfluents extends Dashboard {
                         text: '消息'
                 },
                 {
-                        icon: 'Plus',
-                        text: '家裡'
+                        icon: 'Image',
+                        text: ''
                 },
-                {
+                /*{
                         icon: 'Search',
                         text: '搜索'
                 },
                 {
                         icon: 'User',
                         text: '我'
-                }
+                } */
         ]
 }

@@ -277,9 +277,13 @@
                         }
 
                         .#{$themePrefix}dashboard-headerimg,
-                        .#{$themePrefix}dashboard-userinfo,
+                        .#{$themePrefix}dashboar-userinfo,
                         .#{$themePrefix}dashboard-quit {
                                 display: inline-block !important;
+                        }
+
+                        .#{$themePrefix}dashboard-tabbar {
+                                display: none !important;
                         }
                 }
 

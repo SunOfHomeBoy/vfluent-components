@@ -37,7 +37,7 @@
                 "cross-env": "^5.1.4",
                 "autoprefixer": "^8.1.0",
                 "autoprefixer-loader": "^3.2.0",
-                "awesome-typescript-loader": "^4.0.1",
+                "awesome-typescript-loader": "^5.0.0",
                 "babel-core": "^6.26.0",
                 "babel-helper-vue-jsx-merge-props": "^2.0.3",
                 "babel-loader": "^7.1.4",
