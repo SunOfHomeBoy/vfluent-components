@@ -1,5 +1,5 @@
-@import '../../node_modules/mixin-animations/sass/touchinL';
-@import '../../node_modules/mixin-animations/sass/touchoutL';
+@import '~mixin-animations/sass/touchinL';
+@import '~mixin-animations/sass/touchoutL';
 @import '../styles/variable.scss';
 
 .#{$themePrefix}dashboard {
