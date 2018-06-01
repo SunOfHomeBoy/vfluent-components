@@ -16,6 +16,12 @@ export class ChartBase extends vfluents {
         protected initConfigures(): any { }
 
         public component(h: CreateElement) {
+                console.log('this.chart=' + JSON.stringify(this.data))
+                if (this.chart) {
+                        console.log('ok11')
+                        this.chart.data.datasets = this.data
+                        this.chart.update()
+                }
                 return (
                         <canvas
                                 id={this.id}

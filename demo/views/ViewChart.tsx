@@ -17,9 +17,9 @@ export default class ViewIcon extends ViewCommon {
                                 <section>
                                         <ChartArea data={this.dataChartArea} />
                                         <Button text="Change" eventClick={() => {
-                                                console.log('ok')
-                                                this.$set(this.dataChartArea, 1, 1)
+                                                //this.$set(this.dataChartArea, 1, 1)
                                                 //this.$set(this.dataChartArea, 0, 1)
+                                                this.dataChartArea = [0, 1, 2, 3, 4, 5]
                                         }} />
                                 </section>
                         </article>
