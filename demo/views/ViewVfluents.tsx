@@ -20,44 +20,18 @@ export default class ViewVfluents extends Dashboard {
                         { text: '發現', icon: 'Search', link: 'Icon' },
                         { text: '吾等', icon: 'User', fn: this.eventUserinfo }
                 ]
+                this.menuItems = [
+                        { icon: 'Dashboard', text: '儀表盤' },
+                        {
+                                icon: 'Component', text: '常用組件', items: [
+                                        { text: '按鈕Button', link: 'Button' },
+                                        { text: '圖標Icon', link: 'Icon' },
+                                        { text: '導航欄NavBar', link: 'NavBar' },
+                                        { text: '導航視圖NavigationView', link: 'NavigationView' },
+                                        { text: '標籤欄TabBar', 'link': 'TabBar' },
+                                        { text: '文本TextBlock', link: 'TextBlock' }
+                                ]
+                        }
+                ]
         }
-
-        @Provide() menuItems: INavigationView[] = [
-                {
-                        icon: 'Dashboard',
-                        text: '儀錶盤',
-
-                },
-                {
-                        icon: 'Component',
-                        text: '常用組件',
-                        items: [
-                                {
-                                        text: '按鈕Button',
-                                        link: 'Button'
-                                },
-                                {
-                                        text: '圖標Icon',
-                                        link: 'Icon'
-                                },
-                                {
-                                        text: '導航欄NavBar',
-                                        link: 'NavBar'
-                                },
-                                {
-                                        text: '導航視圖NavigationView',
-                                        link: 'NavigationView'
-                                },
-                                {
-                                        text: '文本TextBlock',
-                                        link: 'TextBlock'
-                                }
-                        ]
-                },
-                {
-                        icon: '',
-                        text: '常用頁面'
-                }
-        ]
-
 }

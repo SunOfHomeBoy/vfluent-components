@@ -21,16 +21,18 @@
         },
         "dependencies": {
                 "@types/axios": "^0.14.0",
+                "@types/chart.js": "2.7.20",
                 "@types/node": "^7.0.60",
                 "@types/vue": "^2.0.0",
                 "@types/vue-router": "^2.0.0",
-                "vue": "^2.5.16",
-                "vue-router": "^3.0.1",
                 "axios": "^0.18.0",
-                "init-browsers": "^1.2.20",
-                "vtsx.d": "^1.0.0",
                 "bootstrap": "^4.1.1",
-                "mixin-animations": "^1.5.5"
+                "chart.js": "^2.7.2",
+                "init-browsers": "^1.2.20",
+                "mixin-animations": "^1.5.5",
+                "vtsx.d": "^1.0.0",
+                "vue": "^2.5.16",
+                "vue-router": "^3.0.1"
         },
         "devDependencies": {
                 "clear-cli": "^1.0.1",
