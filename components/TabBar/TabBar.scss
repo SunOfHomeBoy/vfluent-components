@@ -2,6 +2,7 @@
 
 .#{$themePrefix}tabbar {
         width: 100% !important;
+        overflow: hidden;
 
         .#{$themePrefix}btn {
                 max-width: 100%;
@@ -11,21 +12,29 @@
                 text-align: center;
                 flex: 1;
 
+                &:hover,
+                &:focus,
+                &:active {
+                        box-shadow: none;
+                }
+
                 .#{$themePrefix}icon {
                         margin: 0 auto !important;
                 }
 
                 .#{$themePrefix}btn-text {
-                        font-size: 0.8125rem;
+                        font-size: 0.75rem;
                         line-height: 1rem;
                 }
 
                 &.#{$themePrefix}btn-icon-only {
-                        padding: 0.25rem;
+                        padding-top: 0.625rem;
 
                         .#{$themePrefix}icon {
-                                width: 2.5rem;
-                                height: 2.5rem;
+                                position: relative;
+                                display: block;
+                                width: 2rem;
+                                height: 2rem;
                         }
                 }
         }

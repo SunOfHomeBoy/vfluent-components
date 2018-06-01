@@ -193,7 +193,7 @@ export class Dashboard extends vfluents {
                                                                 )
                                                         ]}
                                                 />
-                                                <TabBar items={this.bbarItems} />
+                                                <TabBar items={this.bbarItems} fixed="Bottom" />
                                                 <div class={`position-fixed ${vfluents.themePrefix}dashboard-main-mask`}
                                                         onClick={vfluents.eventSafe(this.eventCollapsed)}></div>
                                                 <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{this.innerHTML}</div>

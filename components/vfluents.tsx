@@ -18,6 +18,18 @@ export class vfluents extends Vue {
                 return this.component(h)
         }
 
+        public redirect(uri: string, fn?: any) {
+                if (String(uri).indexOf('http') === 0) {
+                        window.location.href = uri
+                } else if (utils.empty(uri) === false) {
+                        this.$router.push(uri, () => {
+                                if (typeof (fn) === 'function') {
+                                        fn()
+                                }
+                        })
+                }
+        }
+
         public static init(configures?: any) {
                 configures.icons = configures.icons || {}
                 configures.icons = Object.assign(vfluents.iconElements, configures.icons)
@@ -44,7 +56,7 @@ export class vfluents extends Vue {
         public static eventSafe(fn: any): Function {
                 return (e: Event) => {
                         if (typeof (fn) === 'function') {
-                                fn(e)
+                                fn()
                         }
                 }
         }

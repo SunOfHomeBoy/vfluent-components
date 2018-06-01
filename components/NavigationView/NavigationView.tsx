@@ -14,7 +14,6 @@ export interface INavigationView {
 
 @Component
 export class NavigationView extends vfluents {
-        @Prop() size: string // 行高尺寸 可空 默認值：Default 可選值：Default | Small | Large | Huge
         @Prop() collapsed: boolean // 側欄折疊 可空 默認值：FALSE
         @Prop() active: number // 已點擊導航項 可空 默認值：0 注釋：編碼從1，2，3。。。
         @Prop() items: INavigationView[] // 導航項數組 可空 默認值：空數組
@@ -52,7 +51,7 @@ export class NavigationView extends vfluents {
                                                         : ''
                                         ])}>
                                         <section class={vfluents.themePrefix + 'navigation-item-first'} onClick={() => this.eventOpenMenu(i, 0)}>
-                                                <Button size={this.size} icon={this.items[i].icon} />
+                                                <Button size="Default" icon={this.items[i].icon} />
                                                 <span class={vfluents.themePrefix + 'navigation-text'}>{this.items[i].text}</span>
                                         </section>
                                         <ul class={'list-group ' + vfluents.themePrefix + 'navigation-subitems'}>{subitems}</ul>
@@ -65,9 +64,6 @@ export class NavigationView extends vfluents {
                                 class={vfluents.cls([
                                         'list-group',
                                         vfluents.themePrefix + 'navigation',
-                                        ['Small', 'Large', 'Huge'].indexOf(this.size) !== -1
-                                                ? vfluents.themePrefix + 'navigation-' + this.size.toLowerCase()
-                                                : '',
                                         this.collapsed
                                                 ? vfluents.themePrefix + 'navigation-collapsed'
                                                 : ''
@@ -89,14 +85,6 @@ export class NavigationView extends vfluents {
                 this.$set(this.stateActive, 'x', i)
                 this.$set(this.stateActive, 'y', j)
 
-                if (cfg.link.indexOf('http') !== -1) {
-                        window.location.href = cfg.link
-                } else if (cfg.link) {
-                        this.$router.push(cfg.link, () => {
-                                if (typeof (this.eventLinks) === 'function') {
-                                        this.eventLinks()
-                                }
-                        })
-                }
+                this.redirect(cfg.link, this.eventLinks)
         }
 }

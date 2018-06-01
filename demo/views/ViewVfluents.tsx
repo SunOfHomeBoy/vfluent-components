@@ -8,9 +8,20 @@ export default class ViewVfluents extends Dashboard {
         @Provide() collapsed: boolean = false
         @Provide() brandLogo: string = 'Hierarchy'
         @Provide() brandName: string = 'vFluents'
-        @Provide() account: string = 'hongjiangproject@yahoo.com'
+        @Provide() account: string = 'Administrators'
         @Provide() purview: string = '超級管理員'
-        @Provide() headerImg: string = 'https://avatars1.githubusercontent.com/u/20560933?s=460&v=4'
+        @Provide() headerImg: string = 'https://avatars1.githubusercontent.com/u/17957494?s=460&v=4'
+
+        public created() {
+                this.bbarItems = [
+                        { text: '代碼', icon: 'Code', link: 'https://github.com/hjboss/vfluent-components' },
+                        { text: '消息', icon: 'Mail', link: 'Button' },
+                        { text: '', icon: 'Dashboard', link: '/' },
+                        { text: '發現', icon: 'Search', link: 'Icon' },
+                        { text: '吾等', icon: 'User', fn: this.eventUserinfo }
+                ]
+        }
+
         @Provide() menuItems: INavigationView[] = [
                 {
                         icon: 'Dashboard',
@@ -48,26 +59,5 @@ export default class ViewVfluents extends Dashboard {
                         text: '常用頁面'
                 }
         ]
-        @Provide() bbarItems: ITabBar[] = [
-                {
-                        icon: 'Cog',
-                        text: '主頁'
-                },
-                {
-                        icon: 'Mail',
-                        text: '消息'
-                },
-                {
-                        icon: 'Image',
-                        text: ''
-                },
-                /*{
-                        icon: 'Search',
-                        text: '搜索'
-                },
-                {
-                        icon: 'User',
-                        text: '我'
-                } */
-        ]
+
 }

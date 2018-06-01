@@ -121,6 +121,26 @@
                         padding: 0.625rem 0.9375rem;
                         overflow: auto;
                 }
+
+                .#{$themePrefix}tabbar {
+                        .#{$themePrefix}btn {
+                                background-color: $themeColorGray50;
+                                border-top-color: $themeColorGray200;
+
+                                &:hover,
+                                &:focus,
+                                &:active {
+                                        background-color: $themeColorAccentLight;
+                                        border-top-color: $themeColorAccentLight;
+
+                                        .#{$themePrefix}icon,
+                                        .#{$themePrefix}btn-text {
+                                                color: $themeColorWhite;
+                                                fill: $themeColorWhite;
+                                        }
+                                }
+                        }
+                }
         }
 
         &.#{$themePrefix}dashboard-small {
@@ -240,6 +260,26 @@
 
                                 .#{$themePrefix}dashboard-brand {
                                         background-color: rgba(0, 0, 0, 0) !important;
+                                }
+                        }
+
+                        .#{$themePrefix}tabbar {
+                                .#{$themePrefix}btn {
+                                        background-color: $themeColorBlack;
+                                        border-top-color: $themeColorGray900;
+        
+                                        &:hover,
+                                        &:focus,
+                                        &:active {
+                                                background-color: $themeColorGray800;
+                                                border-top-color: $themeColorGray800;
+        
+                                                .#{$themePrefix}icon,
+                                                .#{$themePrefix}btn-text {
+                                                        color: $themeColorWhite;
+                                                        fill: $themeColorWhite;
+                                                }
+                                        }
                                 }
                         }
                 }
