@@ -1,4 +1,2 @@
 import './Chart.scss';
-export { ChartArea } from './ChartArea'
-export { ChartBar } from './ChartBar'
-export { ChartLine } from './ChartLine'
+export { ChartComponent as Chart, IChartConfig } from './Chart'

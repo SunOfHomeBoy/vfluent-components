@@ -1,9 +1,7 @@
 export {
         vfluents,
         Button,
-        ChartArea,
-        ChartBar,
-        ChartLine,
+        Chart,
         Dashboard,
         Icon,
         NavBar,
