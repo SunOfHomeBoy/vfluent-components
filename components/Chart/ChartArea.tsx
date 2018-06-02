@@ -8,13 +8,12 @@ export class ChartArea extends ChartBase {
         @Provide() type: string = 'Bar'
 
         protected initConfigures(): any {
-                console.log(this.data)
                 return {
                         data: {
                                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                                 datasets: [{
                                         label: '# of Votes',
-                                        data: this.data || [12, 19, 3, 5, 2, 3],
+                                        data: this.data[0] || [12, 19, 3, 5, 2, 3],
                                         backgroundColor: [
                                                 'rgba(255, 99, 132, 0.2)',
                                                 'rgba(54, 162, 235, 0.2)',
@@ -32,6 +31,11 @@ export class ChartArea extends ChartBase {
                                                 'rgba(255, 159, 64, 1)'
                                         ],
                                         borderWidth: 1
+                                },
+                                {
+                                        label: '# of Votes0',
+                                        data: this.data[1] || [-12, -19, -3, -5, -2, -3],
+
                                 }]
                         },
                         options: {

@@ -3,11 +3,12 @@ import { Chart } from 'chart.js'
 import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import * as utils from '../utils'
+import { unwatchFile } from 'fs';
 
 @Component
 export class ChartBase extends vfluents {
 
-        @Prop() data: any[] // 圖表數據 可空 默認值: 空數組
+        @Prop() data: any[] // 圖表數據組 可空 默認值: 空數組
         @Provide() id: string
         @Provide() type: string
         @Prop() width: number
@@ -16,10 +17,14 @@ export class ChartBase extends vfluents {
         protected initConfigures(): any { }
 
         public component(h: CreateElement) {
-                console.log('this.chart=' + JSON.stringify(this.data))
                 if (this.chart) {
-                        console.log('ok11')
-                        this.chart.data.datasets = this.data
+                        if (this.data instanceof Array && this.data[0] instanceof Array) {
+                                for (let i = 0; i < this.data.length; i++) {
+                                        if (utils.empty(this.data[i]) === false) {
+                                                this.chart.data.datasets[i].data = this.data[i]
+                                        }
+                                }
+                        }
                         this.chart.update()
                 }
                 return (
