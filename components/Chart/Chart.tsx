@@ -4,20 +4,23 @@ import { Component, Prop, Provide } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import * as utils from '../utils'
 
-export interface IChartConfig {
+export interface IChart {
         label: string
         type?: string
         fill?: boolean | number | string
+        stack?: string
 }
 
 @Component
 export class ChartComponent extends vfluents {
-        @Prop() type: string // 圖表類型 非空 其中: Area | Bar | Line
+        @Prop() type: string // 圖表類型 非空 其中: Area | Bar | HorizontalBar | StackedBar | Line
         @Prop() labels: string[] // 標籤名數組 非空 默認值: 空數組
-        @Prop() config: IChartConfig[] // 數據集配置項 非空 默認值: 空數組
+        @Prop() config: IChart[] // 數據集配置項 非空 默認值: 空數組
         @Prop() data: number[][] // 數據集數據組 非空 默認值: 空數組
         @Prop() width: number // 相對可視寬度 可空 默認值: 1000
         @Prop() height: number // 相對可視高度 可空 默認值: 618
+        @Prop() title: string // 圖表標題 可空 默認值：空字符串
+        @Prop() options: any // 其他配置 可空 默認值： 空值
         @Provide() id: string
         @Provide() chart: any
         @Provide() allColors: any[] = [
@@ -44,7 +47,7 @@ export class ChartComponent extends vfluents {
                         if (this.data instanceof Array && this.data[0] instanceof Array) {
                                 for (let i = 0; i < this.data.length; i++) {
                                         if (utils.empty(this.data[i]) === false) {
-                                                this.chart.data.datasets[i].data = this.data[i]
+                                                //this.chart.data.datasets[i].data = this.data[i]
                                         }
                                 }
                         }
@@ -69,16 +72,30 @@ export class ChartComponent extends vfluents {
 
         public mounted() {
                 let configures: any = {
-                        type: String(this.type).toLowerCase(),
                         data: {
                                 labels: this.labels || [],
-                                datasets: this.config || (new Array(this.labels.length))
+                                datasets: []
                         },
-                        options: {}
+                        options: Object.assign({}, this.options || {})
+                }
+
+                switch (this.type) {
+                        case 'Bar':
+                                configures.type = 'bar'
+                                break
+
+                        case 'HorizontalBar':
+                                configures.type = 'horizontalBar'
+                                break
+
+                        case 'StackedBar':
+                                configures.type = 'bar'
+                                configures.options.scales = { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] }
+                                break
                 }
 
                 for (let i = 0; i < this.config.length; i++) {
-                        let buf: any = this.config[i] || {}
+                        let buf: any = Object.assign({}, this.config[i] || {})
 
                         buf.code = this.allColors[i % this.allColors.length]
                         buf.code[3] = 1 - 0.1 * (Math.floor(i / this.allColors.length) % 9)
@@ -91,6 +108,7 @@ export class ChartComponent extends vfluents {
                         switch (buf.type) {
                                 case 'area':
                                 case 'bar':
+                                case 'horizontalBar':
                                         buf.backgroundColor = buf.borderColor
                                         break
 
@@ -108,7 +126,13 @@ export class ChartComponent extends vfluents {
                                         break
                         }
 
-                        configures.data.datasets[i] = buf
+                        configures.data.datasets.push(buf)
+                }
+
+                if (utils.empty(this.title) === false) {
+                        configures.options.title = configures.options.title || {}
+                        configures.options.title.display = true
+                        configures.options.title.text = this.title
                 }
 
                 this.chart = new Chart(this.id, configures)

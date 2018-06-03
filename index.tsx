@@ -2,6 +2,7 @@ export {
         vfluents,
         Button,
         Chart,
+        IChart,
         Dashboard,
         Icon,
         NavBar,

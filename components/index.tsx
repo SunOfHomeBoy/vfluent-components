@@ -8,7 +8,7 @@
 import './styles/stylesheets.scss'
 export { vfluents } from './vfluents'
 export { Button } from './Button'
-export { Chart, IChartConfig } from './Chart'
+export { Chart, IChart } from './Chart'
 export { Dashboard } from './Dashboard'
 export { Icon } from './Icon'
 export { NavBar } from './NavBar'
