@@ -15,6 +15,16 @@
                 padding-bottom: 2rem;
                 padding-bottom: 1.5rem;
 
+                &.container-fluid {
+                        padding-left: 0;
+                        padding-right: 0;
+
+                        .row {
+                                margin-left: 0;
+                                margin-right: 0;
+                        }
+                }
+
                 h4 {
                         margin-top: 1rem;
                 }

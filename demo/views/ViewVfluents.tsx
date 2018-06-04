@@ -25,6 +25,7 @@ export default class ViewVfluents extends Dashboard {
                         {
                                 icon: 'Component', text: '常用組件', items: [
                                         { text: '按鈕Button', link: 'Button' },
+                                        { text: '圖表Chart', link: 'Chart' },
                                         { text: '圖標Icon', link: 'Icon' },
                                         { text: '導航欄NavBar', link: 'NavBar' },
                                         { text: '導航視圖NavigationView', link: 'NavigationView' },

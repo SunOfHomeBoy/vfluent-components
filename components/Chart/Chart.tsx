@@ -13,7 +13,7 @@ export interface IChart {
 
 @Component
 export class ChartComponent extends vfluents {
-        @Prop() type: string // 圖表類型 非空 其中: Area | Bar | HorizontalBar | StackedBar | Line
+        @Prop() type: string // 圖表類型 非空 其中: Area | Bar | HorizontalBar | StackedBar | Line | LineStep | LineCubic | LineDash | Point | PointRect | PointRot
         @Prop() labels: string[] // 標籤名數組 非空 默認值: 空數組
         @Prop() config: IChart[] // 數據集配置項 非空 默認值: 空數組
         @Prop() data: number[][] // 數據集數據組 非空 默認值: 空數組
@@ -43,16 +43,22 @@ export class ChartComponent extends vfluents {
         ]
 
         public component(h: CreateElement) {
+                console.log('okko')
                 if (this.chart) {
+                        console.log('ok')
+                        this.chart.data.labels = this.labels
+
                         if (this.data instanceof Array && this.data[0] instanceof Array) {
                                 for (let i = 0; i < this.data.length; i++) {
                                         if (utils.empty(this.data[i]) === false) {
-                                                //this.chart.data.datasets[i].data = this.data[i]
+                                                this.chart.data.datasets[i].data = this.data[i]
                                         }
                                 }
                         }
+
                         this.chart.update()
                 }
+
                 return (
                         <canvas
                                 id={this.id}
@@ -92,6 +98,28 @@ export class ChartComponent extends vfluents {
                                 configures.type = 'bar'
                                 configures.options.scales = { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] }
                                 break
+
+                        case 'Line':
+                        case 'LineStep':
+                        case 'LineCubic':
+                        case 'LineDash':
+                                configures.type = 'line'
+                                break
+
+                        case 'Point':
+                                configures.type = 'line'
+                                configures.options.elements = { point: { pointStyle: 'circle' } }
+                                break
+
+                        case 'PointRect':
+                                configures.type = 'line'
+                                configures.options.elements = { point: { pointStyle: 'rectRounded' } }
+                                break
+
+                        case 'PointRot':
+                                configures.type = 'line'
+                                configures.options.elements = { point: { pointStyle: 'rectRot' } }
+                                break
                 }
 
                 for (let i = 0; i < this.config.length; i++) {
@@ -101,28 +129,59 @@ export class ChartComponent extends vfluents {
                         buf.code[3] = 1 - 0.1 * (Math.floor(i / this.allColors.length) % 9)
 
                         buf.data = this.data[i] || (new Array(this.labels.length + 1).join('0').split(''))
-                        buf.type = buf.type || configures.type
+                        buf.type = buf.type || this.type
                         buf.borderWidth = buf.borderWidth || 1
                         buf.borderColor = `rgba(${buf.code.join(',')})`
 
                         switch (buf.type) {
                                 case 'area':
-                                case 'bar':
-                                case 'horizontalBar':
+                                case 'HorizontalBar':
+                                case 'Bar':
+                                case 'StackedBar':
+                                        buf.type = this.type === 'HorizontalBar' ? 'horizontalBar' : 'bar'
                                         buf.backgroundColor = buf.borderColor
                                         break
 
-                                case 'line':
-                                        buf.backgroundColor = 'rgba(0, 0, 0, 0)'
+                                case 'Line':
+                                case 'LineStep':
+                                case 'LineCubic':
+                                case 'LineDash':
+                                        if (buf.type === 'LineStep') {
+                                                buf.steppedLine = true
+                                        }
 
-                                        if (buf.fill && ['boolean', 'number'].indexOf(typeof (buf.fill)) !== -1) {
+                                        if (buf.type === 'LineCubic') {
+                                                buf.cubicInterpolationMode = 'monotone'
+                                        }
+
+                                        if (buf.type === 'LineDash') {
+                                                buf.borderDash = [5, 5]
+                                        }
+
+                                        buf.type = 'line'
+                                        buf.backgroundColor = 'rgba(0, 0, 0, 0)'
+                                        buf.pointBackgroundColor = `rgba(${buf.code.join(',')})`
+
+                                        if (buf.fill && ['boolean', 'number', 'string'].indexOf(typeof (buf.fill)) !== -1) {
                                                 if (typeof (buf.fill) === 'number' && buf.fill <= 1) {
                                                         buf.code[3] = buf.fill
                                                 }
 
                                                 buf.backgroundColor = `rgba(${buf.code.join(',')})`
-                                                buf.fill = true
+                                                buf.fill = typeof (buf.fill) === 'string' ? buf.fill : true
                                         }
+                                        break
+
+                                case 'Point':
+                                case 'PointRect':
+                                case 'PointRot':
+                                        buf = Object.assign(buf, {
+                                                type: 'line',
+                                                backgroundColor: `rgba(${buf.code.join(',')})`,
+                                                pointRadius: 10,
+                                                pointHoverRadius: 15,
+                                                showLine: false
+                                        })
                                         break
                         }
 
