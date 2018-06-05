@@ -4,7 +4,7 @@ import { vfluents, Button, Chart, TextBlock } from '../../components'
 import { ViewCommon } from '../components'
 import { theme } from '../config'
 import * as utils from '../../components/utils'
-const dataChartTimeSize: number = 128
+const dataChartTimeSize: number = 256
 
 @Component
 export default class ViewIcon extends ViewCommon {
