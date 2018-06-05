@@ -1,11 +1,11 @@
 import Vue, { CreateElement } from 'vue'
-import { Chart } from 'chart.js'
-import { Component, Prop, Provide } from 'vue-property-decorator'
+import { Component, Prop, Provide, Watch } from 'vue-property-decorator'
 import { vfluents } from '../vfluents'
 import * as utils from '../utils'
+import { Chart } from 'chart.js'
 
 export interface IChart {
-        label: string
+        label?: string
         type?: string
         fill?: boolean | number | string
         stack?: string
@@ -13,7 +13,7 @@ export interface IChart {
 
 @Component
 export class ChartComponent extends vfluents {
-        @Prop() type: string // 圖表類型 非空 其中: Area | Bar | HorizontalBar | StackedBar | Line | LineStep | LineCubic | LineDash | Point | PointRect | PointRot
+        @Prop() type: string // 圖表類型 非空 其中: 
         @Prop() labels: string[] // 標籤名數組 非空 默認值: 空數組
         @Prop() config: IChart[] // 數據集配置項 非空 默認值: 空數組
         @Prop() data: number[][] // 數據集數據組 非空 默認值: 空數組
@@ -22,7 +22,7 @@ export class ChartComponent extends vfluents {
         @Prop() title: string // 圖表標題 可空 默認值：空字符串
         @Prop() options: any // 其他配置 可空 默認值： 空值
         @Provide() id: string
-        @Provide() chart: any
+        @Provide() chart: Chart
         @Provide() allColors: any[] = [
                 [0x34, 0x98, 0xdb, 1],
                 [0x27, 0xae, 0x60, 1],
@@ -43,22 +43,6 @@ export class ChartComponent extends vfluents {
         ]
 
         public component(h: CreateElement) {
-                console.log('okko')
-                if (this.chart) {
-                        console.log('ok')
-                        this.chart.data.labels = this.labels
-
-                        if (this.data instanceof Array && this.data[0] instanceof Array) {
-                                for (let i = 0; i < this.data.length; i++) {
-                                        if (utils.empty(this.data[i]) === false) {
-                                                this.chart.data.datasets[i].data = this.data[i]
-                                        }
-                                }
-                        }
-
-                        this.chart.update()
-                }
-
                 return (
                         <canvas
                                 id={this.id}
@@ -100,10 +84,15 @@ export class ChartComponent extends vfluents {
                                 break
 
                         case 'Line':
-                        case 'LineStep':
-                        case 'LineCubic':
-                        case 'LineDash':
+                        case 'SteppedLine':
+                        case 'CubicLine':
+                        case 'DashedLine':
                                 configures.type = 'line'
+                                break
+
+                        case 'StackedLine':
+                                configures.type = 'line'
+                                configures.options.scales = { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] }
                                 break
 
                         case 'Point':
@@ -111,19 +100,28 @@ export class ChartComponent extends vfluents {
                                 configures.options.elements = { point: { pointStyle: 'circle' } }
                                 break
 
-                        case 'PointRect':
+                        case 'RectPoint':
                                 configures.type = 'line'
                                 configures.options.elements = { point: { pointStyle: 'rectRounded' } }
                                 break
 
-                        case 'PointRot':
+                        case 'RotPoint':
                                 configures.type = 'line'
                                 configures.options.elements = { point: { pointStyle: 'rectRot' } }
                                 break
+
+                        case 'Doughnut':
+                        case 'Pie':
+                                configures.type = this.type.toLowerCase()
+                                break
+
+                        case 'Radar':
+                                configures.type = 'radar'
+                                break
                 }
 
-                for (let i = 0; i < this.config.length; i++) {
-                        let buf: any = Object.assign({}, this.config[i] || {})
+                for (let i = 0; i < this.data.length; i++) {
+                        let buf: any = Object.assign({}, (this.config || [])[i] || {})
 
                         buf.code = this.allColors[i % this.allColors.length]
                         buf.code[3] = 1 - 0.1 * (Math.floor(i / this.allColors.length) % 9)
@@ -143,24 +141,26 @@ export class ChartComponent extends vfluents {
                                         break
 
                                 case 'Line':
-                                case 'LineStep':
-                                case 'LineCubic':
-                                case 'LineDash':
-                                        if (buf.type === 'LineStep') {
+                                case 'SteppedLine':
+                                case 'CubicLine':
+                                case 'DashedLine':
+                                case 'StackedLine':
+                                        if (buf.type === 'SteppedLine') {
                                                 buf.steppedLine = true
-                                        }
-
-                                        if (buf.type === 'LineCubic') {
+                                        } else if (buf.type === 'CubicLine') {
                                                 buf.cubicInterpolationMode = 'monotone'
-                                        }
-
-                                        if (buf.type === 'LineDash') {
+                                                buf.pointBorderColor = 'rgba(0, 0, 0, 0)'
+                                                buf.pointRadius = 0
+                                        } else if (buf.type === 'DashedLine') {
                                                 buf.borderDash = [5, 5]
+                                        } else if (buf.type === 'StackedLine') {
+                                                buf.fill = true
+                                        } else {
+                                                buf.pointBackgroundColor = `rgba(${buf.code.join(',')})`
                                         }
 
                                         buf.type = 'line'
                                         buf.backgroundColor = 'rgba(0, 0, 0, 0)'
-                                        buf.pointBackgroundColor = `rgba(${buf.code.join(',')})`
 
                                         if (buf.fill && ['boolean', 'number', 'string'].indexOf(typeof (buf.fill)) !== -1) {
                                                 if (typeof (buf.fill) === 'number' && buf.fill <= 1) {
@@ -173,8 +173,8 @@ export class ChartComponent extends vfluents {
                                         break
 
                                 case 'Point':
-                                case 'PointRect':
-                                case 'PointRot':
+                                case 'RectPoint':
+                                case 'RotPoint':
                                         buf = Object.assign(buf, {
                                                 type: 'line',
                                                 backgroundColor: `rgba(${buf.code.join(',')})`,
@@ -182,6 +182,24 @@ export class ChartComponent extends vfluents {
                                                 pointHoverRadius: 15,
                                                 showLine: false
                                         })
+                                        break
+
+                                case 'Doughnut':
+                                case 'Pie':
+                                        buf.type = this.type.toLowerCase()
+                                        buf.borderColor = 'rgba(0, 0, 0, 0)'
+                                        buf.backgroundColor = []
+                                        for (let j = 0; j < this.labels.length; j++) {
+                                                buf.code = this.allColors[j % this.allColors.length]
+                                                buf.code[3] = 1 - 0.1 * (Math.floor(j / this.allColors.length) % 9)
+                                                buf.backgroundColor.push(`rgba(${buf.code.join(',')})`)
+                                        }
+                                        break
+
+                                case 'Radar':
+                                        buf.type = 'radar'
+                                        buf.code[3] = 0.2
+                                        buf.backgroundColor = `rgba(${buf.code.join(',')})`
                                         break
                         }
 
@@ -195,5 +213,27 @@ export class ChartComponent extends vfluents {
                 }
 
                 this.chart = new Chart(this.id, configures)
+        }
+
+        @Watch('labels')
+        public onWatchLabels(val: any, old: any) { this.updateData() }
+
+        @Watch('data')
+        public onWatchData(val: any, old: any) { this.updateData() }
+
+        private updateData() {
+                if (this.chart) {
+                        this.chart.data.labels = this.labels
+
+                        if (this.data instanceof Array && this.data[0] instanceof Array) {
+                                for (let i = 0; i < this.data.length; i++) {
+                                        if (utils.empty(this.data[i]) === false) {
+                                                this.chart.data.datasets[i].data = this.data[i]
+                                        }
+                                }
+                        }
+
+                        this.chart.update()
+                }
         }
 }
