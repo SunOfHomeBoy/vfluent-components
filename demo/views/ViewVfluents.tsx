@@ -23,7 +23,7 @@ export default class ViewVfluents extends Dashboard {
                 this.menuItems = [
                         { icon: 'Dashboard', text: '儀表盤' },
                         {
-                                icon: 'Component', text: '常用組件', items: [
+                                icon: 'Component', text: '基礎組件', items: [
                                         { text: '按鈕Button', link: 'Button' },
                                         { text: '圖表Chart', link: 'Chart' },
                                         { text: '圖標Icon', link: 'Icon' },
@@ -31,6 +31,12 @@ export default class ViewVfluents extends Dashboard {
                                         { text: '導航視圖NavigationView', link: 'NavigationView' },
                                         { text: '標籤欄TabBar', 'link': 'TabBar' },
                                         { text: '文本TextBlock', link: 'TextBlock' }
+                                ]
+                        },
+                        {
+                                icon: 'Standard', text: '表單組件', items: [
+                                        { text: '表單Form', link: 'Form' },
+                                        { text: '表單視圖FormView', link: 'FormView' }
                                 ]
                         }
                 ]
