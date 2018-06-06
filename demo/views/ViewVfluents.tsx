@@ -36,7 +36,8 @@ export default class ViewVfluents extends Dashboard {
                         {
                                 icon: 'Standard', text: '表單組件', items: [
                                         { text: '表單Form', link: 'Form' },
-                                        { text: '表單視圖FormView', link: 'FormView' }
+                                        { text: '表單視圖FormView', link: 'FormView' },
+                                        { text: '輸入框Input', link: 'Input' }
                                 ]
                         }
                 ]
