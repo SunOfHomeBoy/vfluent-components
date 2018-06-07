@@ -53,10 +53,11 @@ export class vfluents extends Vue {
                 return document.documentElement.setAttribute('class', cls.replace(reg, `theme-${name}`))
         }
 
-        public static eventSafe(fn: any): Function {
+        public static eventSafe(fn: any, ...args: any[]): Function {
                 return (e: Event) => {
                         if (typeof (fn) === 'function') {
-                                fn()
+                                console.log(args)
+                                fn(e, ...args)
                         }
                 }
         }

@@ -1,5 +1,50 @@
 @import '../styles/variable.scss';
 
 .#{$themePrefix}input {
+        label {
+                color: $themeColorGray800;
+                font-size: 0.9375rem;
+                white-space: nowrap;
+        }
+        
+        input.form-control {
+                padding: 0 0 0 0.5rem;
+                font-size: 0.9375rem;
+                line-height: 2rem;
+                background-color: rgba(0, 0, 0, 0);
+                border: 0;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0.125rem inset;
 
+                &:hover {
+                        box-shadow: rgba(0, 0, 0, 0.4) 0 0 0 0.125rem inset;
+                }
+
+                &:focus {
+                        box-shadow: rgba($themeColorAccentLight, 0.8) 0 0 0 0.125rem inset;
+                }
+        }
+
+        &.d-flex {
+                label {
+                        margin-bottom: 0;
+                        padding-right: 0.25em;
+                        line-height: 2rem;
+                }
+
+                input.form-control {
+                        vertical-align: middle;
+                }
+        }
+}
+.#{$themePrefix}browser-theme-dark {
+        .#{$themePrefix}input {
+                input.form-control {
+                        box-shadow: rgba(255, 255, 255, 0.2) 0 0 0 0.125rem inset;
+
+                        &:hover {
+                                box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.125rem inset;
+                        }
+                }
+        }
 }
