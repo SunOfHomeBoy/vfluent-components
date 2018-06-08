@@ -56,7 +56,7 @@
 
         .#{$themePrefix}dashboard-main {
                 padding: 3rem 0;
-                background-color: $themeColorGray100;
+                background-color: $themeColorGray50;
 
                 &.#{$themePrefix}dashboard-bottom {
                         padding-bottom: 0 !important;
@@ -216,6 +216,7 @@
 
                                 .#{$themePrefix}btn {
                                         color: $themeColorGray600;
+                                        border-bottom-color: $themeColorGray200;
 
                                         .#{$themePrefix}icon {
                                                 color: $themeColorGray600;
@@ -225,7 +226,7 @@
                                         &:hover,
                                         &:focus,
                                         &:active {
-                                                background-color: $themeColorGray100;
+                                                background-color: $themeColorGray50;
                                         }
                                 }
                         }
@@ -443,6 +444,10 @@
                                 .#{$themePrefix}dashboard-main-inner {
                                         padding-top: 0;
                                         padding-bottom: 0;
+                                }
+
+                                .#{$themePrefix}btn {
+                                        border-bottom-color: $themeColorGray50 !important;
                                 }
                         }
                 }

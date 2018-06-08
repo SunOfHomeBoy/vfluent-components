@@ -8,6 +8,7 @@ export class vfluents extends Vue {
         public static themePrefix: string = 'vfluents-'
         public static useSVGElement: boolean = true
         public static iconElements: any = {}
+        public static signCrypto: string = '✱'
 
         @Prop() className: string
         protected innerHTML: any

@@ -8,11 +8,16 @@ import { theme } from '../config'
 export default class ViewInput extends ViewCommon {
         @Provide() name: string = 'Input'
         @Provide() description: string = '輸入框組件'
-        @Provide() model: any = { v0: 'asdf' }
+        @Provide() model: any = { binding: '' }
 
         public componentView(h: CreateElement) {
                 return (
                         <article>
+                                <h5>類型</h5>
+                                <section>
+                                        <Input type="Text" label="文本" placeholder="請輸入任意文本" />
+                                </section>
+                                <code class="language-html"></code>
                                 <h5>標籤</h5>
                                 <section>
                                         <Input label="普通標籤" />
@@ -26,11 +31,28 @@ export default class ViewInput extends ViewCommon {
                                         <Input label="右側對齊" labelWidth={12} labelAlign="Right" />
                                 </section>
                                 <code class="language-html"></code>
+                                <h5>樣式</h5>
+                                <section>
+                                        <Input data="普通字體樣式" />
+                                        <br />
+                                        <Input data="等寬字體樣式" monospace={true} />
+                                        <br />
+                                        <Input data="vfluents2018" monospace={true} type="Password" />
+                                </section>
+                                <code class="language-html"></code>
                                 <h5>數據綁定</h5>
                                 <section>
-                                        <Input label="輸入值：" labelWidth={0} eventInput={(e: any, v: string) => this.model.v0 = v} />
+                                        <Input
+                                                type="Password"
+                                                label="輸入值："
+                                                labelWidth={0}
+                                                data={this.model.binding}
+                                                placeholder={'請輸入數據'}
+                                                eventInput={(e: any, v: string) => this.model.binding = v}
+                                                eventChange={() => alert('Success Changed')}
+                                        />
                                         <br />
-                                        <TextBlock>輸出值：<strong>{this.model.v0}</strong></TextBlock>
+                                        <TextBlock>輸出值：<strong>{this.model.binding}</strong></TextBlock>
                                 </section>
                         </article>
                 )

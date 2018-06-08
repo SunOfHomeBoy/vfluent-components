@@ -1,17 +1,21 @@
 @import '../styles/variable.scss';
 
 .#{$themePrefix}input {
+        label, input.form-control {
+                font-size: 0.9375rem
+        }
+
         label {
-                color: $themeColorGray800;
-                font-size: 0.9375rem;
+                color: $themeColorGray600;
+                background-color: rgba(0, 0, 0, 0) !important;
                 white-space: nowrap;
         }
         
         input.form-control {
-                padding: 0 0 0 0.5rem;
-                font-size: 0.9375rem;
-                line-height: 2rem;
+                padding: 0 1em;
+                line-height: 3em;
                 background-color: rgba(0, 0, 0, 0);
+                vertical-align: baseline;
                 border: 0;
                 border-radius: 0;
                 box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 0.125rem inset;
@@ -29,11 +33,35 @@
                 label {
                         margin-bottom: 0;
                         padding-right: 0.25em;
-                        line-height: 2rem;
+                        line-height: 3em;
                 }
 
                 input.form-control {
                         vertical-align: middle;
+                }
+        }
+
+        &.#{$themePrefix}input-plain {
+                input.form-control,
+                input.form-control:hover,
+                input.form-control:focus {
+                        box-shadow: rgba(0, 0, 0, 0) 0 0 0 0.125rem inset !important;
+                }
+        }
+
+        &.#{$themePrefix}input-monospace {
+                input.form-control {
+                        font-family: $font-family-monospace;
+                        letter-spacing: 0.5em;
+                }
+        }
+}
+.#{$themePrefix}browser-theme-light {
+        .#{$themePrefix}input {
+                input.form-control {
+                        &:focus {
+                                box-shadow: rgba(0, 0, 0, 0.4) 0 0 0 0.125rem inset;
+                        }
                 }
         }
 }
@@ -44,6 +72,25 @@
 
                         &:hover {
                                 box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.125rem inset;
+                        }
+
+                        &:focus {
+                                box-shadow: rgba(255, 255, 255, 0.4) 0 0 0 0.125rem inset;
+                        }
+                }
+        }
+}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}input {
+
+                input.form-control {
+                        padding: 0 0 0 0.5em;
+                        line-height: 2rem;
+                }
+                
+                &.d-flex {
+                        label {
+                                line-height: 2rem;
                         }
                 }
         }

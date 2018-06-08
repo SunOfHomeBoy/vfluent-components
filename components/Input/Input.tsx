@@ -16,10 +16,13 @@ export class Input extends vfluents {
         @Prop() errmsg: string // 錯誤提示 可空 默認值：空字符串
         @Prop() prepend: any[] // 前置子元素 可空 默認值：空數組
         @Prop() append: any[] // 後置子元素 可空 默認值：空數組
+        @Prop() border: boolean // 顯示邊框 可空 默認值：TRUE
+        @Prop() monospace: boolean // 等寬字體 可空 默認值：FALSE
         @Prop() eventChange: any // 修改事件 可空 默認值：空值
         @Prop() eventInput: any // 輸入事件 可空 默認值：空值
-
-        @Provide() stateData: string
+        @Provide() dataModel: string
+        @Provide() dataViews: string
+        @Provide() invalidMessage: string
         public readonly allTypes: string[] = ['Password', 'Email', 'URL', 'Number', 'Range', 'Search', 'Color', 'Date', 'Time', 'Tel']
 
         public component(h: CreateElement) {
@@ -33,6 +36,12 @@ export class Input extends vfluents {
                                 this.allTypes.indexOf(this.type) !== -1
                                         ? vfluents.themePrefix + 'input-' + this.type.toLowerCase()
                                         : vfluents.themePrefix + 'input-text',
+                                this.border === false
+                                        ? vfluents.themePrefix + 'input-plain'
+                                        : '',
+                                this.monospace
+                                        ? vfluents.themePrefix + 'input-monospace'
+                                        : '',
                                 this.className
                         ])}>
                                 <label
@@ -49,22 +58,78 @@ export class Input extends vfluents {
                                         }}
                                 >{this.label}</label>
                                 <input
-                                        class="form-control"
-                                        type={this.allTypes.indexOf(this.type) !== -1 ? this.type.toLowerCase() : 'text'}
+                                        class={vfluents.cls([
+                                                'form-control',
+                                                utils.empty(this.invalidMessage) === false
+                                                        ? 'is-invalid'
+                                                        : ''
+                                        ])}
+                                        type={
+                                                this.allTypes.indexOf(this.type) !== -1
+                                                        ? this.type.toLowerCase()
+                                                        : 'text'
+                                        }
+                                        value={this.dataViews}
                                         name={this.name}
                                         placeholder={this.placeholder}
-                                        value={this.stateData}
                                         onInput={this.eventPreInput}
+                                        onChange={vfluents.eventSafe(this.eventChange)}
                                 />
+                                <div
+                                        class="invalid-feedback"
+                                        v-show={utils.empty(this.invalidMessage) === false}
+                                >{this.invalidMessage}</div>
                         </div >
                 )
         }
 
         public created() {
-                this.stateData = this.stateData || this.data || ''
+                this.dataModel = this.dataModel || this.data || ''
+                this.dataViews = this.formatData(this.dataModel)
         }
 
         public eventPreInput(e: any) {
-                this.stateData = e.target.value
+                let dataModel = e.target.value
+                console.log(dataModel)
+
+                if (this.filter instanceof RegExp || typeof (this.filter) === 'string') {
+                        this.invalidMessage = new RegExp(this.filter).test(dataModel) === false
+                                ? this.errmsg
+                                : ''
+                } else if (typeof (this.filter) === 'function') {
+                        let r = this.filter(dataModel)
+
+                        switch (typeof (r)) {
+                                case 'boolean':
+                                        this.invalidMessage = r === false
+                                                ? this.errmsg
+                                                : ''
+                                        break
+
+                                case 'string':
+                                        this.invalidMessage = r
+                                        break
+
+                                case 'undefined':
+                                        this.invalidMessage = ''
+                                        break
+                        }
+                } else if (utils.empty(dataModel) === false) {
+
+                }
+
+                this.dataViews = this.formatData(this.dataModel)
+                if (typeof (this.eventInput) === 'function') {
+                        this.eventInput(e, this.dataModel)
+                }
+        }
+
+        private formatData(data: string): string {
+                switch (this.type) {
+                        case 'Password':
+                                return data.replace(/./g, vfluents.signCrypto)
+                }
+
+                return data
         }
 }
