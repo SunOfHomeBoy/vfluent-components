@@ -84,21 +84,21 @@
 
         &.#{$themePrefix}input-large {
                 input.form-control {
-                        padding: 0.5em;
+                        padding: 1.5em 0.5em;
                 }
 
                 .#{$themePrefix}input-inner.d-flex label {
-                        line-height: 2em;
+                        line-height: 4em;
                 }
         }
 
         &.#{$themePrefix}input-huge {
                 input.form-control {
-                        padding: 0.5em;
+                        padding: 2em 0.5em;
                 }
 
                 .#{$themePrefix}input-inner.d-flex label {
-                        line-height: 2em;
+                        line-height: 5em;
                 }
         }
 }
