@@ -5,8 +5,6 @@
                 font-size: 0.9375rem
         }
 
-        
-
         label {
                 color: $themeColorGray600;
                 background-color: rgba(0, 0, 0, 0) !important;
@@ -15,8 +13,8 @@
         
         input.form-control {
                 width: 100% !important;
-                padding: 0 1em;
-                line-height: 3em;
+                padding: 1em;
+                line-height: 1em;
                 background-color: rgba(0, 0, 0, 0);
                 vertical-align: baseline;
                 border: 0;
@@ -73,6 +71,36 @@
                         letter-spacing: 0.5em;
                 }
         }
+
+        &.#{$themePrefix}input-small {
+                input.form-control {
+                        padding: 0.5em;
+                }
+
+                .#{$themePrefix}input-inner.d-flex label {
+                        line-height: 2em;
+                }
+        }
+
+        &.#{$themePrefix}input-large {
+                input.form-control {
+                        padding: 0.5em;
+                }
+
+                .#{$themePrefix}input-inner.d-flex label {
+                        line-height: 2em;
+                }
+        }
+
+        &.#{$themePrefix}input-huge {
+                input.form-control {
+                        padding: 0.5em;
+                }
+
+                .#{$themePrefix}input-inner.d-flex label {
+                        line-height: 2em;
+                }
+        }
 }
 .#{$themePrefix}browser-theme-light {
         .#{$themePrefix}input {
@@ -101,13 +129,23 @@
 @include media-breakpoint-up(md) {
         .#{$themePrefix}input {
                 input.form-control {
-                        padding: 0 0.5em;
-                        line-height: 2rem;
+                        padding: 0.625rem;
+                        line-height: 1rem;
                 }
                 
                 .#{$themePrefix}input-inner.d-flex {
                         label {
-                                line-height: 2rem;
+                                line-height: 2.25rem;
+                        }
+                }
+
+                &.#{$themePrefix}input-small {
+                        input.form-control {
+                                padding: 0.25rem;
+                        }
+        
+                        .#{$themePrefix}input-inner.d-flex label {
+                                line-height: 1.5rem;
                         }
                 }
         }

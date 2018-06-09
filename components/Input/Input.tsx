@@ -6,6 +6,7 @@ import * as utils from '../utils'
 @Component
 export class Input extends vfluents {
         @Prop() type: string // 輸入框類型 可空 默認值：Text 可選值：Text | Password | Email | URL | Number | Search | Tel
+        @Prop() size: string // 輸入框尺寸 可空 默認值: Default 可選值：Default | Small | Large | Huge
         @Prop() name: string // 輸入框名稱 可空 默認值：空字符串
         @Prop() label: string // 輸入框標籤 可空 默認值：空字符串
         @Prop() labelWidth: number // 標籤寬度 可空 默認值：空值 註釋：空值即獨佔一行
@@ -42,6 +43,9 @@ export class Input extends vfluents {
                                 this.allTypes.indexOf(this.type) !== -1
                                         ? vfluents.themePrefix + 'input-' + this.type.toLowerCase()
                                         : vfluents.themePrefix + 'input-text',
+                                ['Small', 'Large', 'Huge'].indexOf(this.size) !== -1
+                                        ? vfluents.themePrefix + 'input-' + this.size.toLowerCase()
+                                        : '',
                                 this.border === false
                                         ? vfluents.themePrefix + 'input-plain'
                                         : '',

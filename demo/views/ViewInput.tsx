@@ -46,17 +46,18 @@ export default class ViewInput extends ViewCommon {
                                 <code class="language-html"></code>
                                 <h5>樣式</h5>
                                 <section>
-                                        <Input data="普通字體樣式" />
-                                        <br />
-                                        <Input data="等寬字體樣式" monospace={true} />
-                                        <br />
-                                        <Input data="vfluents2018" monospace={true} type="Password" />
+                                        <Input placeholder="普通字體樣式" />
+                                        <Input placeholder="等寬字體樣式" monospace={true} />
+                                        <Input placeholder="無邊框樣式" border={false} />
+                                        <Input placeholder="小型尺寸" size="Small" />
+                                        <Input placeholder="普通尺寸" size="Default" />
+                                        <Input placeholder="較大尺寸" size="Large" />
+                                        <Input placeholder="大型尺寸" size="Huge" />
                                 </section>
                                 <code class="language-html"></code>
                                 <h5>數據綁定</h5>
                                 <section>
                                         <Input
-                                                type="Password"
                                                 label="輸入值："
                                                 labelWidth={0}
                                                 data={this.model.binding}
