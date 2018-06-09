@@ -5,6 +5,8 @@
                 font-size: 0.9375rem
         }
 
+        
+
         label {
                 color: $themeColorGray600;
                 background-color: rgba(0, 0, 0, 0) !important;
@@ -12,6 +14,7 @@
         }
         
         input.form-control {
+                width: 100% !important;
                 padding: 0 1em;
                 line-height: 3em;
                 background-color: rgba(0, 0, 0, 0);
@@ -27,17 +30,32 @@
                 &:focus {
                         box-shadow: rgba($themeColorAccentLight, 0.8) 0 0 0 0.125rem inset;
                 }
+
+                &.#{$themePrefix}input-invalid,
+                &.#{$themePrefix}input-invalid:hover,
+                &.#{$themePrefix}input-invalid:focus {
+                        width: 100%;
+                        box-shadow: rgba($themeColorPink, 0.8) 0 0 0 0.125rem inset;
+                }
         }
 
-        &.d-flex {
-                label {
-                        margin-bottom: 0;
-                        padding-right: 0.25em;
-                        line-height: 3em;
-                }
+        .invalid-feedback {
+                display: block;
+        }
 
-                input.form-control {
-                        vertical-align: middle;
+        .#{$themePrefix}input-inner {
+                width: 100%;
+
+                &.d-flex {
+                        label {
+                                margin-bottom: 0;
+                                padding-right: 0.25em;
+                                line-height: 3em;
+                        }
+
+                        input.form-control {
+                                vertical-align: middle;
+                        }
                 }
         }
 
@@ -82,13 +100,12 @@
 }
 @include media-breakpoint-up(md) {
         .#{$themePrefix}input {
-
                 input.form-control {
-                        padding: 0 0 0 0.5em;
+                        padding: 0 0.5em;
                         line-height: 2rem;
                 }
                 
-                &.d-flex {
+                .#{$themePrefix}input-inner.d-flex {
                         label {
                                 line-height: 2rem;
                         }

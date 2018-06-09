@@ -3,6 +3,7 @@ import { Component, Prop, Provide, Watch, Model } from 'vue-property-decorator'
 import { vfluents, Button, TextBlock, Form, Input } from '../../components'
 import { ViewCommon } from '../components'
 import { theme } from '../config'
+import { mixins } from 'vue-class-component';
 
 @Component
 export default class ViewInput extends ViewCommon {
@@ -16,6 +17,18 @@ export default class ViewInput extends ViewCommon {
                                 <h5>類型</h5>
                                 <section>
                                         <Input type="Text" label="文本" placeholder="請輸入任意文本" />
+                                        <br />
+                                        <Input type="Password" label="密码" placeholder="密碼長度爲6-20個字符,由英文字母、數字及下劃線組成且區分大小寫" errmsg="密碼長度爲6-20個字符,由英文字母、數字及下劃線組成且區分大小寫" />
+                                        <br />
+                                        <Input type="Email" label="Email" placeholder="請輸入正確的電子郵箱地址" errmsg="請輸入正確的電子郵箱地址" />
+                                        <br />
+                                        <Input type="URL" label="URL" placeholder="比如: https://hjboss.github.io/vfluents" errmsg="請輸入正確的網頁地址" />
+                                        <br />
+                                        <Input type="Number" label="數字" placeholder="僅允許輸入0-9等阿拉伯數字" />
+                                        <br />
+                                        <Input type="Search" label="搜索" placeholder="請輸入搜索關鍵詞" eventSearch={(e: any, keywords: string) => alert(keywords)} />
+                                        <br />
+                                        <Input type="Tel" label="電話" placeholder="請填寫您的電話號碼" />
                                 </section>
                                 <code class="language-html"></code>
                                 <h5>標籤</h5>
