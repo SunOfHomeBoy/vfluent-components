@@ -6,7 +6,7 @@
                 "ui-components",
                 "vue",
                 "fluent",
-                "bootstrap4"
+                "purecss"
         ],
         "private": false,
         "author": "hjboss <hongjiangproject@gmail.com>",
@@ -29,6 +29,7 @@
                 "chart.js": "^2.7.2",
                 "init-browsers": "^1.2.20",
                 "mixin-animations": "^1.5.5",
+                "purecss": "^1.0.0",
                 "vtsx.d": "^1.1.1",
                 "vue": "^2.5.16",
                 "vue-router": "^3.0.1",
