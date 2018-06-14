@@ -124,7 +124,7 @@ module.exports = function (webpackConfig) {
                                         loader: ExtractTextPlugin.extract([
                                                 `css-loader?sourceMap&-restructuring${clsHash}&-autoprefixer`,
                                                 'postcss-loader',
-                                                `sass-loader?{'data':'${cfgThemeSass.join('')}'}`
+                                                `sass-loader?{'data':'${cfgThemeSass.join('')}','outputStyle':'compressed'}`
                                         ])
                                 },
                                 {

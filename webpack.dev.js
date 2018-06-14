@@ -4,5 +4,6 @@ module.exports = webpackConfigure({
         entry: {
                 'vfluents': 'vfluents.tsx'
         },
-        rootDir: 'demo'
+        rootDir: 'demo',
+        distDir: 'demo/dist'
 })
