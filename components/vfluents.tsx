@@ -2,11 +2,11 @@ import { Vue, Component, CreateElement, Props } from 'vue-component-decorator'
 import initBrowsers from 'init-browsers'
 import utils from './utils'
 
-export class vfluents<T> extends Vue {
+export class vfluents extends Vue {
         public static themePrefix: string = 'vfluents-'
         public static useSVGElement: boolean = true
 
-        @Props() readonly props: T
+        @Props() public props: { [nane: string]: any }
         public render(h: CreateElement) { }
 
         public static init(configures: any = {}) {
@@ -27,6 +27,10 @@ export class vfluents<T> extends Vue {
                                 }
                         })
                 }
+        }
+
+        protected innerComponent(): any {
+                return (this.$options as any)._renderChildren || []
         }
 
         protected static cls(configures: any[] = []): string {

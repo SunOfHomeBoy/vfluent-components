@@ -1,0 +1,10 @@
+@import '~mixin-animations/sass/touchinL';
+@import '~mixin-animations/sass/touchoutL';
+@import './styles/variable.scss'
+
+.#{$themePrefix}dashboard {
+
+}
+@media screen and (min-width: 48em) {
+        .#{$themePrefix}dashboard {}
+}

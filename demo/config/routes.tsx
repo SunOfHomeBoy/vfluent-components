@@ -1,4 +1,4 @@
-import Vfluents from '../views/Vfluents'
+import { Vfluents } from '../views/Vfluents'
 
 export const routes: any[] = [
         {
