@@ -1,0 +1,23 @@
+@mixin media-breakpoint-up($name) {
+        $breakpoint: (
+                sm: 35.5em,
+                md: 48.0em,
+                lg: 64.0em,
+                xl: 80.0em
+        );
+
+        @media screen and (min-width: map-get($breakpoint, $name)) {
+                @content;
+        }
+}
+
+@mixin border-shadow($type, $color, $size: 1px) {
+        $border: (
+                top: 0 -$size 0 $color,
+                right: $size 0 0 $color,
+                bottom: 0 $size 0 $color,
+                left: -$size 0 0 $color
+        );
+
+        box-shadow: map-get($border, $type);
+}

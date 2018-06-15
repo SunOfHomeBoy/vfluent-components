@@ -1,10 +1,85 @@
 @import '~mixin-animations/sass/touchinL';
 @import '~mixin-animations/sass/touchoutL';
-@import './styles/variable.scss'
+@import './variable.scss';
 
 .#{$themePrefix}dashboard {
+        width: 100vw;
+        overflow: hidden;
+        font-family: $themeFontFamilySansserif !important;
+        background-color: $themeColorGray100;
 
+        &, .#{$themePrefix}dashboard-side, .#{$themePrefix}dashboard-main {
+                height: 100vh;
+        }
+
+        .#{$themePrefix}dashboard-side {
+                display: none;
+                background-color: $themeColorGray100;
+        }
+
+        .#{$themePrefix}dashboard-main {
+                .#{$themePrefix}mask {
+                        display: none;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-collapsed {
+                .#{$themePrefix}dashboard-side {
+                        display: block;
+                        position: absolute;
+                        z-index: $themeZindexFixed * 2;
+                        @include touchinL($themeAnimation);
+                }
+
+                .#{$themePrefix}dashboard-main {
+                        .#{$themePrefix}mask {
+                                display: block;
+                        }
+                }
+        }
+
+        &.#{$themePrefix}dashboard-uncollapsed {
+                .#{$themePrefix}dashboard-side {
+                        display: block;
+                        position: absolute;
+                        z-index: $themeZindexFixed * 2;
+                        @include touchoutL($themeAnimation);
+                }
+        }
 }
-@media screen and (min-width: 48em) {
-        .#{$themePrefix}dashboard {}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}dashboard {
+                background-color: $themeColorWhite;
+
+                .#{$themePrefix}dashboard-side {
+                        @include border-shadow(right, $themeColorGray200);
+                }
+
+                &.#{$themePrefix}dashboard-collapsed {
+                        .#{$themePrefix}dashboard-side {
+                                display: block;
+                                position: relative;
+                                max-width: 3rem;
+                                animation: none;
+                                z-index: auto;
+                        }
+
+                        .#{$themePrefix}dashboard-main {
+                                max-width: 100%;
+                                flex: auto;
+
+                                .#{$themePrefix}mask {
+                                        display: none !important;
+                                }
+                        }
+                }
+        
+                &.#{$themePrefix}dashboard-uncollapsed {
+                        .#{$themePrefix}dashboard-side {
+                                position: relative;
+                                animation: none;
+                                z-index: auto;
+                        }
+                }
+        }
 }

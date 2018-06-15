@@ -1,7 +1,9 @@
+@import './mixins.scss';
 $themePrefix: 'vfluents-';
 $themeAnimation: 0.375s !default;
 $themeColorWeight: 6.25% !default;
-$themeFontFamily: 'Segoe UI', SegoeUI, 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$themeFontFamilySansserif: 'Segoe UI', SegoeUI, 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$themeFontFamilyMonospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 
 $themeColorBlue:    #0078d7 !default;
 $themeColorIndigo:  #3498db !default;
@@ -25,6 +27,13 @@ $themeColorGray700: #616161 !default;
 $themeColorGray800: #424242 !default;
 $themeColorGray900: #212121 !default;
 $themeColorBlack:   #000000 !default;
-
 $themeColorAccentLight: #00aff0 !default;
 $themeColorAccentDark: darken($themeColorAccentLight, $themeColorWeight) !default;
+
+$themeZindexDropdown:      1000 !default;
+$themeZindexSticky:        1020 !default;
+$themeZindexFixed:         1030 !default;
+$themeZindexModalBackdrop: 1040 !default;
+$themeZindexModal:         1050 !default;
+$themeZindexPopover:       1060 !default;
+$themeZindexTooltip:       1070 !default;

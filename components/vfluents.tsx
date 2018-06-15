@@ -6,7 +6,7 @@ export class vfluents extends Vue {
         public static themePrefix: string = 'vfluents-'
         public static useSVGElement: boolean = true
 
-        @Props() public props: { [nane: string]: any }
+        @Props() public readonly props: { [nane: string]: any }
         public render(h: CreateElement) { }
 
         public static init(configures: any = {}) {
