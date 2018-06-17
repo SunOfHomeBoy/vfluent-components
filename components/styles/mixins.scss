@@ -1,9 +1,10 @@
 @mixin media-breakpoint-up($name) {
         $breakpoint: (
-                sm: 35.5em,
-                md: 48.0em,
-                lg: 64.0em,
-                xl: 80.0em
+                sm: 35.5rem,
+                md: 48.0rem,
+                lg: 64.0rem,
+                xl: 80.0rem,
+                hg: 120.0rem
         );
 
         @media screen and (min-width: map-get($breakpoint, $name)) {

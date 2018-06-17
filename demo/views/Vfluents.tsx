@@ -5,7 +5,7 @@ import { theme } from '../config'
 @Component
 export class Vfluents extends Dashboard {
         public configures() {
-                this.props.size = 'Small'
+                this.props.size = 'Huge'
                 this.props.collapsed = false
                 this.props.brandLogo = 'Hierarchy'
                 this.props.brandName = 'vFluents'

@@ -10,6 +10,7 @@
 
         &, .#{$themePrefix}dashboard-side, .#{$themePrefix}dashboard-main {
                 height: 100vh;
+                box-sizing: border-box;
         }
 
         .#{$themePrefix}dashboard-side {
@@ -18,8 +19,33 @@
         }
 
         .#{$themePrefix}dashboard-main {
+                padding: 3rem 0;
+
                 .#{$themePrefix}mask {
                         display: none;
+                }
+
+                .#{$themePrefix}dashboard-main-inner {
+                        height: 100%;
+                        overflow: hidden;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-small {
+                .#{$themePrefix}dashboard-main {
+                        padding: 2rem 0;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-large {
+                .#{$themePrefix}dashboard-main {
+                        padding: 4rem 0;
+                }
+        }
+
+        &.#{$themePrefix}dashboard-huge {
+                .#{$themePrefix}dashboard-main {
+                        padding: 5rem 0;
                 }
         }
 
@@ -52,7 +78,11 @@
                 background-color: $themeColorWhite;
 
                 .#{$themePrefix}dashboard-side {
-                        @include border-shadow(right, $themeColorGray200);
+                        @include border-shadow(right, $themeColorGray300);
+                }
+
+                .#{$themePrefix}dashboard-main {
+                        flex: auto;
                 }
 
                 &.#{$themePrefix}dashboard-collapsed {
@@ -65,11 +95,26 @@
                         }
 
                         .#{$themePrefix}dashboard-main {
-                                max-width: 100%;
-                                flex: auto;
-
                                 .#{$themePrefix}mask {
                                         display: none !important;
+                                }
+                        }
+
+                        &.#{$themePrefix}dashboard-small {
+                                .#{$themePrefix}dashboard-side {
+                                        max-width: 2rem;
+                                }
+                        }
+                
+                        &.#{$themePrefix}dashboard-large {
+                                .#{$themePrefix}dashboard-side {
+                                        max-width: 4rem;
+                                }
+                        }
+                
+                        &.#{$themePrefix}dashboard-huge {
+                                .#{$themePrefix}dashboard-side {
+                                        max-width: 5rem;
                                 }
                         }
                 }
@@ -80,6 +125,13 @@
                                 animation: none;
                                 z-index: auto;
                         }
+                }
+        }
+}
+@include media-breakpoint-up(hg) {
+        .#{$themePrefix}dashboard {
+                .#{$themePrefix}dashboard-side {
+                        max-width: 20rem;
                 }
         }
 }

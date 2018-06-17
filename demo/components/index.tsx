@@ -1,1 +1,1 @@
-export default {}
+export { ViewComponent } from './ViewComponent'
