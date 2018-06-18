@@ -1,5 +1,6 @@
 import { Vfluents } from '../views/Vfluents'
-import { ViewTextBlock } from '../views/ViewTextBlock'
+import { ViewIcon } from '../views/ViewIcon'
+import { ViewTypography } from '../views/ViewTypography'
 
 export const routes: any[] = [
         {
@@ -7,8 +8,12 @@ export const routes: any[] = [
                 component: Vfluents,
                 children: [
                         {
-                                path: 'TextBlock',
-                                component: ViewTextBlock
+                                path: 'Icon',
+                                component: ViewIcon
+                        },
+                        {
+                                path: 'Typography',
+                                component: ViewTypography
                         }
                 ]
         }

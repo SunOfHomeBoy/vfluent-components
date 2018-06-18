@@ -1,29 +1,68 @@
 @import '../../components/styles/variable.scss';
 
 .#{$themePrefix}view-component {
-        padding: 0.75rem 1rem;
+        padding: 0 1rem;
         background-color: $themeColorWhite;
 
         .#{$themePrefix}view-component-header {
-                small {
-                        display: block;
-                        color: $themeColorGray600;
-                        font-size: 1.25rem;
-                        line-height: 1.75rem;
-                        font-weight: 200;
-                }
+                margin-top: 0;
+        }
+
+        .#{$themePrefix}view-component-comment {
+                margin-bottom: 0;
         }
 
         article {
-                section, code {
-                        display: block;
-                        padding: 2.5rem 1.25rem;
-                        border: 1px solid $themeColorGray300;
-                        overflow: auto;
+                padding-bottom: 0.625rem;
+
+                dfn {
+                        margin: 1em 0.25em 0.25em 0.25em;
                 }
 
-                code {
-                        border-top: 0;
+                samp {
+                        border-bottom: 0;
+
+                        table {
+                                width: 100%;
+
+                                th, td {
+                                        padding: 0 0.3125rem;
+                                        vertical-align: middle;
+                                }
+
+                                th {
+                                        color: $themeColorGray700;
+                                        font-weight: normal;
+                                        line-height: 3em;
+                                        text-align: left;
+
+                                        p {
+                                                color: $themeColorGray700;
+                                        }
+                                }
+                        }
+                }
+
+                table.attrs {
+                        width: 100%;
+                        min-width: 50rem;
+
+                        tr {
+                                border-bottom: 1px solid $themeColorGray300;
+                        }
+
+                        th, td {
+                                padding: 0.5rem 0.75rem;
+                                font-size: 0.9375rem;
+                                line-height: 1.25rem;
+                                font-weight: normal;
+                                text-align: center;
+                                vertical-align: middle;
+                        }
+
+                        td {
+                                color: $themeColorGray600;
+                        }
                 }
         }
 }

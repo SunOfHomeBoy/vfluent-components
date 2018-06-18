@@ -1,18 +1,14 @@
 @import './variable.scss';
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-        margin: 0;
+// 標題元素樣式
+h1, h2, h3, h4, h5, h6 {
+        margin: 0.625rem 0;
         font-family: $themeFontFamilySansserif;
-        text-align: left;
+        color: $themeColorGray800;
+        white-space: nowrap;
 }
 
 h1 {
-        color: $themeColorGray800;
         font-size: 2.875rem;
         line-height: 3.5rem;
         font-weight: lighter;
@@ -24,6 +20,197 @@ h2 {
         font-weight: lighter;
 }
 
-code {
+h3 {
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+        font-weight: lighter;
+}
+
+h4 {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        font-weight: lighter;
+}
+
+h5 {
+        font-size: 0.9375rem;
+        line-height: 1.25rem;
+        font-weight: normal;
+}
+
+h6 {
+        font-size: 0.75rem;
+        line-height: 0.875rem;
+        font-weight: normal;
+}
+
+// 代碼元素樣式
+code, samp {
+        display: block;
+        position: relative;
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        color: $themeColorGray600;
+        font-family: $themeFontFamilyMonospace !important;
+        font-size: 0.9375rem;
+        line-height: 1.25rem;
+        font-weight: normal;
         background-color: $themeColorGray50;
+        border: 1px solid $themeColorGray300;
+        overflow: auto;
+
+        &::before {
+                content: 'CODE';
+                position: absolute;
+                top: 0.5em;
+                left: 0.75em;
+                color: $themeColorGray400;
+                font-size: 0.75rem;
+        }
+
+        p {
+                font-family: $themeFontFamilyMonospace !important;
+                white-space: nowrap;
+        }
+
+        .tags, .attr, .info, .text {
+                margin-left: 0;
+                margin-right: 0;
+        }
+
+        .tags {
+                color: $themeColorBlue;
+        }
+
+        .attr {
+                color: $themeColorCyan;
+                padding-left: 0.5em;
+        }
+
+        .info {
+                color: $themeColorPink;
+        }
+
+        .text {
+                color: $themeColorGray600;
+        }
+}
+
+samp {
+        background-color: $themeColorWhite;
+
+        &::before {
+                content: 'EXAMPLE';
+        }
+
+        p {
+                white-space: normal;
+        }
+}
+
+// 段落元素樣式
+p {
+        margin: 0.625rem 0;
+        font-family: $themeFontFamilySansserif;
+        font-size: 0.9375rem;
+        line-height: 1.25rem;
+        font-weight: normal;
+}
+
+small, span, strong, em, mark, dfn, del, ins, abbr {
+        display: inline-block;
+        margin: auto 0.25em;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+}
+
+small {
+        font-size: 0.8em;
+}
+
+strong {
+        color: $themeColorGray800;
+}
+
+mark {
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+        color: $themeColorWhite;
+        background-color: $themeColorBlue;
+}
+
+dfn {
+        color: $themeColorGray800;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        font-weight: normal;
+        font-style: normal;
+}
+
+del {
+        text-decoration: line-through;
+}
+
+abbr, ins {
+        font-style: italic;
+        text-decoration: underline;
+}
+
+// 引用文本樣式
+blockquote {
+        margin: 0.9375rem 0;
+        padding: 0.75rem 1.25rem;
+        background-color: $themeColorGray50;
+        border-right: 0.625rem solid $themeColorGray400;
+
+        p, footer {
+                text-align: right !important;
+        }
+
+        p {
+                color: $themeColorGray800;
+                font-size: 1.125rem;
+                line-height: 1.5rem;
+        }
+
+        footer {
+                color: $themeColorGray500;
+                font-style: italic;
+
+                &::after {
+                        content: ' —';
+                }
+        }
+}
+
+// 底部文本樣式
+footer {
+        color: $themeColorGray600;
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+        font-weight: normal;
+        text-align: center;
+
+        a {
+                display: inline-block;
+                position: relative;
+                margin: 0 0.5rem;
+                color: $themeColorBlue;
+                text-decoration: none;
+                cursor: pointer;
+
+                &::before {
+                        content: ' ';
+                        position: absolute;
+                        left: -0.65em;
+                        top: 0.36em;
+                        bottom: 0.36em;
+                        border-left: 1px solid $themeColorGray300;
+                        background-color: $themeColorGray600;
+                }
+
+                &:first-child::before {
+                        border-left: 0;
+                }
+        }
 }
