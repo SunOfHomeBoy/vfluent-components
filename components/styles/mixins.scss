@@ -12,14 +12,15 @@
         }
 }
 
-@mixin border-shadow($type, $color, $size: 1px) {
+@mixin border-shadow($type, $color: rgba(0, 0, 0, 0), $size: 1px) {
         $border: (
                 top: 0 -$size 0 $color,
                 right: $size 0 0 $color,
                 bottom: 0 $size 0 $color,
                 left: -$size 0 0 $color,
                 all: 0 0 $size $size $color inset,
-                btn: 0 0 0.2rem 0.2rem rgba($color, 0.5)
+                btn: 0 0 0.2rem 0.2rem rgba($color, 0.5),
+                none: none
         );
 
         box-shadow: map-get($border, $type);

@@ -3,24 +3,32 @@
 .#{$themePrefix}btn {
         position: relative;
         height: 3rem;
-        padding: 0.75rem 1rem;
+        padding: 1rem 1rem;
         color: $themeColorGray600;
-        font-family: $themeFontFamilySansserif;
         background-color: $themeColorGray200;
-  
+        font-family: $themeFontFamilySansserif;
+        font-size: 0.9375rem;
+        line-height: 1rem !important;
+        letter-spacing: 0.01em;
 
-        .#{$themePrefix}btn-text  
-                font-size: 1rem;
-                line-height: 1.5rem;
-                font-weight: normal;
-        }
-
+        &.#{$themePrefix}btn-radius { border-radius: 0.25rem }
+        &.#{$themePrefix}btn-circle { border-radius: 50% }
+        
         &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
                 background-color: $themeColorGray300;
         }
 
         &:active, &.#{$themePrefix}btn-active {
                 @include border-shadow(btn, $themeColorGray200);
+        }
+
+        &.#{$themePrefix}btn-outline {
+                background-color: rgba(255, 255, 255, 0);
+                @include border-shadow(all, $themeColorGray200);
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: $themeColorGray300;
+                }
         }
 
         &.#{$themePrefix}btn-primary {
@@ -33,6 +41,16 @@
 
                 &:active, &.#{$themePrefix}btn-active {
                         @include border-shadow(btn, $themeColorAccentDark);
+                }
+        }
+        &.#{$themePrefix}btn-primary.#{$themePrefix}btn-outline {
+                color: $themeColorAccentDark;
+                background-color: rgba(255, 255, 255, 0);
+                @include border-shadow(all, rgba($themeColorAccentDark, 0.5));
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        color: $themeColorWhite;
+                        background-color: $themeColorAccentDark;
                 }
         }
 
@@ -48,6 +66,16 @@
                         @include border-shadow(btn, $themeColorAccentLight);
                 }
         }
+        &.#{$themePrefix}btn-secondary.#{$themePrefix}btn-outline {
+                color: $themeColorAccentLight;
+                background-color: rgba(255, 255, 255, 0);
+                @include border-shadow(all, rgba($themeColorAccentLight, 0.5));
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        color: $themeColorWhite;
+                        background-color: $themeColorAccentLight;
+                }
+        }
 
         &.#{$themePrefix}btn-success {
                 color: $themeColorWhite;
@@ -59,6 +87,16 @@
 
                 &:active, &.#{$themePrefix}btn-active {
                         @include border-shadow(btn, $themeColorTeal);
+                }
+        }
+        &.#{$themePrefix}btn-success.#{$themePrefix}btn-outline {
+                color: $themeColorGreen;
+                background-color: rgba(255, 255, 255, 0);
+                @include border-shadow(all, rgba($themeColorGreen, 0.5));
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        color: $themeColorWhite;
+                        background-color: $themeColorGreen;
                 }
         }
 
@@ -74,6 +112,16 @@
                         @include border-shadow(btn, $themeColorRed);
                 }
         }
+        &.#{$themePrefix}btn-danger.#{$themePrefix}btn-outline {
+                color: $themeColorPink;
+                background-color: rgba(255, 255, 255, 0);
+                @include border-shadow(all, rgba($themeColorPink, 0.5));
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        color: $themeColorWhite;
+                        background-color: $themeColorPink;
+                }
+        }
 
         &.#{$themePrefix}btn-warning {
                 color: $themeColorWhite;
@@ -85,6 +133,16 @@
 
                 &:active, &.#{$themePrefix}btn-active {
                         @include border-shadow(btn, $themeColorOrange);
+                }
+        }
+        &.#{$themePrefix}btn-warning.#{$themePrefix}btn-outline {
+                color: $themeColorOrange;
+                background-color: rgba(255, 255, 255, 0);
+                @include border-shadow(all, rgba($themeColorOrange, 0.5));
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        color: $themeColorWhite;
+                        background-color: $themeColorOrange;
                 }
         }
 
@@ -100,21 +158,35 @@
                         @include border-shadow(btn, $themeColorCyan);
                 }
         }
+        &.#{$themePrefix}btn-info.#{$themePrefix}btn-outline {
+                color: $themeColorCyan;
+                background-color: rgba(255, 255, 255, 0);
+                @include border-shadow(all, rgba($themeColorCyan, 0.5));
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        color: $themeColorWhite;
+                        background-color: $themeColorCyan;
+                }
+        }
 
         &.#{$themePrefix}btn-link {
                 color: $themeColorIndigo;
-                background-color: rgba(0, 0, 0, 0);
+                background-color: rgba(255, 255, 255, 0);
 
                 &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
-                        background-color: rgba(0, 0, 0, 0);
-
-                        .#{$themePrefix}btn-text {
-                                text-decoration: underline;
-                        }
+                        background-color: rgba(255, 255, 255, 0);
+                        text-decoration: underline;
                 }
 
                 &:active, &.#{$themePrefix}btn-active {
                         @include border-shadow(btn, $themeColorIndigo);
+                }
+        }
+        &.#{$themePrefix}btn-link.#{$themePrefix}btn-outline {
+                @include border-shadow(all, rgba($themeColorIndigo, 0.5));
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(none);
                 }
         }
 }

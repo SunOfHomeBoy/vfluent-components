@@ -15,10 +15,10 @@ export class Button extends vfluents {
                 align?: string
                 width?: string
                 block?: boolean
-                round?: boolean
+                radius?: boolean
                 circle?: boolean
                 outline?: boolean
-                actived?: boolean
+                active?: boolean
                 disabled?: boolean
                 eventClick?: any
         } = {
@@ -31,20 +31,20 @@ export class Button extends vfluents {
                         align: 'Default',
                         width: null,
                         block: false,
-                        round: false,
+                        radius: false,
                         circle: false,
                         outline: false,
-                        actived: false,
+                        active: false,
                         disabled: false,
                         eventClick: null
                 }
 
         public render(h: CreateElement): any {
-                let innerElement: any = <span class={vfluents.themePrefix + 'btn-text'}>{this.$props.text}</span>
+                let innerElement: any = this.$props.text
 
                 if (this.$props.icon) {
                         let iconElement = <Icon name={this.$props.icon} size={this.$props.size === 'Small' ? 'Mini' : 'Small'} />
-                        let textElement = <span class={vfluents.themePrefix + 'btn-text'}>{this.$props.text}</span>
+                        let textElement = this.$props.text
 
                         innerElement = this.$props.align === 'Bottom' || this.$props.align === 'Right'
                                 ? [textElement, iconElement]
@@ -62,6 +62,15 @@ export class Button extends vfluents {
                                                 : '',
                                         this.$props.outline
                                                 ? vfluents.themePrefix + 'btn-outline'
+                                                : '',
+                                        this.$props.radius && !this.$props.circle
+                                                ? vfluents.themePrefix + 'btn-radius'
+                                                : '',
+                                        this.$props.circle && !this.$props.radius
+                                                ? vfluents.themePrefix + 'btn-circle'
+                                                : '',
+                                        this.$props.active && !this.$props.disabled
+                                                ? vfluents.themePrefix + 'btn-active'
                                                 : ''
                                 ])}
                                 style={{ width: this.$props.width }}
