@@ -1,0 +1,120 @@
+@import './variable.scss';
+
+.#{$themePrefix}btn {
+        position: relative;
+        height: 3rem;
+        padding: 0.75rem 1rem;
+        color: $themeColorGray600;
+        font-family: $themeFontFamilySansserif;
+        background-color: $themeColorGray200;
+  
+
+        .#{$themePrefix}btn-text  
+                font-size: 1rem;
+                line-height: 1.5rem;
+                font-weight: normal;
+        }
+
+        &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                background-color: $themeColorGray300;
+        }
+
+        &:active, &.#{$themePrefix}btn-active {
+                @include border-shadow(btn, $themeColorGray200);
+        }
+
+        &.#{$themePrefix}btn-primary {
+                color: $themeColorWhite;
+                background-color: $themeColorAccentDark;
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: darken($themeColorAccentDark, $themeColorWeight);
+                }
+
+                &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(btn, $themeColorAccentDark);
+                }
+        }
+
+        &.#{$themePrefix}btn-secondary {
+                color: $themeColorWhite;
+                background-color: $themeColorAccentLight;
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: darken($themeColorAccentLight, $themeColorWeight);
+                }
+
+                &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(btn, $themeColorAccentLight);
+                }
+        }
+
+        &.#{$themePrefix}btn-success {
+                color: $themeColorWhite;
+                background-color: $themeColorGreen;
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: darken($themeColorGreen, $themeColorWeight);
+                }
+
+                &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(btn, $themeColorTeal);
+                }
+        }
+
+        &.#{$themePrefix}btn-danger {
+                color: $themeColorWhite;
+                background-color: $themeColorPink;
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: darken($themeColorPink, $themeColorWeight);
+                }
+
+                &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(btn, $themeColorRed);
+                }
+        }
+
+        &.#{$themePrefix}btn-warning {
+                color: $themeColorWhite;
+                background-color: $themeColorOrange;
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: darken($themeColorOrange, $themeColorWeight);
+                }
+
+                &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(btn, $themeColorOrange);
+                }
+        }
+
+        &.#{$themePrefix}btn-info {
+                color: $themeColorWhite;
+                background-color: $themeColorCyan;
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: darken($themeColorCyan, $themeColorWeight);
+                }
+
+                &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(btn, $themeColorCyan);
+                }
+        }
+
+        &.#{$themePrefix}btn-link {
+                color: $themeColorIndigo;
+                background-color: rgba(0, 0, 0, 0);
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}btn-active {
+                        background-color: rgba(0, 0, 0, 0);
+
+                        .#{$themePrefix}btn-text {
+                                text-decoration: underline;
+                        }
+                }
+
+                &:active, &.#{$themePrefix}btn-active {
+                        @include border-shadow(btn, $themeColorIndigo);
+                }
+        }
+}

@@ -1,6 +1,5 @@
 @import './variable.scss';
 @import '~purecss/build/base';
-@import '~purecss/build/base-context';
 @import '~purecss/build/grids-core';
 @import '~purecss/build/grids-units';
 @import '~purecss/build/grids-responsive';
@@ -9,5 +8,6 @@
 @import '~purecss/build/menus-horizontal';
 @import '~purecss/build/menus-scrollable';
 @import '~purecss/build/menus-skin';
+@import '~purecss/build/buttons-core';
 @import './typography.scss';
 @import './utils.scss';
