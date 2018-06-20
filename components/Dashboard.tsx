@@ -55,7 +55,7 @@ export class Dashboard extends vfluents {
                                 vfluents.themePrefix + 'dashboard',
                                 ['Small', 'Large', 'Huge'].indexOf(this.props.size) !== -1
                                         ? vfluents.themePrefix + 'dashboard-' + this.props.size.toLowerCase()
-                                        : '',
+                                        : null,
                                 this.stateCollapsed
                                         ? vfluents.themePrefix + 'dashboard-collapsed'
                                         : vfluents.themePrefix + 'dashboard-uncollapsed',

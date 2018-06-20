@@ -12,6 +12,7 @@
         text-align: center;
         letter-spacing: 0.01em;
         box-sizing: content-box;
+        border: 0;
 
         &.#{$themePrefix}button-icon {
                 padding-left: 3rem;
@@ -24,14 +25,18 @@
                         fill: $themeColorGray600;
                 }
 
-                &.#{$themePrefix}button-icon-notext {
+                &.#{$themePrefix}button-icon-only {
                         padding-right: 0;
-                        box-sizing: border-box;
+
+                        .#{$themePrefix}icon {
+                                margin-top: -0.75rem;
+                        }
                 }
         }
 
         &.#{$themePrefix}button-radius { border-radius: 0.25rem }
         &.#{$themePrefix}button-circle { border-radius: 3rem }
+        &.#{$themePrefix}button-block { width: 100% }
         
         &:hover, &:focus, &:active, &.#{$themePrefix}button-active {
                 background-color: $themeColorGray300;
@@ -41,12 +46,25 @@
                 @include border-shadow(btn, $themeColorGray200);
         }
 
+        &.#{$themePrefix}button-disabled {
+                background-color: rgba($themeColorGray200, 0.5);
+
+                &:active, &.#{$themePrefix}button-active {
+                        box-shadow: none !important;
+                }
+        }
+
         &.#{$themePrefix}button-outline {
                 background-color: rgba(255, 255, 255, 0);
                 @include border-shadow(all, $themeColorGray200);
 
                 &:hover, &:focus, &:active, &.#{$themePrefix}button-active {
                         background-color: $themeColorGray300;
+                }
+
+                &.#{$themePrefix}button-disabled {
+                        background-color: rgba($themeColorGray50, 0.5) !important;
+                        @include border-shadow(all, $themeColorGray100);
                 }
         }
 
@@ -130,7 +148,6 @@
                         }
                 }
         }
-        
 
         &.#{$themePrefix}button-large {
                 height: 4rem;
@@ -210,6 +227,10 @@
                 &:active, &.#{$themePrefix}button-active {
                         @include border-shadow(btn, $themeColorAccentDark);
                 }
+
+                &.#{$themePrefix}button-disabled {
+                        background-color: rgba($themeColorAccentDark, 0.5);
+                }
         }
         &.#{$themePrefix}button-primary.#{$themePrefix}button-outline {
                 color: $themeColorAccentDark;
@@ -229,6 +250,9 @@
                                 color: $themeColorWhite;
                                 fill: $themeColorWhite;
                         }
+                }
+
+                &.#{$themePrefix}button-disabled {
                 }
         }
 

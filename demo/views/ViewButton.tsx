@@ -256,6 +256,12 @@ export class ViewButton extends ViewComponent {
                                         <Button width="15rem" type="Primary" icon="Github" align="Bottom" size="Huge" text="Bottom+Huge" />
                                 </samp>
                                 <code></code>
+                                <dfn>按鈕徽章</dfn>
+                                <samp>
+                                        <Button width="15rem" type="Primary" icon="Github" align="Default" badge="8" text="Center+Badge" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="8" text="Left+Badge" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Right" badge="8" text="Right+Badge" />
+                                </samp>
                                 <dfn>圓形圓角</dfn>
                                 <samp>
                                         <Button type="Primary" circle={false} radius={false} icon="Github" text="Icon-Circle-Radius+Text" />
@@ -263,36 +269,72 @@ export class ViewButton extends ViewComponent {
                                         <Button type="Primary" circle={true} radius={false} icon="Github" text="Icon+Circle-Radius+Text" />
                                         <Button type="Primary" circle={true} radius={false} icon="Github" />
                                 </samp>
+                                <code></code>
+                                <dfn>按鈕寬度</dfn>
+                                <samp>
+                                        <Button type="Primary" width="10rem" text="width: 10rem" />
+                                        <Button type="Primary" width="15rem" text="width: 15rem" />
+                                        <Button type="Primary" block={true} text="width: 100%" />
+                                </samp>
+                                <code></code>
                                 <dfn>按鈕狀態</dfn>
                                 <samp>
-                                        <Button width="15rem" active={true} type="Primary" text="Active-Outlink" />
-                                        <Button width="15rem" active={true} type="Primary" text="Active+Outlink" outline={true} />
+                                        <Button width="15rem" type="Primary" text="Primary+Active" active={true} />
+                                        <Button width="15rem" type="Secondary" text="Secondary+Active" active={true} />
+                                        <Button width="15rem" type="Success" text="Success+Active" active={true} />
+                                        <Button width="15rem" type="Danger" text="Danger+Active" active={true} />
+                                        <Button width="15rem" type="Warning" text="Warning+Active" active={true} />
+                                        <Button width="15rem" type="Info" text="Info+Active" active={true} />
+                                        <Button width="15rem" type="Link" text="Link+Active" active={true} />
+                                        <Button width="15rem" type="Default" text="Default+Active" active={true} />
+                                        <br />
+                                        <Button width="15rem" type="Primary" text="Primary+Active+Outline" active={true} outline={true} />
+                                        <Button width="15rem" type="Secondary" text="Secondary+Active+Outline" active={true} outline={true} />
+                                        <Button width="15rem" type="Success" text="Success+Active+Outline" active={true} outline={true} />
+                                        <Button width="15rem" type="Danger" text="Danger+Active+Outline" active={true} outline={true} />
+                                        <Button width="15rem" type="Warning" text="Warning+Active+Outline" active={true} outline={true} />
+                                        <Button width="15rem" type="Info" text="Info+Active+Outline" active={true} outline={true} />
+                                        <Button width="15rem" type="Link" text="Link+Active+Outline" active={true} outline={true} />
+                                        <Button width="15rem" type="Default" text="Default+Active+Outline" active={true} outline={true} />
+                                        <br />
+                                        <Button width="15rem" type="Primary" text="Primary" disabled={true} />
+                                        <Button width="15rem" type="Secondary" text="Secondary" disabled={true} />
+                                        <Button width="15rem" type="Success" text="Success" disabled={true} />
+                                        <Button width="15rem" type="Danger" text="Danger" disabled={true} />
+                                        <Button width="15rem" type="Warning" text="Warning" disabled={true} />
+                                        <Button width="15rem" type="Info" text="Info" disabled={true} />
+                                        <Button width="15rem" type="Link" text="Link" disabled={true} />
+                                        <Button width="15rem" type="Default" text="Default+Disabled" disabled={true} />
+                                        <br />
+                                        <Button width="15rem" type="Primary" text="Primary" disabled={true} outline={true} />
+                                        <Button width="15rem" type="Secondary" text="Secondary" disabled={true} outline={true} />
+                                        <Button width="15rem" type="Success" text="Success" disabled={true} outline={true} />
+                                        <Button width="15rem" type="Danger" text="Danger" disabled={true} outline={true} />
+                                        <Button width="15rem" type="Warning" text="Warning" disabled={true} outline={true} />
+                                        <Button width="15rem" type="Info" text="Info" disabled={true} outline={true} />
+                                        <Button width="15rem" type="Link" text="Link" disabled={true} outline={true} />
+                                        <Button width="15rem" type="Default" text="Default+Disabled+Outline" disabled={true} outline={true} />
+                                </samp>
+                                <code>
+
+                                </code>
+                                <dfn>點擊事件</dfn>
+                                <samp>
+                                        <Button type="Primary" text="Click" eventClick={() => console.log('Are you OK~')} />
                                 </samp>
                                 <code>
                                         <p>
                                                 <span class="tags">&lt;Button</span>
-                                                <span class="attr">active=</span>
-                                                <span class="info">&#123;true&#125;</span>
                                                 <span class="attr">type=</span>
                                                 <span class="info">"Primary"</span>
                                                 <span class="attr">text=</span>
-                                                <span class="info">"Active-Outlink"</span>
-                                                <span class="tags">&nbsp;/&gt;</span>
-                                        </p>
-                                        <p>
-                                                <span class="tags">&lt;Button</span>
-                                                <span class="attr">active=</span>
-                                                <span class="info">&#123;true&#125;</span>
-                                                <span class="attr">type=</span>
-                                                <span class="info">"Primary"</span>
-                                                <span class="attr">text=</span>
-                                                <span class="info">"Active-Outlink"</span>
-                                                <span class="attr">outline=</span>
-                                                <span class="info">&#123;true&#125;</span>
+                                                <span class="info">"Click"</span>
+                                                <span class="attr">eventClick=</span>
+                                                <span class="info">&#123;&#40;&#41; =&gt; console.log&#40;'Are you OK~'&#41;&#125;</span>
                                                 <span class="tags">&nbsp;/&gt;</span>
                                         </p>
                                 </code>
-                        </article>
+                        </article >
                 )
         }
 }

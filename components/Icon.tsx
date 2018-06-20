@@ -26,7 +26,7 @@ export class Icon extends vfluents {
                         vfluents.themePrefix + 'icon-' + String(this.$props.name).replace(/^icon/i, ''),
                         ['Mini', 'Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
                                 ? vfluents.themePrefix + 'icon-' + String(this.$props.size).toLowerCase()
-                                : '',
+                                : null,
                         this.$props.className
                 ])
                 let style = { color: this.$props.color, fill: this.$props.color }
