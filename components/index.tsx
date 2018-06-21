@@ -7,6 +7,7 @@
 // @authors hjboss <hongjiangproject@gmail.com> 2018-06 $$
 import './styles/stylesheets.scss'
 export { vfluents } from './vfluents'
+export { Badge } from './Badge'
 export { Button } from './Button'
 export { Dashboard } from './Dashboard'
 export { Icon } from './Icon'
