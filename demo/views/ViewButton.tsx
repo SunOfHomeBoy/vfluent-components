@@ -259,8 +259,12 @@ export class ViewButton extends ViewComponent {
                                 <dfn>按鈕徽章</dfn>
                                 <samp>
                                         <Button width="15rem" type="Primary" icon="Github" align="Default" badge="8" text="Center+Badge" />
-                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="8" text="Left+Badge" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Default" badge="New" text="Center+Badge" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Default" badge=" " text="Center+Badge" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="New" text="Left+Badge" />
                                         <Button width="15rem" type="Primary" icon="Github" align="Right" badge="8" text="Right+Badge" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Top" badge="8" text="Right+Badge" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Bottom" badge="8" text="Right+Badge" />
                                 </samp>
                                 <dfn>圓形圓角</dfn>
                                 <samp>
@@ -320,7 +324,8 @@ export class ViewButton extends ViewComponent {
                                 </code>
                                 <dfn>點擊事件</dfn>
                                 <samp>
-                                        <Button type="Primary" text="Click" eventClick={() => console.log('Are you OK~')} />
+                                        <Button type="Primary" text="Click+Enable" eventClick={() => console.log('Are you OK~')} />
+                                        <Button type="Primary" text="Click+Unenable" eventClick={() => console.log('Are you OK~')} disabled={true} />
                                 </samp>
                                 <code>
                                         <p>
@@ -328,9 +333,21 @@ export class ViewButton extends ViewComponent {
                                                 <span class="attr">type=</span>
                                                 <span class="info">"Primary"</span>
                                                 <span class="attr">text=</span>
-                                                <span class="info">"Click"</span>
+                                                <span class="info">"Click+Enable"</span>
                                                 <span class="attr">eventClick=</span>
                                                 <span class="info">&#123;&#40;&#41; =&gt; console.log&#40;'Are you OK~'&#41;&#125;</span>
+                                                <span class="tags">&nbsp;/&gt;</span>
+                                        </p>
+                                        <p>
+                                                <span class="tags">&lt;Button</span>
+                                                <span class="attr">type=</span>
+                                                <span class="info">"Primary"</span>
+                                                <span class="attr">text=</span>
+                                                <span class="info">"Click+Unenable"</span>
+                                                <span class="attr">eventClick=</span>
+                                                <span class="info">&#123;&#40;&#41; =&gt; console.log&#40;'Are you OK~'&#41;&#125;</span>
+                                                <span class="attr">disabled=</span>
+                                                <span class="info">&#123;true&#125;</span>
                                                 <span class="tags">&nbsp;/&gt;</span>
                                         </p>
                                 </code>

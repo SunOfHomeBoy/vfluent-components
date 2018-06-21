@@ -1,5 +1,6 @@
 import { Component, CreateElement, Props } from 'vue-component-decorator'
 import { vfluents } from './vfluents'
+import { Badge } from './Badge'
 import { Icon } from './Icon'
 import './styles/Button.scss'
 
@@ -49,16 +50,12 @@ export class Button extends vfluents {
                         let textElement = this.$props.text
 
                         innerElement = this.$props.align === 'Bottom' || this.$props.align === 'Right'
-                                ? [textElement, iconElement]
-                                : [iconElement, textElement]
+                                ? [null, textElement, iconElement, null]
+                                : [null, iconElement, textElement, null]
                 }
 
                 if (this.$props.badge) {
-                        innerElement.push(
-                                <sup class={vfluents.cls([
-
-                                ])}>{this.$props.badge}</sup>
-                        )
+                        innerElement[this.$props.align === 'Top' ? 0 : 3] = <Badge text={this.$props.badge} />
                 }
 
                 return (

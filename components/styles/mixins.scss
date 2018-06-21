@@ -12,16 +12,16 @@
         }
 }
 
-@mixin border-shadow($type, $color: rgba(0, 0, 0, 0), $size: 1px) {
+@mixin border-shadow($type, $color: rgba(0, 0, 0, 0), $important: null) {
         $border: (
-                top: 0 -$size 0 $color,
-                right: $size 0 0 $color,
-                bottom: 0 $size 0 $color,
-                left: -$size 0 0 $color,
-                all: 0 0 $size $size $color inset,
+                top: 0 -1px 0 $color,
+                right: 1px 0 0 $color,
+                bottom: 0 1px 0 $color,
+                left: -1px 0 0 $color,
+                all: 0 0 1px 1px $color inset,
                 btn: 0 0 0.2rem 0.2rem rgba($color, 0.5),
                 none: none
         );
 
-        box-shadow: map-get($border, $type);
+        box-shadow: map-get($border, $type) $important;
 }

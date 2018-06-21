@@ -92,18 +92,3 @@
 .#{$themePrefix}align-text-top { vertical-align: text-top }
 .#{$themePrefix}align-text-bottom { vertical-align: text-bottom }
 
-// 徽章樣式
-sup.#{$themePrefix}badge {
-
-}
-sup.#{$themePrefix}badge {
-        display: inline-block;
-        height: 1.125rem;
-        min-width: 1.125rem;
-        color: $themeColorWhite;
-        background-color: $themeColorRed;
-        font-size: 0.75rem;
-        line-height: 1rem;
-        text-align: center;
-        border-radius: 1.125rem;
-}
