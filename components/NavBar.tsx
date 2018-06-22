@@ -1,5 +1,6 @@
 import { Component, CreateElement, Props } from 'vue-component-decorator'
 import { vfluents } from './vfluents'
+import { Button } from './Button'
 import utils from './utils'
 import './styles/NavBar.scss'
 
@@ -14,11 +15,21 @@ export class NavBar extends vfluents {
                 brandName?: string // 品牌名稱 可空 默認值：空字符串
                 brandHref?: string // 品牌鏈接 可空 默認值：空字符串
                 brandCls?: string // 品牌樣式 可空 默認值：空字符串
-                items?: {}[] // 導航項配置 可空 默認值：空數組
+                items?: {
+                        text?: string // 導航項之文本 可空 默認值：空字符串
+                        href?: string // 導航項之鏈接 可空 默認值：空字符串
+                        selected?: boolean // 導航項之已選狀態 可空 默認值：FALSE
+                        disabled?: boolean // 導航項之禁用狀態 可空 默認值：FALSE
+                        dropdowns?: { // 即導航項是下拉菜單
+                                text?: string // 菜單項之文本 可空 默認值：空字符串
+                                href?: string // 菜單項之鏈接 可空 默認值：空字符串
+                        }[]
+
+                }[]
                 eventBrand?: any // 品牌區域單擊事件 可空 默認值：空值
         } = {
-                        id: '',
-                        className: '',
+                        id: null,
+                        className: null,
                         size: 'Default',
                         fixed: 'Default',
                         brandLogo: '',
@@ -30,8 +41,15 @@ export class NavBar extends vfluents {
                 }
 
         public render(h: CreateElement) {
+                let brandElement = this.$props.text ? <Button
+                        type="Link"
+                        size={this.$props.size}
+                        icon={this.$props.brandLogo}
+                        text={this.$props.brandName}
+                        className={this.$props.brandCls}
+                /> : null
                 return (
-                        <div id={this.$props.id} class={vfluents.cls([
+                        <nav id={this.$props.id} class={vfluents.cls([
                                 'pure-menu',
                                 'pure-menu-horizontal',
                                 'pure-menu-scrollable',
@@ -40,10 +58,14 @@ export class NavBar extends vfluents {
                                         ? vfluents.themePrefix + 'navbar-' + String(this.$props.size).toLowerCase()
                                         : '',
                                 ['Top', 'Bottom', 'Sticky'].indexOf(this.$props.fixed) !== -1
-                                        ? vfluents.themePrefix + 'navbar-' + String(this.$props.fixed).toLowerCase()
+                                        ? vfluents.themePrefix + 'fixed-' + String(this.$props.fixed).toLowerCase()
                                         : '',
                                 this.$props.className
-                        ])}></div>
+                        ])}>
+                                {brandElement}
+                                <div class={vfluents.themePrefix + 'navbar-inner'}>
+                                </div>
+                        </nav>
                 )
         }
 }

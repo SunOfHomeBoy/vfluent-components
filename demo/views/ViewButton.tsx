@@ -1,10 +1,12 @@
 import { Component, CreateElement } from 'vue-component-decorator'
-import { Button } from '../../components'
+import { Button, ButtonGroup } from '../../components'
 import { ViewComponent } from '../components'
 import { theme } from '../config'
 
 @Component
 export class ViewButton extends ViewComponent {
+        private stateActive: any = {}
+
         public created() {
                 this.props.name = 'Button'
                 this.props.description = '常用按鈕組件'
@@ -261,10 +263,26 @@ export class ViewButton extends ViewComponent {
                                         <Button width="15rem" type="Primary" icon="Github" align="Default" badge="8" text="Center+Badge" />
                                         <Button width="15rem" type="Primary" icon="Github" align="Default" badge="New" text="Center+Badge" />
                                         <Button width="15rem" type="Primary" icon="Github" align="Default" badge=" " text="Center+Badge" />
-                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="New" text="Left+Badge" />
-                                        <Button width="15rem" type="Primary" icon="Github" align="Right" badge="8" text="Right+Badge" />
-                                        <Button width="15rem" type="Primary" icon="Github" align="Top" badge="8" text="Right+Badge" />
-                                        <Button width="15rem" type="Primary" icon="Github" align="Bottom" badge="8" text="Right+Badge" />
+                                        <br />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="8" text="Left+Badge" size="Small" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="8" text="Left+Badge" size="Default" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="8" text="Left+Badge" size="Large" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Left" badge="8" text="Left+Badge" size="Huge" />
+                                        <br />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Right" badge="8" text="Right+Badge" size="Small" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Right" badge="8" text="Right+Badge" size="Default" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Right" badge="8" text="Right+Badge" size="Large" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Right" badge="8" text="Right+Badge" size="Huge" />
+                                        <br />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Top" badge="8" text="Right+Badge" size="Small" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Top" badge="8" text="Right+Badge" size="Default" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Top" badge="8" text="Right+Badge" size="Large" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Top" badge="8" text="Right+Badge" size="Huge" />
+                                        <br />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Bottom" badge="8" text="Right+Badge" size="Small" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Bottom" badge="8" text="Right+Badge" size="Default" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Bottom" badge="8" text="Right+Badge" size="Large" />
+                                        <Button width="15rem" type="Primary" icon="Github" align="Bottom" badge="8" text="Right+Badge" size="Huge" />
                                 </samp>
                                 <dfn>圓形圓角</dfn>
                                 <samp>
@@ -320,7 +338,6 @@ export class ViewButton extends ViewComponent {
                                         <Button width="15rem" type="Default" text="Default+Disabled+Outline" disabled={true} outline={true} />
                                 </samp>
                                 <code>
-
                                 </code>
                                 <dfn>點擊事件</dfn>
                                 <samp>
@@ -351,7 +368,26 @@ export class ViewButton extends ViewComponent {
                                                 <span class="tags">&nbsp;/&gt;</span>
                                         </p>
                                 </code>
-                        </article >
+                                <dfn>按鈕組</dfn>
+                                <samp>
+                                        <ButtonGroup>
+                                                <Button width="8rem" radius={true} type="Primary" text="Primary" active={this.stateActive.Primary || false} eventClick={() => this.setActive('Primary')} />
+                                                <Button width="8rem" radius={true} type="Success" text="Success" active={this.stateActive.Success || false} eventClick={() => this.setActive('Success')} />
+                                                <Button width="8rem" radius={true} type="Warning" text="Warning" active={this.stateActive.Warning || false} eventClick={() => this.setActive('Warning')} />
+                                                <Button width="8rem" radius={true} type="Info" text="Info" active={this.stateActive.Info || false} eventClick={() => this.setActive('Info')} />
+                                        </ButtonGroup>
+                                </samp>
+                                <code></code>
+                        </article>
                 )
+        }
+
+        private setActive(name: string) {
+                if (this.stateActive[name]) {
+                        return this.stateActive = {}
+                }
+
+                this.stateActive = {}
+                this.stateActive[name] = true
         }
 }

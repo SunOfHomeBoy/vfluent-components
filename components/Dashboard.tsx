@@ -1,6 +1,7 @@
 import { Component, CreateElement } from 'vue-component-decorator'
 import { vfluents } from './vfluents'
 import { NavBar } from './NavBar'
+import { TabBar } from './TabBar'
 import utils from './utils'
 import './styles/Dashboard.scss'
 
@@ -19,6 +20,7 @@ export class Dashboard extends vfluents {
                 purview?: string // 用戶權限 可空 默認值：空字符串
                 avatars?: string // 用戶頭像 可空 默認值：空字符串
                 sideMenus?: any[] // 側欄菜單 可空 默認值：空數組
+                bbarItems?: any[] // 底部導航 可空 默認值：空數組
         } = {}
 
         protected stateCollapsed: boolean = false
@@ -75,6 +77,12 @@ export class Dashboard extends vfluents {
                                         'pure-u-xl-5-6',
                                         vfluents.themePrefix + 'dashboard-main'
                                 ])}>
+                                        <TabBar
+                                                fixed="Bottom"
+                                                size={this.props.size}
+                                                items={this.props.bbarItems}
+                                                className={vfluents.themePrefix + 'dashboard-tabbar'}
+                                        />
                                         <div class={vfluents.themePrefix + 'mask'} onClick={this.eventCollapsed}></div>
                                         <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{innerElement}</div>
                                 </main>

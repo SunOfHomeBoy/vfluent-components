@@ -1,0 +1,39 @@
+@import './variable.scss';
+
+.#{$themePrefix}tabbar {
+        display: flex;
+        @include border-shadow(top, $themeColorGray200);
+
+        .#{$themePrefix}button {
+                position: relative;
+                width: 100%;
+                flex: 1;
+        }
+
+        .#{$themePrefix}button-default {
+                color: $themeColorGray500;
+                background-color: rgba(0, 0, 0, 0);
+
+                .#{$themePrefix}icon {
+                        color: $themeColorGray500;
+                        fill: $themeColorGray500;
+                }
+
+                &.#{$themePrefix}button-icon-only:before {
+                        content: ' ';
+                        position: absolute;
+                        top: 0.25rem;
+                        right: 0.375rem;
+                        bottom: 0.25rem;
+                        left: 0.375rem;
+                        background-color: $themeColorGray100;
+                }
+
+                &.#{$themePrefix}button-small {
+                        .#{$themePrefix}icon {
+                                left: 50%;
+                                margin-left: -0.75rem;
+                        }
+                }
+        }
+}

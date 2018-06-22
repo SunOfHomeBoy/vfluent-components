@@ -84,8 +84,23 @@
 
                 .#{$themePrefix}badge {
                         position: absolute;
-                        right: 0.25rem;
                         top: 0.25rem;
+                        right: 0.25rem;
+                }
+
+                &.#{$themePrefix}button-small .#{$themePrefix}badge {
+                        top: -0.25rem;
+                        right: -0.25rem;
+                }
+
+                &.#{$themePrefix}button-large .#{$themePrefix}badge {
+                        top: 0.75rem;
+                        right: 0.75rem;
+                }
+
+                &.#{$themePrefix}button-huge .#{$themePrefix}badge {
+                        top: 1.25rem;
+                        right: 1.25rem;
                 }
         }
         &.#{$themePrefix}button-top.#{$themePrefix}button-icon,
@@ -116,6 +131,18 @@
                         margin-left: 0.25rem;
                         z-index: $themeZindexFixed;
                 }
+
+                &.#{$themePrefix}button-small .#{$themePrefix}badge {
+                        top: 0;
+                }
+
+                &.#{$themePrefix}button-large .#{$themePrefix}badge {
+                        top: 0.75rem;
+                }
+
+                &.#{$themePrefix}button-huge .#{$themePrefix}badge {
+                        top: 1.25rem;
+                }
         }
         &.#{$themePrefix}button-bottom.#{$themePrefix}button-icon {
                 .#{$themePrefix}icon {
@@ -126,6 +153,18 @@
                         position: absolute;
                         top: 1.5rem;
                         margin-left: 0.25rem;
+                }
+
+                &.#{$themePrefix}button-small .#{$themePrefix}badge {
+                        top: 0.75rem;
+                }
+
+                &.#{$themePrefix}button-large .#{$themePrefix}badge {
+                        top: 2rem;
+                }
+
+                &.#{$themePrefix}button-huge .#{$themePrefix}badge {
+                        top: 2.5rem;
                 }
         }
 
@@ -550,5 +589,28 @@
                         color: $themeColorIndigo;
                         @include border-shadow(all, rgba($themeColorIndigo, 0.5), !important);
                 }
+        }
+}
+
+.#{$themePrefix}button-group {
+        vertical-align: top;
+        white-space: nowrap;
+
+        .#{$themePrefix}button {
+                margin: 0 !important;
+
+                &:hover, &:focus, &:active, &.#{$themePrefix}button-active {
+                        z-index: $themeZindexFixed;
+                }
+        }
+
+        .#{$themePrefix}button:not(:first-child) {
+                border-top-left-radius: 0 !important;
+                border-bottom-left-radius: 0 !important;
+        }
+
+        .#{$themePrefix}button:not(:last-child) {
+                border-top-right-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
         }
 }

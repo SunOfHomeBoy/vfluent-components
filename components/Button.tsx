@@ -7,22 +7,22 @@ import './styles/Button.scss'
 @Component
 export class Button extends vfluents {
         @Props() public readonly props: {
-                id?: string
-                className?: string
-                type?: string
-                size?: string
-                text?: string
-                icon?: string
-                align?: string
-                badge?: string
-                width?: string
-                block?: boolean
-                radius?: boolean
-                circle?: boolean
-                outline?: boolean
-                active?: boolean
-                disabled?: boolean
-                eventClick?: any
+                id?: string // 組件ID 可空 默認值：空字符串
+                className?: string // 附加樣式 可空 默認值：空字符串
+                type?: string // 按鈕類型 可空 默認值：Default 可選值：Default | Primary | Secondary | Success | Danger | Warning | Info | Link
+                size?: string // 按鈕尺寸 可空 默認值：Default 可選值：Default | Small | Large | Huge
+                text?: string // 按鈕文本 可空 默認值：空字符串
+                icon?: string // 按鈕圖標 可空 默認值：空字符串
+                align?: string // 圖標對齊 可空 默認值：Default 可選值：Default | Top | Right | Bottom | Left
+                badge?: string // 按鈕徽章 可空 默認值：空字符串
+                width?: string // 按鈕寬度 可空 默認值：空字符串
+                block?: boolean // 100%寬度 可空 默認值：FALSE
+                radius?: boolean // 圓角邊框 可空 默認值：FALSE
+                circle?: boolean // 圓形按鈕 可空 默認值：FALSE
+                outline?: boolean // 邊框樣式 可空 默認值：FALSE
+                active?: boolean // 激活按钮 可空 默認值：FALSE
+                disabled?: boolean // 禁用按钮 可空 默認值：FALSE
+                eventClick?: any // 單擊事件 可空 默認值：FALSE
         } = {
                         id: null,
                         className: null,
@@ -67,7 +67,7 @@ export class Button extends vfluents {
                                         vfluents.themePrefix + 'button',
                                         ['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Link'].indexOf(this.$props.type) !== -1
                                                 ? vfluents.themePrefix + 'button-' + String(this.$props.type).toLowerCase()
-                                                : null,
+                                                : vfluents.themePrefix + 'button-default',
                                         ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
                                                 ? vfluents.themePrefix + 'button-' + String(this.$props.size).toLowerCase()
                                                 : null,
@@ -88,6 +88,23 @@ export class Button extends vfluents {
                                 disabled={this.$props.disabled && !this.$props.active}
                                 onClick={vfluents.eventSafe(this.$props.eventClick)}
                         >{innerElement}</button>
+                )
+        }
+}
+
+@Component
+export class ButtonGroup extends vfluents {
+        @Props() public readonly props: {
+                id?: string
+                className?: string
+        } = { id: null, className: null }
+
+        public render(h: CreateElement): any {
+                return (
+                        <div id={this.$props.id} class={vfluents.cls([
+                                vfluents.themePrefix + 'button-group',
+                                this.$props.className
+                        ])}>{this.innerComponent()}</div>
                 )
         }
 }
