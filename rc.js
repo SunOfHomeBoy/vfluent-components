@@ -12,6 +12,6 @@ https://github.com/hjboss/vfluent-components/blob/master/README.md
 
 if (fs.existsSync(file)) {
         const source = fs.readFileSync(file).toString()
-        const buffer = source.replace(/\/\*\!(.|\s)*?\*\//g, '')
+        const buffer = source.replace(/\/\*\!(.|\s)*?\*\//g, '').replace(/\n/g, '')
         fs.writeFileSync(dist, sign + buffer)
 }
