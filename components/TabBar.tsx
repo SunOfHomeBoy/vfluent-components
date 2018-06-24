@@ -1,6 +1,7 @@
 import { Component, CreateElement, Props } from 'vue-component-decorator'
 import { vfluents } from './vfluents'
 import { Button, ButtonGroup } from './Button'
+import utils from './utils'
 import './styles/TabBar.scss'
 
 @Component
@@ -28,7 +29,8 @@ export class TabBar extends vfluents {
                 }
 
         public render(h: CreateElement): any {
-                let btnElements: any[] = []
+                let btnElements = []
+
                 if (this.$props.items instanceof Array) {
                         for (let i = 0; i < this.$props.items.length; i++) {
                                 let { text, icon, href, badge, click } = this.$props.items[i]
@@ -52,7 +54,7 @@ export class TabBar extends vfluents {
                                                 type={this.$props.type || 'Default'}
                                                 align={this.$props.size === 'Small' ? null : 'Top'}
                                                 icon={this.$props.size === 'Small' && text ? null : icon}
-                                                eventClick={() => this.Click(href, click)}
+                                                eventClick={() => this.eventPreClick(href, click)}
                                         />
                                 )
                         }
@@ -73,12 +75,12 @@ export class TabBar extends vfluents {
                 )
         }
 
-        public Click(href: string, click: any) {
+        public eventPreClick(href: string, click: any) {
                 if (typeof (click) === 'function') {
                         return click()
                 }
 
-                if (href) {
+                if (utils.empty(href) === false) {
                         return this.redirect(href)
                 }
         }

@@ -1,7 +1,6 @@
 import { Component, CreateElement } from 'vue-component-decorator'
 import { Button, ButtonGroup } from '../../components'
 import { ViewComponent } from '../components'
-import { theme } from '../config'
 
 @Component
 export class ViewButton extends ViewComponent {
@@ -341,8 +340,8 @@ export class ViewButton extends ViewComponent {
                                 </code>
                                 <dfn>點擊事件</dfn>
                                 <samp>
-                                        <Button type="Primary" text="Click+Enable" eventClick={() => console.log('Are you OK~')} />
-                                        <Button type="Primary" text="Click+Unenable" eventClick={() => console.log('Are you OK~')} disabled={true} />
+                                        <Button type="Primary" text="Click+Enable" eventClick={() => alert('Are you OK~')} />
+                                        <Button type="Primary" text="Click+Unenable" eventClick={() => alert('Are you OK~')} disabled={true} />
                                 </samp>
                                 <code>
                                         <p>
@@ -352,7 +351,7 @@ export class ViewButton extends ViewComponent {
                                                 <span class="attr">text=</span>
                                                 <span class="info">"Click+Enable"</span>
                                                 <span class="attr">eventClick=</span>
-                                                <span class="info">&#123;&#40;&#41; =&gt; console.log&#40;'Are you OK~'&#41;&#125;</span>
+                                                <span class="info">&#123;&#40;&#41; =&gt; alert&#40;'Are you OK~'&#41;&#125;</span>
                                                 <span class="tags">&nbsp;/&gt;</span>
                                         </p>
                                         <p>
@@ -362,7 +361,7 @@ export class ViewButton extends ViewComponent {
                                                 <span class="attr">text=</span>
                                                 <span class="info">"Click+Unenable"</span>
                                                 <span class="attr">eventClick=</span>
-                                                <span class="info">&#123;&#40;&#41; =&gt; console.log&#40;'Are you OK~'&#41;&#125;</span>
+                                                <span class="info">&#123;&#40;&#41; =&gt; alert&#40;'Are you OK~'&#41;&#125;</span>
                                                 <span class="attr">disabled=</span>
                                                 <span class="info">&#123;true&#125;</span>
                                                 <span class="tags">&nbsp;/&gt;</span>

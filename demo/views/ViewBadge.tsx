@@ -1,7 +1,6 @@
 import { Component, CreateElement } from 'vue-component-decorator'
-import { vfluents, Badge } from '../../components'
+import { Badge } from '../../components'
 import { ViewComponent } from '../components'
-import { theme } from '../config'
 
 @Component
 export class ViewBadge extends ViewComponent {

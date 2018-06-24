@@ -27,10 +27,6 @@
 
                 &.#{$themePrefix}button-icon-only {
                         padding-right: 0;
-
-                        .#{$themePrefix}icon {
-                                margin-top: -0.75rem;
-                        }
                 }
         }
 
@@ -48,6 +44,7 @@
 
         &.#{$themePrefix}button-disabled {
                 background-color: rgba($themeColorGray200, 0.5);
+                cursor: default !important;
 
                 &:active, &.#{$themePrefix}button-active {
                         box-shadow: none !important;
@@ -593,7 +590,7 @@
 }
 
 .#{$themePrefix}button-group {
-        vertical-align: top;
+        vertical-align: top !important;
         white-space: nowrap;
 
         .#{$themePrefix}button {

@@ -2,6 +2,7 @@ import { Component, CreateElement, Props } from 'vue-component-decorator'
 import { vfluents } from './vfluents'
 import { Badge } from './Badge'
 import { Icon } from './Icon'
+import utils from './utils'
 import './styles/Button.scss'
 
 @Component
@@ -43,9 +44,9 @@ export class Button extends vfluents {
                 }
 
         public render(h: CreateElement): any {
-                let innerElement: any[] = [this.$props.text]
+                let innerElement = [this.$props.text]
 
-                if (this.$props.icon) {
+                if (utils.empty(this.$props.icon) === false) {
                         let iconElement = <Icon name={this.$props.icon} size="Small" />
                         let textElement = this.$props.text
 
@@ -54,13 +55,12 @@ export class Button extends vfluents {
                                 : [null, iconElement, textElement, null]
                 }
 
-                if (this.$props.badge) {
+                if (utils.empty(this.$props.badge) === false) {
                         innerElement[this.$props.align === 'Top' ? 0 : 3] = <Badge text={this.$props.badge} />
                 }
 
                 return (
-                        <button
-                                type="button"
+                        <a
                                 id={this.$props.id}
                                 class={vfluents.cls([
                                         'pure-button',
@@ -71,24 +71,45 @@ export class Button extends vfluents {
                                         ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
                                                 ? vfluents.themePrefix + 'button-' + String(this.$props.size).toLowerCase()
                                                 : null,
-                                        this.$props.icon ? vfluents.themePrefix + 'button-icon' : null,
-                                        this.$props.icon && !this.$props.text ? vfluents.themePrefix + 'button-icon-only' : null,
+                                        utils.empty(this.$props.icon) === false
+                                                ? vfluents.themePrefix + 'button-icon'
+                                                : null,
+                                        utils.empty(this.$props.icon) === false && utils.empty(this.$props.text)
+                                                ? vfluents.themePrefix + 'button-icon-only'
+                                                : null,
                                         ['Left', 'Right', 'Top', 'Bottom'].indexOf(this.$props.align) !== -1
                                                 ? vfluents.themePrefix + 'button-' + String(this.$props.align).toLowerCase()
                                                 : null,
-                                        this.$props.block ? vfluents.themePrefix + 'button-block' : null,
-                                        this.$props.radius && !this.$props.circle ? vfluents.themePrefix + 'button-radius' : null,
-                                        this.$props.circle && !this.$props.radius ? vfluents.themePrefix + 'button-circle' : null,
-                                        this.$props.outline ? vfluents.themePrefix + 'button-outline' : null,
-                                        this.$props.active && !this.$props.disabled ? vfluents.themePrefix + 'button-active' : null,
-                                        this.$props.disabled && !this.$props.active ? vfluents.themePrefix + 'button-disabled' : null,
+                                        utils.empty(this.$props.block) === false
+                                                ? vfluents.themePrefix + 'button-block'
+                                                : null,
+                                        utils.empty(this.$props.radius) === false && utils.empty(this.$props.circle)
+                                                ? vfluents.themePrefix + 'button-radius'
+                                                : null,
+                                        utils.empty(this.$props.circle) === false && utils.empty(this.$props.radius)
+                                                ? vfluents.themePrefix + 'button-circle'
+                                                : null,
+                                        utils.empty(this.$props.outline) === false
+                                                ? vfluents.themePrefix + 'button-outline'
+                                                : null,
+                                        utils.empty(this.$props.active) === false && utils.empty(this.$props.disabled)
+                                                ? vfluents.themePrefix + 'button-active'
+                                                : null,
+                                        utils.empty(this.$props.disabled) === false && utils.empty(this.$props.active)
+                                                ? vfluents.themePrefix + 'button-disabled'
+                                                : null,
                                         this.$props.className
                                 ])}
                                 style={{ width: this.$props.width }}
-                                disabled={this.$props.disabled && !this.$props.active}
-                                onClick={vfluents.eventSafe(this.$props.eventClick)}
-                        >{innerElement}</button>
+                                onClick={this.eventPreClick}
+                        >{innerElement}</a>
                 )
+        }
+
+        public eventPreClick(e: Event) {
+                if (utils.empty(this.$props.disabled) && typeof (this.$props.eventClick) === 'function') {
+                        this.$props.eventClick(e)
+                }
         }
 }
 

@@ -50,7 +50,7 @@ export class ViewIcon extends ViewComponent {
                                                 <h5>#0078d7</h5>
                                         </span>
                                         <span class={vfluents.themePrefix + 'align-center'}>
-                                                <Icon name="Github" size="Huge" eventClick={() => console.log('Are you OK~')} />
+                                                <Icon name="Github" size="Huge" eventClick={() => alert('Are you OK~')} />
                                                 <h5>Click</h5>
                                         </span>
                                 </samp>
@@ -112,7 +112,7 @@ export class ViewIcon extends ViewComponent {
                                                 <span class="attr">size=</span>
                                                 <span class="info">"Huge"</span>
                                                 <span class="attr">eventClick=</span>
-                                                <span class="info">&#123;&#40;&#41; =&gt; console&#40;'Are you OK'&#41;&#125;</span>
+                                                <span class="info">&#123;&#40;&#41; =&gt; alert&#40;'Are you OK'&#41;&#125;</span>
                                                 <span class="tags">&nbsp;/&gt;</span>
                                         </p>
                                 </code>

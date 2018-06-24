@@ -1,4 +1,29 @@
 @import './variable.scss';
 
 .#{$themePrefix}navbar {
+        height: 3rem;
+        background-color: $themeColorAccentLight;
+
+        ul.pure-menu-list {
+                margin-left: 1px;
+                margin-right: 1px;
+        }
+
+        .#{$themePrefix}navbar-inner {
+                flex: 1;
+                max-width: 100%;
+                text-align: center;
+        }
+
+        &.#{$themePrefix}navbar-small {
+                height: 2rem;
+        }
+
+        &.#{$themePrefix}navbar-large {
+                height: 4rem;
+        }
+
+        &.#{$themePrefix}navbar-huge {
+                height: 5rem;
+        }
 }
