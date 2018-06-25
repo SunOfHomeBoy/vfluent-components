@@ -2,6 +2,7 @@
 
 .#{$themePrefix}navbar {
         height: 3rem;
+        flex-wrap: nowrap !important;
         background-color: $themeColorAccentLight;
 
         ul.pure-menu-list {
@@ -9,9 +10,21 @@
                 margin-right: 1px;
         }
 
+        .pure-menu-children {
+                z-index: $themeZindexFixed;
+                @include border-shadow(btn, $themeColorAccentDark);
+
+                .pure-menu-item {
+                        @include border-shadow(top, rgba($themeColorAccentDark, 0.5));
+                }
+
+                .pure-menu-item:first-child {
+                        box-shadow: none;
+                }
+        }
+
         .#{$themePrefix}navbar-inner {
                 flex: 1;
-                max-width: 100%;
                 text-align: center;
         }
 

@@ -10,15 +10,23 @@ export class ViewNavBar extends ViewComponent {
                         href: '/'
                 },
                 {
+                        text: '選項',
+                        dropdowns: [
+                                {
+                                        text: '選項一'
+                                },
+                                {
+                                        text: '選項二之特殊選項'
+                                }
+                        ]
+                },
+                {
                         text: '源碼',
                         href: 'https://github.com/hjboss/vfluent-components'
                 },
                 {
                         text: '討論',
                         href: 'https://github.com/hjboss/vfluent-components/issues'
-                },
-                {
-                        text: 'BUG'
                 }
         ]
 
@@ -66,6 +74,7 @@ export class ViewNavBar extends ViewComponent {
                                         <NavBar brandName="vFluent-Components" brandLogo="Github" items={this.navbarItems} size="Huge" />
                                 </samp>
                                 <code></code>
+                                <dfn></dfn>
                         </article>
                 )
         }

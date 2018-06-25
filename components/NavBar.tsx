@@ -51,6 +51,7 @@ export class NavBar extends vfluents {
                                 'pure-g',
                                 'pure-menu',
                                 'pure-menu-horizontal',
+                                '.pure-menu-scrollable',
                                 vfluents.themePrefix + 'navbar',
                                 ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
                                         ? vfluents.themePrefix + 'navbar-' + String(this.$props.size).toLowerCase()
@@ -93,12 +94,27 @@ export class NavBar extends vfluents {
                         let menuitems: any[] = []
 
                         for (let { text, href, selected, disabled, dropdowns } of this.$props.items) {
-                                if (utils.empty(dropdowns) === false) {
-                                        continue
+                                let subitems: any[] = []
+
+                                if (dropdowns instanceof Array) {
+                                        for (let item of dropdowns) {
+                                                subitems.push(
+                                                        <li class="pure-menu-item">
+                                                                <Button
+                                                                        type="Secondary"
+                                                                        align="Left"
+                                                                        block={true}
+                                                                        text={item.text}
+                                                                        size={this.$props.size}
+                                                                        eventClick={() => this.eventPreClick(item.href, null)}
+                                                                />
+                                                        </li>
+                                                )
+                                        }
                                 }
 
                                 menuitems.push(
-                                        <li class="pure-menu-item">
+                                        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                                                 <Button
                                                         type="Secondary"
                                                         text={text}
@@ -107,6 +123,9 @@ export class NavBar extends vfluents {
                                                         disabled={disabled}
                                                         eventClick={() => this.eventPreClick(href, null)}
                                                 />
+                                                {utils.empty(dropdowns) === false ? (
+                                                        <ul class="pure-menu-children">{subitems}</ul>
+                                                ) : null}
                                         </li>
                                 )
                         }

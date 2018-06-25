@@ -65,7 +65,7 @@ export class TabBar extends vfluents {
                         <ButtonGroup id={this.$props.id} className={vfluents.cls([
                                 vfluents.themePrefix + 'tabbar',
                                 ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
-                                        ? vfluents.themePrefix + 'tabbar-' + String(this.$props.type).toLowerCase()
+                                        ? vfluents.themePrefix + 'tabbar-' + String(this.$props.size).toLowerCase()
                                         : null,
                                 ['Top', 'Bottom', 'Sticky'].indexOf(this.$props.fixed) !== -1
                                         ? vfluents.themePrefix + 'fixed-' + String(this.$props.fixed).toLowerCase()

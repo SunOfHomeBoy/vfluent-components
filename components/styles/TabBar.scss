@@ -10,6 +10,10 @@
                 flex: 1;
         }
 
+        .#{$themePrefix}button-icon-only .#{$themePrefix}icon {
+                margin-top: 0.25rem !important;
+        }
+
         .#{$themePrefix}button-default {
                 color: $themeColorGray500;
                 background-color: rgba(0, 0, 0, 0);
@@ -28,12 +32,32 @@
                         left: 0.375rem;
                         background-color: $themeColorGray100;
                 }
+        }
 
-                &.#{$themePrefix}button-small {
-                        .#{$themePrefix}icon {
-                                left: 50%;
-                                margin-left: -0.75rem;
-                        }
+        &.#{$themePrefix}tabbar-small {
+                .#{$themePrefix}button-icon-only:before {
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                }
+
+                .#{$themePrefix}button-icon-only .#{$themePrefix}icon {
+                        left: 50%;
+                        margin-top: -0.25rem !important;
+                        margin-left: -0.75rem !important;
+                }
+        }
+
+        &.#{$themePrefix}tabbar-large {
+                .#{$themePrefix}button-icon-only .#{$themePrefix}icon {
+                        margin-top: 0.75rem !important;
+                }
+        }
+
+        &.#{$themePrefix}tabbar-huge {
+                .#{$themePrefix}button-icon-only .#{$themePrefix}icon {
+                        margin-top: 0.75rem !important;
                 }
         }
 }
