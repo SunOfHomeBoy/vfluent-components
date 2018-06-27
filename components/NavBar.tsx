@@ -60,7 +60,7 @@ export class NavBar extends vfluents {
                                         ? vfluents.themePrefix + 'fixed-' + String(this.$props.fixed).toLowerCase()
                                         : null
                         ])}>
-                                {utils.empty(this.$props.brandName) ? null : (
+                                {utils.empty(this.$props.brandName) === false ? (
                                         <Button
                                                 type="Primary"
                                                 size={this.$props.size}
@@ -72,24 +72,30 @@ export class NavBar extends vfluents {
                                                 ])}
                                                 eventClick={() => this.eventPreClick(this.$props.brandHref, this.$props.eventBrand)}
                                         />
-                                )}
-                                <div class={vfluents.themePrefix + 'navbar-prepend'}>
-                                        {this.$props.align === 'Left' ? this.renderNavItems(h) : null}
-                                        {this.$props.prepend}
-                                </div>
-                                <div class={vfluents.themePrefix + 'navbar-inner'}>
-                                        {this.$props.align === 'Center' ? this.renderNavItems(h) : null}
-                                        {this.innerComponent()}
-                                </div>
-                                <div class={vfluents.themePrefix + 'navbar-append'}>
-                                        {this.$props.append}
-                                        {this.$props.align === 'Right' ? this.renderNavItems(h) : null}
-                                </div>
+                                ) : null}
+                                <div class={vfluents.themePrefix + 'navbar-prepend'}>{[
+                                        this.$props.align === 'Left' && utils.empty(this.$props.items) === false
+                                                ? this.renderItems(h)
+                                                : null,
+                                        this.renderPrependAndAppend(h, this.$props.prepend)
+                                ]}</div>
+                                <div class={vfluents.themePrefix + 'navbar-inner'}>{[
+                                        this.$props.align === 'Center' && utils.empty(this.$props.items) === false
+                                                ? this.renderItems(h)
+                                                : null,
+                                        this.renderChildComponents(h)
+                                ]}</div>
+                                <div class={vfluents.themePrefix + 'navbar-append'}>{[
+                                        this.$props.align === 'Right' && utils.empty(this.$props.items) === false
+                                                ? this.renderItems(h)
+                                                : null,
+                                        this.renderPrependAndAppend(h, this.$props.append)
+                                ]}</div>
                         </nav>
                 )
         }
 
-        public renderNavItems(h: CreateElement): any {
+        public renderItems(h: CreateElement): any {
                 if (this.$props.items instanceof Array && utils.empty(this.$props.items) === false) {
                         let menuitems: any[] = []
 
@@ -134,6 +140,48 @@ export class NavBar extends vfluents {
                 }
 
                 return null
+        }
+
+        public renderChildComponents(h: CreateElement): any {
+                let innerElements = this.innerComponents()
+
+                if (innerElements.length === 1 && !innerElements[0].tag) {
+                        return (
+                                <div class={vfluents.cls([
+                                        vfluents.themePrefix + 'align-center',
+                                        vfluents.themePrefix + 'position-absolute',
+                                        vfluents.themePrefix + 'navbar-title'
+                                ])}>{innerElements}</div>
+                        )
+                }
+
+                return innerElements
+        }
+
+        public renderPrependAndAppend(h: CreateElement, components: any[]): any {
+                let xpendElements: any[] = []
+
+                if (components instanceof Array) {
+                        for (let element of components) {
+                                if (typeof (element) === 'object' && utils.empty(element.tag)) {
+                                        xpendElements.push(
+                                                <Button
+                                                        type="Secondary"
+                                                        text={element.text}
+                                                        icon={element.icon}
+                                                        size={this.$props.size}
+                                                        align={element.align}
+                                                        eventClick={() => this.eventPreClick(element.href, element.click)}
+                                                />
+                                        )
+                                        continue
+                                }
+
+                                xpendElements.push(element)
+                        }
+                }
+
+                return xpendElements
         }
 
         public eventPreClick(href: string, click: any) {

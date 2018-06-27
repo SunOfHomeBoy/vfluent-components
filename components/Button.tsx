@@ -125,7 +125,7 @@ export class ButtonGroup extends vfluents {
                         <div id={this.$props.id} class={vfluents.cls([
                                 vfluents.themePrefix + 'button-group',
                                 this.$props.className
-                        ])}>{this.innerComponent()}</div>
+                        ])}>{this.innerComponents()}</div>
                 )
         }
 }

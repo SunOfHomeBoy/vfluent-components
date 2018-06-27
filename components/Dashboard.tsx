@@ -36,7 +36,7 @@ export class Dashboard extends vfluents {
         }
 
         public render(h: CreateElement): any {
-                let innerElement = this.innerComponent()
+                let innerElement = this.innerComponents()
 
                 if (utils.empty(innerElement)) {
                         innerElement = <router-view></router-view>

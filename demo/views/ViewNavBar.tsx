@@ -1,5 +1,5 @@
 import { Component, CreateElement } from 'vue-component-decorator'
-import { NavBar } from '../../components'
+import { NavBar, Button, Icon } from '../../components'
 import { ViewComponent } from '../components'
 
 @Component
@@ -74,7 +74,19 @@ export class ViewNavBar extends ViewComponent {
                                         <NavBar brandName="vFluent-Components" brandLogo="Github" items={this.navbarItems} size="Huge" />
                                 </samp>
                                 <code></code>
-                                <dfn></dfn>
+                                <dfn>移動導航</dfn>
+                                <samp>
+                                        <p>文本標題</p>
+                                        <NavBar>頁面標題</NavBar>
+                                        <p>文本標題+標準按鈕</p>
+                                        <NavBar prepend={[{ text: '微博', icon: 'Weibo' }]} append={[{ text: '微信', icon: 'Weixin', align: 'Right' }]}>頁面標圖</NavBar>
+                                        <p>文本標題+圖標按鈕</p>
+                                        <NavBar prepend={[{ icon: 'Weibo' }]} append={[{ icon: 'Weixin' }]}>頁面標題</NavBar>
+                                        <p>文本標題+文本按鈕</p>
+                                        <NavBar prepend={[{ text: '微博' }]} append={[{ text: '微信' }]}>頁面標圖</NavBar>
+                                        <p>自定義組件</p>
+                                        <NavBar prepend={[{ text: '微博', icon: 'Weibo' }]} append={[{ icon: 'Weixin' }]}><Button type="Success" text="頁面標題" block={true} /></NavBar>
+                                </samp>
                         </article>
                 )
         }

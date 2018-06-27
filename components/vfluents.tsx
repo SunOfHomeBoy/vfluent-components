@@ -29,7 +29,7 @@ export class vfluents extends Vue {
                 }
         }
 
-        protected innerComponent(): any {
+        protected innerComponents(): any {
                 return (this.$options as any)._renderChildren || []
         }
 

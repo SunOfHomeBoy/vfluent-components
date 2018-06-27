@@ -4,6 +4,7 @@
         height: 3rem;
         flex-wrap: nowrap !important;
         background-color: $themeColorAccentLight;
+        letter-spacing: 0 !important;
 
         ul.pure-menu-list {
                 margin-left: 1px;
@@ -25,18 +26,33 @@
 
         .#{$themePrefix}navbar-inner {
                 flex: 1;
+                color: $themeColorWhite;
                 text-align: center;
+
+                .#{$themePrefix}navbar-title {
+                        right: 6rem;
+                        left: 6rem;
+                        line-height: 3rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                }
         }
 
         &.#{$themePrefix}navbar-small {
                 height: 2rem;
+
+                .#{$themePrefix}navbar-title { line-height: 2rem }
         }
 
         &.#{$themePrefix}navbar-large {
                 height: 4rem;
+
+                .#{$themePrefix}navbar-title { line-height: 4rem }
         }
 
         &.#{$themePrefix}navbar-huge {
                 height: 5rem;
+
+                .#{$themePrefix}navbar-title { line-height: 2rem }
         }
 }
