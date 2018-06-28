@@ -171,6 +171,7 @@ export class NavBar extends vfluents {
                                                         icon={element.icon}
                                                         size={this.$props.size}
                                                         align={element.align}
+                                                        title={element.title}
                                                         eventClick={() => this.eventPreClick(element.href, element.click)}
                                                 />
                                         )

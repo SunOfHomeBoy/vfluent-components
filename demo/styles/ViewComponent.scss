@@ -42,6 +42,21 @@
                                         }
                                 }
                         }
+
+                        table.#{$themePrefix}box {
+                                width: auto;
+                                margin: 3rem 4rem;
+
+                                th {
+                                        width: 5rem;
+                                        text-align: center;
+                                        line-height: 4rem;
+                                        color: $themeColorWhite;
+                                        background: $themeColorAccentLight;
+                                        border: 1px solid $themeColorWhite;
+                                        cursor: pointer;
+                                }
+                        }
                 }
 
                 table.attrs {

@@ -74,7 +74,7 @@ export class ViewNavBar extends ViewComponent {
                                         <NavBar brandName="vFluent-Components" brandLogo="Github" items={this.navbarItems} size="Huge" />
                                 </samp>
                                 <code></code>
-                                <dfn>移動版導航</dfn>
+                                <dfn>移動版佈局</dfn>
                                 <samp>
                                         <p>文本標題</p>
                                         <NavBar>頁面標題</NavBar>
@@ -90,8 +90,23 @@ export class ViewNavBar extends ViewComponent {
                                         </NavBar>
                                 </samp>
                                 <code></code>
-                                <dfn>工具欄導航</dfn>
-                                <samp></samp>
+                                <dfn>工具欄佈局</dfn>
+                                <samp>
+                                        <NavBar
+                                                brandName="vFluent-Components"
+                                                brandLogo="Github"
+                                                append={[
+                                                        {
+                                                                icon: 'User',
+                                                                title: '用戶'
+                                                        },
+                                                        {
+                                                                icon: 'Quit',
+                                                                title: '關閉'
+                                                        }
+                                                ]}
+                                        />
+                                </samp>
                                 <code></code>
                                 <dfn>響應式導航</dfn>
                                 <samp></samp>

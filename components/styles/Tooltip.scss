@@ -1,0 +1,22 @@
+@import './variable.scss';
+
+.#{$themePrefix}tooltip {
+        display: none;
+        position: absolute;
+        padding: 0.625rem 0.9375rem;
+        color: $themeColorWhite;
+        background-color: #303133;
+        font-family: $themeFontFamilyMonospace;
+        font-size: 0.75rem;
+        line-height: 1em;
+        border-radius: 0.25rem;
+        white-space: nowrap;
+        z-index: $themeZindexTooltip;
+
+        &.#{$themePrefix}tooltip-bottom {
+                display: block;
+                bottom: 0;
+                margin-bottom: -2.5rem;
+                transform-origin: center bottom 0px;
+        }
+}

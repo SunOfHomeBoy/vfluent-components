@@ -16,6 +16,7 @@ export class Button extends vfluents {
                 icon?: string // 按鈕圖標 可空 默認值：空字符串
                 align?: string // 圖標對齊 可空 默認值：Default 可選值：Default | Top | Right | Bottom | Left
                 badge?: string // 按鈕徽章 可空 默認值：空字符串
+                title?: string // 提示文本 可空 默認值：空字符串
                 width?: string // 按鈕寬度 可空 默認值：空字符串
                 block?: boolean // 100%寬度 可空 默認值：FALSE
                 radius?: boolean // 圓角邊框 可空 默認值：FALSE
@@ -33,6 +34,7 @@ export class Button extends vfluents {
                         icon: null,
                         align: 'Default',
                         badge: null,
+                        title: null,
                         width: null,
                         block: false,
                         radius: false,
@@ -100,6 +102,7 @@ export class Button extends vfluents {
                                                 : null,
                                         this.$props.className
                                 ])}
+                                title={this.$props.title}
                                 style={{ width: this.$props.width }}
                                 onClick={this.eventPreClick}
                         >{innerElement}</a>
