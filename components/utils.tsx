@@ -1,4 +1,6 @@
 export default class utils {
+        public static readonly hexDigits: string = '0123456789abcdef'
+
         public static empty(document: any): boolean {
                 if (document === null) {
                         return true
@@ -38,5 +40,18 @@ export default class utils {
                 }
 
                 return buffers
+        }
+
+        public static uuid(prefix?: string): string {
+                let buf = [prefix]
+
+                for (let i = 0; i < 36; i++) {
+                        buf.push(utils.hexDigits.substr(Math.floor(Math.random() * 0x10), 1))
+                }
+
+                buf[20] = utils.hexDigits.substr((parseInt(buf[20], 16) & 0x3) | 0x8, 1)
+                buf[9] = buf[14] = buf[19] = buf[24] = '-'
+
+                return buf.join('')
         }
 }
