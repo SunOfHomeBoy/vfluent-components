@@ -2,6 +2,7 @@ import { Component, CreateElement, Props } from 'vue-component-decorator'
 import { vfluents } from './vfluents'
 import { Badge } from './Badge'
 import { Icon } from './Icon'
+import { Tooltip } from './Tooltip'
 import utils from './utils'
 import './styles/Button.scss'
 
@@ -24,7 +25,8 @@ export class Button extends vfluents {
                 outline?: boolean // 邊框樣式 可空 默認值：FALSE
                 active?: boolean // 激活按钮 可空 默認值：FALSE
                 disabled?: boolean // 禁用按钮 可空 默認值：FALSE
-                eventClick?: any // 單擊事件 可空 默認值：FALSE
+                tooltip?: { text?: string, placement?: string } // 提示文本 可空 默認值：NULL
+                eventClick?: any // 單擊事件 可空 默認值：NULL
         } = {
                         id: null,
                         className: null,
@@ -42,10 +44,14 @@ export class Button extends vfluents {
                         outline: false,
                         active: false,
                         disabled: false,
+                        tooltip: null,
                         eventClick: null
                 }
 
+        public readonly btnTypes: string[] = ['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Link', 'Default']
+
         public render(h: CreateElement): any {
+                let tooltipProps = this.$props.tooltip || {}
                 let innerElement = [this.$props.text]
 
                 if (utils.empty(this.$props.icon) === false) {
@@ -62,50 +68,52 @@ export class Button extends vfluents {
                 }
 
                 return (
-                        <a
-                                id={this.$props.id}
-                                class={vfluents.cls([
-                                        'pure-button',
-                                        vfluents.themePrefix + 'button',
-                                        ['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Link'].indexOf(this.$props.type) !== -1
-                                                ? vfluents.themePrefix + 'button-' + String(this.$props.type).toLowerCase()
-                                                : vfluents.themePrefix + 'button-default',
-                                        ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
-                                                ? vfluents.themePrefix + 'button-' + String(this.$props.size).toLowerCase()
-                                                : null,
-                                        utils.empty(this.$props.icon) === false
-                                                ? vfluents.themePrefix + 'button-icon'
-                                                : null,
-                                        utils.empty(this.$props.icon) === false && utils.empty(this.$props.text)
-                                                ? vfluents.themePrefix + 'button-icon-only'
-                                                : null,
-                                        ['Left', 'Right', 'Top', 'Bottom'].indexOf(this.$props.align) !== -1
-                                                ? vfluents.themePrefix + 'button-' + String(this.$props.align).toLowerCase()
-                                                : null,
-                                        utils.empty(this.$props.block) === false
-                                                ? vfluents.themePrefix + 'button-block'
-                                                : null,
-                                        utils.empty(this.$props.radius) === false && utils.empty(this.$props.circle)
-                                                ? vfluents.themePrefix + 'button-radius'
-                                                : null,
-                                        utils.empty(this.$props.circle) === false && utils.empty(this.$props.radius)
-                                                ? vfluents.themePrefix + 'button-circle'
-                                                : null,
-                                        utils.empty(this.$props.outline) === false
-                                                ? vfluents.themePrefix + 'button-outline'
-                                                : null,
-                                        utils.empty(this.$props.active) === false && utils.empty(this.$props.disabled)
-                                                ? vfluents.themePrefix + 'button-active'
-                                                : null,
-                                        utils.empty(this.$props.disabled) === false && utils.empty(this.$props.active)
-                                                ? vfluents.themePrefix + 'button-disabled'
-                                                : null,
-                                        this.$props.className
-                                ])}
-                                title={this.$props.title}
-                                style={{ width: this.$props.width }}
-                                onClick={this.eventPreClick}
-                        >{innerElement}</a>
+                        <Tooltip text={tooltipProps.text} placement={tooltipProps.placement}>
+                                <a
+                                        id={this.$props.id}
+                                        class={vfluents.cls([
+                                                'pure-button',
+                                                vfluents.themePrefix + 'button',
+                                                this.btnTypes.indexOf(this.$props.type) !== -1
+                                                        ? vfluents.themePrefix + 'button-' + String(this.$props.type).toLowerCase()
+                                                        : vfluents.themePrefix + 'button-default',
+                                                ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
+                                                        ? vfluents.themePrefix + 'button-' + String(this.$props.size).toLowerCase()
+                                                        : null,
+                                                utils.empty(this.$props.icon) === false
+                                                        ? vfluents.themePrefix + 'button-icon'
+                                                        : null,
+                                                utils.empty(this.$props.icon) === false && utils.empty(this.$props.text)
+                                                        ? vfluents.themePrefix + 'button-icon-only'
+                                                        : null,
+                                                ['Left', 'Right', 'Top', 'Bottom'].indexOf(this.$props.align) !== -1
+                                                        ? vfluents.themePrefix + 'button-' + String(this.$props.align).toLowerCase()
+                                                        : null,
+                                                utils.empty(this.$props.block) === false
+                                                        ? vfluents.themePrefix + 'button-block'
+                                                        : null,
+                                                utils.empty(this.$props.radius) === false && utils.empty(this.$props.circle)
+                                                        ? vfluents.themePrefix + 'button-radius'
+                                                        : null,
+                                                utils.empty(this.$props.circle) === false && utils.empty(this.$props.radius)
+                                                        ? vfluents.themePrefix + 'button-circle'
+                                                        : null,
+                                                utils.empty(this.$props.outline) === false
+                                                        ? vfluents.themePrefix + 'button-outline'
+                                                        : null,
+                                                utils.empty(this.$props.active) === false && utils.empty(this.$props.disabled)
+                                                        ? vfluents.themePrefix + 'button-active'
+                                                        : null,
+                                                utils.empty(this.$props.disabled) === false && utils.empty(this.$props.active)
+                                                        ? vfluents.themePrefix + 'button-disabled'
+                                                        : null,
+                                                this.$props.className
+                                        ])}
+                                        title={this.$props.title}
+                                        style={{ width: this.$props.width }}
+                                        onClick={this.eventPreClick}
+                                >{innerElement}</a>
+                        </Tooltip>
                 )
         }
 

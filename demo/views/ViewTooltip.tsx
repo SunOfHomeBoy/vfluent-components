@@ -1,5 +1,5 @@
 import { Component, CreateElement } from 'vue-component-decorator'
-import { Tooltip, vfluents } from '../../components'
+import { Tooltip, vfluents, Button } from '../../components'
 import { ViewComponent } from '../components'
 import { theme } from '../config'
 
@@ -15,8 +15,10 @@ export class ViewTooltip extends ViewComponent {
                         <article>
                                 <dfn>常用用法</dfn>
                                 <samp>
-                                        <Tooltip content="ok"></Tooltip>
-
+                                        <Button text="ok" tooltip={{ text: '一二三四無六期把就令', placement: 'Top' }} /><br /><br />
+                                        <Button text="ok" tooltip={{ text: 'QAZwsx1', placement: 'Right' }} />
+                                        <Tooltip text="一二三四無六" placement="Left"><a class="ok">test</a></Tooltip>
+                                        <Tooltip text="OK123456" placement="Left">okpklas</Tooltip>
                                 </samp>
                         </article>
                 )

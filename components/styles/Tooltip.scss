@@ -1,22 +1,86 @@
 @import './variable.scss';
 
 .#{$themePrefix}tooltip {
-        display: none;
-        position: absolute;
-        padding: 0.625rem 0.9375rem;
-        color: $themeColorWhite;
-        background-color: #303133;
-        font-family: $themeFontFamilyMonospace;
-        font-size: 0.75rem;
-        line-height: 1em;
-        border-radius: 0.25rem;
-        white-space: nowrap;
-        z-index: $themeZindexTooltip;
+        position: relative !important;
+        display: inline-block !important;
 
-        &.#{$themePrefix}tooltip-bottom {
-                display: block;
-                bottom: 0;
-                margin-bottom: -2.5rem;
-                transform-origin: center bottom 0px;
+        .#{$themePrefix}tooltip-inner {
+                position: absolute;
+                display: none;
+                padding: 0.625rem 0.75rem;
+                color: $themeColorWhite;
+                background-color: rgba(0, 0, 0, 0.6);
+                font-family: sans-serif !important;
+                font-size: 0.75rem;
+                line-height: 1em;
+                font-weight: normal;
+                text-align: center;
+                border-radius: 0.25rem;
+                z-index: $themeZindexTooltip;
+
+                &::after {
+                        content: '';
+                        position: absolute;
+                        border-width: 0.375rem;
+                        border-style: solid;
+                }
+        }
+
+        .#{$themePrefix}tooltip-top {
+                bottom: 100%;
+                left: 50%;
+                margin-bottom: 0.5rem;
+
+                &::after {
+                        top: 100%;
+                        left: 50%;
+                        margin-left: -0.375rem;
+                        border-color: rgba(0, 0, 0, 0.6) transparent transparent transparent;
+                }
+        }
+
+        .#{$themePrefix}tooltip-right {
+                top: 50%;
+                left: 100%;
+                margin-top: -1rem;
+                margin-left: 0.5rem;
+
+                &::after {
+                        top: 50%;
+                        right: 100%;
+                        margin-top: -0.375rem;
+                        border-color: transparent rgba(0, 0, 0, 0.6) transparent transparent;
+                }
+        }
+
+        .#{$themePrefix}tooltip-bottom {
+                top: 100%;
+                left: 50%;
+                margin-top: 0.5rem;
+
+                &::after {
+                        bottom: 100%;
+                        left: 50%;
+                        margin-left: -0.375rem;
+                        border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent;
+                }
+        }
+
+        .#{$themePrefix}tooltip-left {
+                top: 50%;
+                right: 100%;
+                margin-top: -1rem;
+                margin-right: 0.5rem;
+
+                &::after {
+                        top: 50%;
+                        left: 100%;
+                        margin-top: -0.375rem;
+                        border-color: transparent transparent transparent rgba(0, 0, 0, 0.6);
+                }
+        }
+
+        &:hover .#{$themePrefix}tooltip-inner {
+                display: inline-block;
         }
 }

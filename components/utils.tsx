@@ -54,4 +54,14 @@ export default class utils {
 
                 return buf.join('')
         }
+
+        public static vwidth(str: string, size: number = 0): number {
+                for (let char of str.split('')) {
+                        size += char < 'A' || ('Z' < char && char.charCodeAt(0) < 128)
+                                ? 0.6
+                                : 1
+                }
+
+                return size
+        }
 }

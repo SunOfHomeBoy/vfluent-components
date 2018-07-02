@@ -8,26 +8,57 @@ export class Tooltip extends vfluents {
         @Props() public readonly props: {
                 id?: string // 組件ID 可空 默認值：空字符串
                 className?: string // 附加樣式 可空 默認值：空字符串
-                content?: string // 內容文本 可空 默認值：空字符串
                 placement?: string // 固定位置 可空 默認值：Bottom 可選值：Top | Right | Bottom | Left
+                text?: string // 內容文本 可空 默認值：空字符串
         } = {
                         id: null,
                         className: null,
-                        content: '',
+                        text: '',
                         placement: 'Bottom'
                 }
 
         public render(h: CreateElement): any {
                 let selfComponent = this.innerComponents()[0]
 
-                if (utils.empty(vfluents.useTooltip) === false) {
-                        selfComponent = selfComponent || {}
-
-                        selfComponent.tag = selfComponent.tag || 'span'
+                if (utils.empty(selfComponent) === false && utils.empty(this.$props.text) === false) {
                         selfComponent.data = selfComponent.data || {}
                         selfComponent.children = selfComponent.children || []
 
+                        if (typeof (selfComponent.tag) === 'undefined') {
+                                selfComponent.tag = selfComponent.tag || 'span'
+                                selfComponent.children.push({ text: selfComponent.text })
+                        }
 
+
+                        let tooltipElement: any = {
+                                tag: 'span',
+                                text: this.$props.text,
+                                data: {
+                                        class: vfluents.cls([
+                                                vfluents.themePrefix + 'tooltip-inner',
+                                                ['Top', 'Left', 'Right'].indexOf(this.$props.placement) !== -1
+                                                        ? vfluents.themePrefix + 'tooltip-' + String(this.$props.placement).toLowerCase()
+                                                        : vfluents.themePrefix + 'tooltip-bottom'
+                                        ]),
+                                        style: {
+                                                width: utils.vwidth(this.$props.text) + 'em'
+                                        }
+                                }
+                        }
+
+                        switch (this.$props.placement) {
+                                case 'Right':
+                                case 'Left':
+                                        break
+
+                                case 'Top':
+                                default:
+                                        tooltipElement.data.style.marginLeft = -(utils.vwidth(this.$props.text) / 2 + 1) + 'em'
+                                        break
+
+                        }
+                        selfComponent.children.push(tooltipElement)
+                        selfComponent.data.class = vfluents.cls([selfComponent.data.class, vfluents.themePrefix + 'tooltip'])
                 }
 
                 return selfComponent
