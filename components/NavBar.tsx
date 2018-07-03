@@ -51,14 +51,15 @@ export class NavBar extends vfluents {
                                 'pure-g',
                                 'pure-menu',
                                 'pure-menu-horizontal',
-                                '.pure-menu-scrollable',
+                                'pure-menu-scrollable',
                                 vfluents.themePrefix + 'navbar',
                                 ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
                                         ? vfluents.themePrefix + 'navbar-' + String(this.$props.size).toLowerCase()
                                         : null,
                                 ['Top', 'Bottom', 'Sticky'].indexOf(this.$props.fixed) !== -1
                                         ? vfluents.themePrefix + 'fixed-' + String(this.$props.fixed).toLowerCase()
-                                        : null
+                                        : null,
+                                this.$props.className
                         ])}>
                                 {utils.empty(this.$props.brandName) === false ? (
                                         <Button
@@ -66,6 +67,7 @@ export class NavBar extends vfluents {
                                                 size={this.$props.size}
                                                 icon={this.$props.brandLogo}
                                                 text={this.$props.brandName}
+                                                align="Left"
                                                 className={vfluents.cls([
                                                         vfluents.themePrefix + 'navbar-brand',
                                                         this.$props.brandCls
@@ -171,7 +173,8 @@ export class NavBar extends vfluents {
                                                         icon={element.icon}
                                                         size={this.$props.size}
                                                         align={element.align}
-                                                        title={element.title}
+                                                        tooltip={element.tooltip}
+                                                        className={element.className}
                                                         eventClick={() => this.eventPreClick(element.href, element.click)}
                                                 />
                                         )

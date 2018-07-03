@@ -45,7 +45,7 @@
 
                         table.#{$themePrefix}box {
                                 width: auto;
-                                margin: 3rem 4rem;
+                                margin: 4rem auto;
 
                                 th {
                                         width: 5rem;
@@ -53,8 +53,11 @@
                                         line-height: 4rem;
                                         color: $themeColorWhite;
                                         background: $themeColorAccentLight;
-                                        border: 1px solid $themeColorWhite;
                                         cursor: pointer;
+
+                                        span {
+                                                width: 100%;
+                                        }
                                 }
                         }
                 }

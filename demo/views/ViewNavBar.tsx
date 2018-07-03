@@ -1,9 +1,11 @@
 import { Component, CreateElement } from 'vue-component-decorator'
-import { NavBar, Button, Icon } from '../../components'
+import { NavBar, Button, Icon, vfluents } from '../../components'
 import { ViewComponent } from '../components'
 
 @Component
 export class ViewNavBar extends ViewComponent {
+        public name: string = 'NavBar'
+        public description: string = '導航欄組件'
         private navbarItems: any[] = [
                 {
                         text: '首頁',
@@ -29,11 +31,6 @@ export class ViewNavBar extends ViewComponent {
                         href: 'https://github.com/hjboss/vfluent-components/issues'
                 }
         ]
-
-        public created() {
-                this.props.name = 'NavBar'
-                this.props.description = '導航欄組件'
-        }
 
         public renderComponent(h: CreateElement): any {
                 return (
@@ -92,24 +89,51 @@ export class ViewNavBar extends ViewComponent {
                                 <code></code>
                                 <dfn>工具欄佈局</dfn>
                                 <samp>
-                                        <NavBar
-                                                brandName="vFluent-Components"
-                                                brandLogo="Github"
-                                                append={[
-                                                        {
-                                                                icon: 'User',
-                                                                title: '用戶'
-                                                        },
-                                                        {
-                                                                icon: 'Quit',
-                                                                title: '關閉'
-                                                        }
-                                                ]}
-                                        />
+                                        <NavBar brandName="vFluent-Components" brandLogo="Github" append={[{ icon: 'User', tooltip: { text: '用戶', placement: 'Left' } }, { icon: 'Quit', tooltip: { text: '關閉', placement: 'Left' } }]} />
                                 </samp>
                                 <code></code>
                                 <dfn>響應式導航</dfn>
-                                <samp></samp>
+                                <samp>
+                                        <NavBar
+                                                brandName="vFluent-Components"
+                                                brandLogo="Github"
+                                                brandCls={vfluents.cls([
+                                                        vfluents.themePrefix + 'd-none',
+                                                        vfluents.themePrefix + 'd-md-inline-block'
+                                                ])}
+                                                prepend={[
+                                                        {
+                                                                icon: 'Github',
+                                                                className: vfluents.cls([
+                                                                        vfluents.themePrefix + 'd-inline-block',
+                                                                        vfluents.themePrefix + 'd-md-none'
+                                                                ])
+                                                        }
+                                                ]}
+                                                append={[
+                                                        {
+                                                                icon: 'User',
+                                                                className: vfluents.cls([
+                                                                        vfluents.themePrefix + 'd-none',
+                                                                        vfluents.themePrefix + 'd-md-inline-block'
+                                                                ])
+                                                        },
+                                                        {
+                                                                icon: 'Quit'
+                                                        }
+                                                ]}
+                                        >
+                                                <Button
+                                                        type="Secondary"
+                                                        text="移動版標題"
+                                                        block={true}
+                                                        className={vfluents.cls([
+                                                                vfluents.themePrefix + 'd-inline-block',
+                                                                vfluents.themePrefix + 'd-md-none'
+                                                        ])}
+                                                />
+                                        </NavBar>
+                                </samp>
                                 <code></code>
                         </article>
                 )

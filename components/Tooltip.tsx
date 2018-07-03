@@ -20,7 +20,7 @@ export class Tooltip extends vfluents {
         public render(h: CreateElement): any {
                 let selfComponent = this.innerComponents()[0]
 
-                if (utils.empty(selfComponent) === false && utils.empty(this.$props.text) === false) {
+                if (vfluents.useTooltip && !utils.empty(selfComponent) && !utils.empty(this.$props.text)) {
                         selfComponent.data = selfComponent.data || {}
                         selfComponent.children = selfComponent.children || []
 
@@ -46,17 +46,10 @@ export class Tooltip extends vfluents {
                                 }
                         }
 
-                        switch (this.$props.placement) {
-                                case 'Right':
-                                case 'Left':
-                                        break
-
-                                case 'Top':
-                                default:
-                                        tooltipElement.data.style.marginLeft = -(utils.vwidth(this.$props.text) / 2 + 1) + 'em'
-                                        break
-
+                        if (this.$props.placement !== 'Left' && this.$props.placement !== 'Right') {
+                                tooltipElement.data.style.marginLeft = -(utils.vwidth(this.$props.text) / 2 + 1) + 'em'
                         }
+
                         selfComponent.children.push(tooltipElement)
                         selfComponent.data.class = vfluents.cls([selfComponent.data.class, vfluents.themePrefix + 'tooltip'])
                 }

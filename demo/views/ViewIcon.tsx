@@ -5,10 +5,8 @@ import { theme } from '../config'
 
 @Component
 export class ViewIcon extends ViewComponent {
-        public created() {
-                this.props.name = 'Icon'
-                this.props.description = '圖標組件'
-        }
+        public name: string = 'Icon'
+        public description: string = '圖標組件'
 
         public renderComponent(h: CreateElement): any {
                 let iconElements = []

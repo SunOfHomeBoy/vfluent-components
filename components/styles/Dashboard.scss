@@ -30,7 +30,7 @@
                         overflow: auto;
                 }
 
-                .#{$themePrefix}dashboard-tabbar {
+                .#{$themePrefix}dashboard-bbar {
                         background-color: $themeColorWhite;
 
                         .#{$themePrefix}button-icon-only:before {
@@ -93,8 +93,18 @@
                         padding-bottom: 0;
                         flex: auto;
 
-                        .#{$themePrefix}dashboard-tabbar {
+                        .#{$themePrefix}dashboard-bbar {
                                 display: none;
+                        }
+
+                        .#{$themePrefix}dashboard-tbar {
+                                .#{$themePrefix}navbar-brand {
+                                        @include border-shadow(right, $themeColorAccentDark);
+                                }
+
+                                .#{$themePrefix}navbar-title {
+                                        display: none !important;
+                                }
                         }
                 }
 
@@ -143,7 +153,8 @@
 }
 @include media-breakpoint-up(hg) {
         .#{$themePrefix}dashboard {
-                .#{$themePrefix}dashboard-side {
+                .#{$themePrefix}dashboard-side,
+                .#{$themePrefix}navbar-brand {
                         max-width: 20rem;
                 }
         }

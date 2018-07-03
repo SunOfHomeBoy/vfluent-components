@@ -5,21 +5,51 @@ import { theme } from '../config'
 
 @Component
 export class ViewTooltip extends ViewComponent {
-        public created() {
-                this.props.name = 'Tooltip'
-                this.props.description = '提示文本組件'
-        }
+        public name: string = 'Tooltip'
+        public description: string = '提示文本組件'
 
         public renderComponent(h: CreateElement): any {
                 return (
                         <article>
                                 <dfn>常用用法</dfn>
                                 <samp>
-                                        <Button text="ok" tooltip={{ text: '一二三四無六期把就令', placement: 'Top' }} /><br /><br />
-                                        <Button text="ok" tooltip={{ text: 'QAZwsx1', placement: 'Right' }} />
-                                        <Tooltip text="一二三四無六" placement="Left"><a class="ok">test</a></Tooltip>
-                                        <Tooltip text="OK123456" placement="Left">okpklas</Tooltip>
+                                        <table class={theme.themePrefix + 'box'}>
+                                                <tr>
+                                                        <td></td>
+                                                        <th>
+                                                                <Tooltip text="Top提示文本" placement="Top">
+                                                                        上邊
+                                                                </Tooltip>
+                                                        </th>
+                                                        <td></td>
+                                                </tr>
+                                                <tr>
+                                                        <th>
+                                                                <Tooltip text="Left提示文本" placement="Left">
+                                                                        左邊
+                                                                </Tooltip>
+                                                        </th>
+                                                        <td></td>
+                                                        <th>
+                                                                <Tooltip text="Right提示文本" placement="Right">
+                                                                        右邊
+                                                                </Tooltip>
+                                                        </th>
+                                                </tr>
+                                                <tr>
+                                                        <td></td>
+                                                        <th>
+                                                                <Tooltip text="Bottom提示文本" placement="Bottom">
+                                                                        下邊
+                                                                </Tooltip>
+                                                        </th>
+                                                        <td></td>
+                                                </tr>
+                                        </table>
                                 </samp>
+                                <code>
+
+                                </code>
                         </article>
                 )
         }

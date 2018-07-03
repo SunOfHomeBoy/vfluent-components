@@ -1,15 +1,13 @@
 import { Component, CreateElement } from 'vue-component-decorator'
 import { Button, ButtonGroup } from '../../components'
 import { ViewComponent } from '../components'
+import { theme } from '../config';
 
 @Component
 export class ViewButton extends ViewComponent {
+        public name: string = 'Button'
+        public description: string = '常用按鈕組件'
         private stateActive: any = {}
-
-        public created() {
-                this.props.name = 'Button'
-                this.props.description = '常用按鈕組件'
-        }
 
         public renderComponent(h: CreateElement): any {
                 return (
@@ -338,6 +336,27 @@ export class ViewButton extends ViewComponent {
                                 </samp>
                                 <code>
                                 </code>
+                                <dfn>提示文本</dfn>
+                                <samp>
+                                        <table class={theme.themePrefix + 'box'}>
+                                                <tr>
+                                                        <td></td>
+                                                        <td><Button type="Primary" tooltip={{ text: 'Top提示文本', placement: 'Top' }} text="上邊" /></td>
+                                                        <td></td>
+                                                </tr>
+                                                <tr>
+                                                        <td><Button type="Primary" tooltip={{ text: 'Left提示文本', placement: 'Left' }} text="左邊" /></td>
+                                                        <td></td>
+                                                        <td><Button type="Primary" tooltip={{ text: 'Right提示文本', placement: 'Right' }} text="右邊" /></td>
+                                                </tr>
+                                                <tr>
+                                                        <td></td>
+                                                        <td><Button type="Primary" tooltip={{ text: 'Bottom提示文本', placement: 'Bottom' }} text="下邊" /></td>
+                                                        <td></td>
+                                                </tr>
+                                        </table>
+                                </samp>
+                                <code></code>
                                 <dfn>點擊事件</dfn>
                                 <samp>
                                         <Button type="Primary" text="Click+Enable" eventClick={() => alert('Are you OK~')} />

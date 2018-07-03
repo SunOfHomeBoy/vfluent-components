@@ -4,6 +4,8 @@ import { ViewComponent } from '../components'
 
 @Component
 export class ViewTabBar extends ViewComponent {
+        public name: string = 'TabBar'
+        public description: string = '標籤欄組件'
         private tabbarItems: any[] = [
                 {
                         text: '消息',
@@ -26,11 +28,6 @@ export class ViewTabBar extends ViewComponent {
                         icon: 'User'
                 }
         ]
-
-        public created() {
-                this.props.name = 'TabBar'
-                this.props.description = '標籤欄組件'
-        }
 
         public renderComponent(h: CreateElement) {
                 return (
