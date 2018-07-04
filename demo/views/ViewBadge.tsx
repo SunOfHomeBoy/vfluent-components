@@ -4,8 +4,10 @@ import { ViewComponent } from '../components'
 
 @Component
 export class ViewBadge extends ViewComponent {
-        public name: string = 'Badge'
-        public description: string = '徽章展示新的或者未讀的信息條目'
+        public created() {
+                this.props.name = 'Badge'
+                this.props.description = '徽章展示新的或者未讀的信息條目'
+        }
 
         public renderComponent(h: CreateElement): any {
                 return (

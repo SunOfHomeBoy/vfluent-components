@@ -9,6 +9,11 @@ export class ViewButton extends ViewComponent {
         public description: string = '常用按鈕組件'
         private stateActive: any = {}
 
+        public created() {
+                this.props.name = 'Badge'
+                this.props.description = '徽章展示新的或者未讀的信息條目'
+        }
+
         public renderComponent(h: CreateElement): any {
                 return (
                         <article>

@@ -2,6 +2,7 @@ import { Vfluents } from '../views/Vfluents'
 import { ViewBadge } from '../views/ViewBadge'
 import { ViewButton } from '../views/ViewButton'
 import { ViewIcon } from '../views/ViewIcon'
+import { ViewImage } from '../views/ViewImage'
 import { ViewNavBar } from '../views/ViewNavBar'
 import { ViewTabBar } from '../views/ViewTabBar'
 import { ViewTooltip } from '../views/ViewTooltip'
@@ -23,6 +24,10 @@ export const routes: any[] = [
                         {
                                 path: 'Icon',
                                 component: ViewIcon
+                        },
+                        {
+                                path: 'Image',
+                                component: ViewImage
                         },
                         {
                                 path: 'NavBar',

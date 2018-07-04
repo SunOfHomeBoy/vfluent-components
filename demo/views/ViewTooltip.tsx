@@ -8,6 +8,11 @@ export class ViewTooltip extends ViewComponent {
         public name: string = 'Tooltip'
         public description: string = '提示文本組件'
 
+        public created() {
+                this.props.name = 'Badge'
+                this.props.description = '徽章展示新的或者未讀的信息條目'
+        }
+
         public renderComponent(h: CreateElement): any {
                 return (
                         <article>

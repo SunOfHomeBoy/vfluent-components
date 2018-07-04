@@ -1,6 +1,14 @@
 export default class utils {
         public static readonly hexDigits: string = '0123456789abcdef'
 
+        public static str(document: any): string {
+                return String(document || '')
+        }
+
+        public static dict(document: any): any {
+                return Object(document || {})
+        }
+
         public static empty(document: any): boolean {
                 if (document === null) {
                         return true
@@ -30,16 +38,12 @@ export default class utils {
                 return Object.keys(document).length === 0
         }
 
-        public static removeEmpty(elements: any[]): any[] {
-                let buffers: any[] = []
+        public static nonempty(document: any): boolean {
+                return utils.empty(document) === false
+        }
 
-                for (let element of elements) {
-                        if (utils.empty(element) === false) {
-                                buffers.push(element)
-                        }
-                }
-
-                return buffers
+        public static isFunc(document: any): boolean {
+                return typeof (document) === 'function'
         }
 
         public static uuid(prefix?: string): string {

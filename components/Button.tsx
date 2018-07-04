@@ -32,7 +32,7 @@ export class Button extends vfluents {
                         className: null,
                         type: 'Default',
                         size: 'Default',
-                        text: '',
+                        text: null,
                         icon: null,
                         align: 'Default',
                         badge: null,
@@ -47,28 +47,66 @@ export class Button extends vfluents {
                         tooltip: null,
                         eventClick: null
                 }
-
         public readonly btnTypes: string[] = ['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Link', 'Default']
 
         public render(h: CreateElement): any {
-                let tooltipProps = this.$props.tooltip || {}
-                let innerElement = [this.$props.text]
+                let innerComponents = [this.$props.text]
 
-                if (utils.empty(this.$props.icon) === false) {
-                        let iconElement = <Icon name={this.$props.icon} size="Small" />
-                        let textElement = this.$props.text
+                if (utils.nonempty(this.$props.icon)) {
+                        let iconComponent = <Icon name={this.$props.icon} size="Small" />
+                        let textComponent = this.$props.text
 
-                        innerElement = this.$props.align === 'Bottom' || this.$props.align === 'Right'
-                                ? [null, textElement, iconElement, null]
-                                : [null, iconElement, textElement, null]
+                        innerComponents = this.$props.align === 'Bottom' || this.$props.align === 'Right'
+                                ? [null, textComponent, iconComponent, null]
+                                : [null, iconComponent, textComponent, null]
                 }
 
-                if (utils.empty(this.$props.badge) === false) {
-                        innerElement[this.$props.align === 'Top' ? 0 : 3] = <Badge text={this.$props.badge} />
+                if (utils.nonempty(this.$props.badge)) {
+                        innerComponents[this.$props.align === 'Top' ? 0 : 3] = <Badge text={this.$props.badge} />
                 }
 
                 return (
-                        <Tooltip text={tooltipProps.text} placement={tooltipProps.placement}>
+                        <Tooltip text={utils.dict(this.$props.tooltip).text} placement={utils.dict(this.$props.tooltip).placement}>
+                                <a
+                                        id={this.$props.id}
+                                        onClick={this.eventPreClick}
+                                        style={{ width: this.$props.width }}
+                                        class={vfluents.cls([
+                                                'pure-button',
+                                                vfluents.themePrefix + 'button',
+                                                this.btnTypes.indexOf(this.$props.type) !== -1
+                                                        ? vfluents.themePrefix + 'button-' + utils.str(this.$props.type).toLowerCase()
+                                                        : vfluents.themePrefix + 'button-default',
+                                                ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
+                                                        ? vfluents.themePrefix + 'button-' + utils.str(this.$props.size).toLowerCase()
+                                                        : '',
+                                                utils.nonempty(this.$props.icon)
+                                                        ? vfluents.themePrefix + 'button-icon'
+                                                        : '',
+                                                utils.nonempty(this.$props.icon) && utils.empty(this.$props.text)
+                                                        ? vfluents.themePrefix + 'button-icon-only'
+                                                        : '',
+                                                ['Top', 'Right', 'Bottom', 'Left'].indexOf(this.$props.align) === -1
+                                                        ? vfluents.themePrefix + 'button-' + utils.str(this.$props.align).toLowerCase()
+                                                        : '',
+                                                utils.nonempty(this.$props.block)
+                                                        ? vfluents.themePrefix + 'button-block'
+                                                        : ''
+                                        ])}
+                                >{innerComponents}</a>
+                        </Tooltip>
+                )
+        }
+
+        public eventPreClick(event: Event) {
+                if (utils.empty(this.$props.disabled) && utils.isFunc(this.$props.eventClick)) {
+                        this.$props.eventClick(event)
+                }
+        }
+
+        public render0(h: CreateElement): any {
+                return (
+                        <Tooltip text={tooltipProps.tex} placement={tooltipProps.placement}>
                                 <a
                                         id={this.$props.id}
                                         class={vfluents.cls([
@@ -109,18 +147,11 @@ export class Button extends vfluents {
                                                         : null,
                                                 this.$props.className
                                         ])}
-                                        title={this.$props.title}
                                         style={{ width: this.$props.width }}
-                                        onClick={this.eventPreClick}
+                                        onClick={this.eventPreClick0}
                                 >{innerElement}</a>
                         </Tooltip>
                 )
-        }
-
-        public eventPreClick(e: Event) {
-                if (utils.empty(this.$props.disabled) && typeof (this.$props.eventClick) === 'function') {
-                        this.$props.eventClick(e)
-                }
         }
 }
 

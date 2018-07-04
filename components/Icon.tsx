@@ -14,7 +14,7 @@ export class Icon extends vfluents {
         } = {
                         id: null,
                         className: null,
-                        name: '',
+                        name: null,
                         size: 'Default',
                         color: null,
                         eventClick: null

@@ -8,6 +8,11 @@ export class ViewIcon extends ViewComponent {
         public name: string = 'Icon'
         public description: string = '圖標組件'
 
+        public created() {
+                this.props.name = 'Badge'
+                this.props.description = '徽章展示新的或者未讀的信息條目'
+        }
+
         public renderComponent(h: CreateElement): any {
                 let iconElements = []
                 for (let name of Object.keys(theme.icons).sort()) {

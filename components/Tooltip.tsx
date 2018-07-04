@@ -13,7 +13,7 @@ export class Tooltip extends vfluents {
         } = {
                         id: null,
                         className: null,
-                        text: '',
+                        text: null,
                         placement: 'Bottom'
                 }
 
