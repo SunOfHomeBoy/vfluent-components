@@ -34,13 +34,11 @@ export class vfluents extends Vue {
                 }))
         }
 
-        public static cls(items: string[]): string {
-                let cls: string = ''
-
+        public static cls(items: string[], cls: string = ''): string {
                 for (let i = 0; i < items.length; i++) {
-                        cls += items[i] && i >= 1
+                        cls += utils.nonempty(cls) && utils.nonempty(items[i])
                                 ? ' ' + items[i]
-                                : items[i]
+                                : items[i] || ''
                 }
 
                 return cls

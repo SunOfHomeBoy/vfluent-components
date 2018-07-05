@@ -13,14 +13,14 @@ export class Tooltip extends vfluents {
         } = {
                         id: null,
                         className: null,
-                        text: null,
-                        placement: 'Bottom'
+                        placement: 'Bottom',
+                        text: null
                 }
 
         public render(h: CreateElement): any {
                 let selfComponent = this.innerComponents()[0]
 
-                if (vfluents.useTooltip && !utils.empty(selfComponent) && !utils.empty(this.$props.text)) {
+                if (vfluents.useTooltip && utils.nonempty(selfComponent) && utils.nonempty(this.$props.text)) {
                         selfComponent.data = selfComponent.data || {}
                         selfComponent.children = selfComponent.children || []
 
@@ -29,28 +29,25 @@ export class Tooltip extends vfluents {
                                 selfComponent.children.push({ text: selfComponent.text })
                         }
 
-
-                        let tooltipElement: any = {
+                        let tooltipComponent: any = {
                                 tag: 'span',
                                 text: this.$props.text,
                                 data: {
                                         class: vfluents.cls([
                                                 vfluents.themePrefix + 'tooltip-inner',
-                                                ['Top', 'Left', 'Right'].indexOf(this.$props.placement) !== -1
-                                                        ? vfluents.themePrefix + 'tooltip-' + String(this.$props.placement).toLowerCase()
+                                                ['Top', 'Right', 'Bottom', 'Left'].indexOf(this.$props.placement) !== -1
+                                                        ? vfluents.themePrefix + 'tooltip-' + utils.str(this.$props.placement).toLowerCase()
                                                         : vfluents.themePrefix + 'tooltip-bottom'
                                         ]),
-                                        style: {
-                                                width: utils.vwidth(this.$props.text) + 'em'
-                                        }
+                                        style: { width: utils.vwidth(this.$props.text) + 'em' }
                                 }
                         }
 
                         if (this.$props.placement !== 'Left' && this.$props.placement !== 'Right') {
-                                tooltipElement.data.style.marginLeft = -(utils.vwidth(this.$props.text) / 2 + 1) + 'em'
+                                tooltipComponent.data.style.marginLeft = -(utils.vwidth(this.$props.text) / 2 + 1) + 'em'
                         }
 
-                        selfComponent.children.push(tooltipElement)
+                        selfComponent.children.push(tooltipComponent)
                         selfComponent.data.class = vfluents.cls([selfComponent.data.class, vfluents.themePrefix + 'tooltip'])
                 }
 

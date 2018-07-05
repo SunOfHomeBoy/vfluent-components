@@ -15,15 +15,15 @@ export class NavBar extends vfluents {
                 brandName?: string // 品牌名稱 可空 默認值：空字符串
                 brandHref?: string // 品牌鏈接 可空 默認值：空字符串
                 brandCls?: string // 品牌樣式 可空 默認值：空字符串
-                prepend?: any // 前置元素 可空 默認值：空值
-                append?: any // 後置元素 可空 默認值：空值
+                prepend?: any[] // 前置元素 可空 默認值：空數組
+                append?: any[] // 後置元素 可空 默認值：空數組
                 align?: string // 導航對齊 可空 默認值：Left 可選值：Left | Center | Right
                 items?: {
                         text?: string // 導航項之文本 可空 默認值：空字符串
                         href?: string // 導航項之鏈接 可空 默認值：空字符串
                         selected?: boolean // 導航項之已選狀態 可空 默認值：FALSE
                         disabled?: boolean // 導航項之禁用狀態 可空 默認值：FALSE
-                        dropdowns?: { // 即導航項是下拉菜單
+                        dropdown?: { // 即導航項是下拉菜單
                                 text?: string // 菜單項之文本 可空 默認值：空字符串
                                 href?: string // 菜單項之鏈接 可空 默認值：空字符串
                         }[]
@@ -46,6 +46,38 @@ export class NavBar extends vfluents {
                 }
 
         public render(h: CreateElement): any {
+                let prependComponents = utils.list()
+                let appendComponents = utils.list()
+                let innerComponents = utils.list()
+
+                if (utils.nonempty(this.$props.items) && this.$props.items instanceof Array) {
+                        let navComponent = this.renderNavitemsComponents(h, this.$props.items)
+
+                        switch (this.$props.align) {
+                                case 'Center':
+                                        innerComponents.push(navComponent)
+                                        break
+
+                                case 'Right':
+                                        appendComponents.push(navComponent)
+                                        break
+
+                                default:
+                                        prependComponents.push(navComponent)
+                                        break
+                        }
+                }
+
+                if (utils.nonempty(this.$props.prepend)) {
+                        prependComponents.push(this.renderPrependAndAppend(h, this.$props.prepend))
+                }
+
+                if (utils.nonempty(this.$props.append)) {
+                        appendComponents.push(this.renderPrependAndAppend(h, this.$props.append))
+                }
+
+                innerComponents.push(this.renderChildrenComponents(h))
+
                 return (
                         <nav id={this.$props.id} class={vfluents.cls([
                                 'pure-g',
@@ -54,147 +86,117 @@ export class NavBar extends vfluents {
                                 'pure-menu-scrollable',
                                 vfluents.themePrefix + 'navbar',
                                 ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
-                                        ? vfluents.themePrefix + 'navbar-' + String(this.$props.size).toLowerCase()
-                                        : null,
+                                        ? vfluents.themePrefix + 'navbar-' + utils.str(this.$props.size).toLowerCase()
+                                        : '',
                                 ['Top', 'Bottom', 'Sticky'].indexOf(this.$props.fixed) !== -1
-                                        ? vfluents.themePrefix + 'fixed-' + String(this.$props.fixed).toLowerCase()
-                                        : null,
+                                        ? vfluents.themePrefix + 'fixed-' + utils.str(this.$props.fixed).toLowerCase()
+                                        : '',
                                 this.$props.className
                         ])}>
-                                {utils.empty(this.$props.brandName) === false ? (
+                                {utils.empty(this.$props.brandName) ? null : (
                                         <Button
                                                 type="Primary"
+                                                align="Left"
                                                 size={this.$props.size}
                                                 icon={this.$props.brandLogo}
                                                 text={this.$props.brandName}
-                                                align="Left"
-                                                className={vfluents.cls([
-                                                        vfluents.themePrefix + 'navbar-brand',
-                                                        this.$props.brandCls
-                                                ])}
+                                                className={vfluents.cls([vfluents.themePrefix + 'navbar', this.$props.brandCls])}
                                                 eventClick={() => this.eventPreClick(this.$props.brandHref, this.$props.eventBrand)}
                                         />
-                                ) : null}
-                                <div class={vfluents.themePrefix + 'navbar-prepend'}>{[
-                                        this.$props.align === 'Left' && utils.empty(this.$props.items) === false
-                                                ? this.renderItems(h)
-                                                : null,
-                                        this.renderPrependAndAppend(h, this.$props.prepend)
-                                ]}</div>
-                                <div class={vfluents.themePrefix + 'navbar-inner'}>{[
-                                        this.$props.align === 'Center' && utils.empty(this.$props.items) === false
-                                                ? this.renderItems(h)
-                                                : null,
-                                        this.renderChildComponents(h)
-                                ]}</div>
-                                <div class={vfluents.themePrefix + 'navbar-append'}>{[
-                                        this.$props.align === 'Right' && utils.empty(this.$props.items) === false
-                                                ? this.renderItems(h)
-                                                : null,
-                                        this.renderPrependAndAppend(h, this.$props.append)
-                                ]}</div>
+                                )}
+                                <div class={vfluents.themePrefix + 'navbar-prepend'}>{prependComponents}</div>
+                                <div class={vfluents.themePrefix + 'navbar-inner'}>{innerComponents}</div>
+                                <div class={vfluents.themePrefix + 'navbar-append'}>{appendComponents}</div>
                         </nav>
                 )
         }
 
-        public renderItems(h: CreateElement): any {
-                if (this.$props.items instanceof Array && utils.empty(this.$props.items) === false) {
-                        let menuitems: any[] = []
+        public renderChildrenComponents(h: CreateElement): any {
+                let innerComponents = this.innerComponents()
 
-                        for (let { text, href, selected, disabled, dropdowns } of this.$props.items) {
-                                let subitems: any[] = []
-
-                                if (dropdowns instanceof Array) {
-                                        for (let item of dropdowns) {
-                                                subitems.push(
-                                                        <li class="pure-menu-item">
-                                                                <Button
-                                                                        type="Secondary"
-                                                                        align="Left"
-                                                                        block={true}
-                                                                        text={item.text}
-                                                                        size={this.$props.size}
-                                                                        eventClick={() => this.eventPreClick(item.href, null)}
-                                                                />
-                                                        </li>
-                                                )
-                                        }
-                                }
-
-                                menuitems.push(
-                                        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                                                <Button
-                                                        type="Secondary"
-                                                        text={text}
-                                                        size={this.$props.size}
-                                                        active={selected}
-                                                        disabled={disabled}
-                                                        eventClick={() => this.eventPreClick(href, null)}
-                                                />
-                                                {utils.empty(dropdowns) === false ? (
-                                                        <ul class="pure-menu-children">{subitems}</ul>
-                                                ) : null}
-                                        </li>
-                                )
-                        }
-
-                        return <ul class="pure-menu-list">{menuitems}</ul>
-                }
-
-                return null
-        }
-
-        public renderChildComponents(h: CreateElement): any {
-                let innerElements = this.innerComponents()
-
-                if (innerElements.length === 1 && !innerElements[0].tag) {
+                if (innerComponents.length === 1 && utils.empty(innerComponents[0].tag)) {
                         return (
                                 <div class={vfluents.cls([
                                         vfluents.themePrefix + 'align-center',
                                         vfluents.themePrefix + 'position-absolute',
                                         vfluents.themePrefix + 'navbar-title'
-                                ])}>{innerElements}</div>
+                                ])}>{innerComponents}</div>
                         )
                 }
 
-                return innerElements
+                return innerComponents
         }
 
-        public renderPrependAndAppend(h: CreateElement, components: any[]): any {
-                let xpendElements: any[] = []
+        public renderNavitemsComponents(h: CreateElement, components: any[]): any {
+                let menuitems = utils.list()
 
-                if (components instanceof Array) {
-                        for (let element of components) {
-                                if (typeof (element) === 'object' && utils.empty(element.tag)) {
-                                        xpendElements.push(
-                                                <Button
-                                                        type="Secondary"
-                                                        text={element.text}
-                                                        icon={element.icon}
-                                                        size={this.$props.size}
-                                                        align={element.align}
-                                                        tooltip={element.tooltip}
-                                                        className={element.className}
-                                                        eventClick={() => this.eventPreClick(element.href, element.click)}
-                                                />
-                                        )
-                                        continue
-                                }
+                for (let { text, href, selected, disabled, dropdown } of components) {
+                        let menuChildren: any
 
-                                xpendElements.push(element)
+                        if (utils.nonempty(dropdown)) {
+                                menuChildren = (
+                                        <ul class="pure-menu-children">{utils.forEach(dropdown, (element: any) => {
+                                                return (
+                                                        <li class="pure-menu-item">
+                                                                <Button
+                                                                        type="Secondary"
+                                                                        align="Left"
+                                                                        block={true}
+                                                                        text={element.text}
+                                                                        size={this.$props.size}
+                                                                        eventClick={() => this.eventPreClick(element.href, null)}
+                                                                />
+                                                        </li>
+                                                )
+                                        })}</ul>
+                                )
                         }
+
+                        menuitems.push(
+                                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                                        <Button
+                                                type="Secondary"
+                                                text={text}
+                                                size={this.$props.size}
+                                                active={selected}
+                                                disabled={disabled}
+                                                eventClick={() => this.eventPreClick(href, null)}
+                                        />
+                                        {menuChildren}
+                                </li>
+                        )
                 }
 
-                return xpendElements
+                return <ul class="pure-menu-list">{menuitems}</ul>
+        }
+
+        public renderPrependAndAppend(h: CreateElement, components: any[]): any[] {
+                return utils.forEach(components, (element: any) => {
+                        if (typeof (element) === 'object' && utils.empty(element.tag)) {
+                                return (
+                                        <Button
+                                                type="Secondary"
+                                                text={element.text}
+                                                icon={element.icon}
+                                                size={this.$props.size}
+                                                align={element.align}
+                                                tooltip={element.tooltip}
+                                                className={element.className}
+                                                background={element.background}
+                                                eventClick={() => this.eventPreClick(element.href, element.click)}
+                                        />
+                                )
+                        }
+
+                        return element
+                })
         }
 
         public eventPreClick(href: string, click: any) {
-                if (typeof (click) === 'function') {
-                        return click()
-                }
-
-                if (utils.empty(href) === false) {
-                        return this.redirect(href)
+                if (utils.isFunc(click)) {
+                        click()
+                } else if (utils.nonempty(href)) {
+                        this.redirect(href)
                 }
         }
 }

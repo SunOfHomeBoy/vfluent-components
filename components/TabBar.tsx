@@ -27,61 +27,40 @@ export class TabBar extends vfluents {
                         fixed: 'Default',
                         items: null
                 }
+        public readonly itemSizes: any = { 'Huge': 'Large', 'Large': 'Default' }
 
         public render(h: CreateElement): any {
-                let btnElements = []
-
-                if (this.$props.items instanceof Array) {
-                        for (let i = 0; i < this.$props.items.length; i++) {
-                                let { text, icon, href, badge, click } = this.$props.items[i]
-                                let size = 'Small'
-
-                                switch (this.$props.size) {
-                                        case 'Huge':
-                                                size = 'Large'
-                                                break
-
-                                        case 'Large':
-                                                size = 'Default'
-                                                break
-                                }
-
-                                btnElements.push(
-                                        <Button
-                                                size={size}
-                                                text={text}
-                                                badge={badge}
-                                                type={this.$props.type || 'Default'}
-                                                align={this.$props.size === 'Small' ? null : 'Top'}
-                                                icon={this.$props.size === 'Small' && text ? null : icon}
-                                                eventClick={() => this.eventPreClick(href, click)}
-                                        />
-                                )
-                        }
-
-                }
-
                 return (
                         <ButtonGroup id={this.$props.id} className={vfluents.cls([
                                 vfluents.themePrefix + 'tabbar',
                                 ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
-                                        ? vfluents.themePrefix + 'tabbar-' + String(this.$props.size).toLowerCase()
-                                        : null,
+                                        ? vfluents.themePrefix + 'tabbar-' + utils.str(this.$props.size).toLowerCase()
+                                        : '',
                                 ['Top', 'Bottom', 'Sticky'].indexOf(this.$props.fixed) !== -1
-                                        ? vfluents.themePrefix + 'fixed-' + String(this.$props.fixed).toLowerCase()
-                                        : null,
+                                        ? vfluents.themePrefix + 'fixed-' + utils.str(this.$props.fixed).toUpperCase()
+                                        : '',
                                 this.$props.className
-                        ])}>{btnElements}</ButtonGroup>
+                        ])}>{utils.forEach(this.$props.items, (element: any) => {
+                                return (
+                                        <Button
+                                                text={element.text}
+                                                badge={element.badge}
+                                                type={this.$props.type || 'Default'}
+                                                size={this.itemSizes[this.$props.size] || 'Small'}
+                                                icon={this.$props.size === 'Small' && utils.nonempty(element.text) ? null : element.icon}
+                                                align={this.$props.size === 'Small' ? null : 'Top'}
+                                                eventClick={() => this.eventPreClick(element.href, element.click)}
+                                        />
+                                )
+                        })}</ButtonGroup>
                 )
         }
 
         public eventPreClick(href: string, click: any) {
-                if (typeof (click) === 'function') {
-                        return click()
-                }
-
-                if (utils.empty(href) === false) {
-                        return this.redirect(href)
+                if (utils.isFunc(click)) {
+                        click()
+                } else if (utils.nonempty(href)) {
+                        this.redirect(href)
                 }
         }
 }

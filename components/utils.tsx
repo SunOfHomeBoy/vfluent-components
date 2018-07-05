@@ -1,12 +1,14 @@
 export default class utils {
-        public static readonly hexDigits: string = '0123456789abcdef'
-
-        public static str(document: any): string {
+        public static str(document?: any): string {
                 return String(document || '')
         }
 
-        public static dict(document: any): any {
+        public static dict(document?: any): any {
                 return Object(document || {})
+        }
+
+        public static list(document?: any): any[] {
+                return document instanceof Array ? document : []
         }
 
         public static empty(document: any): boolean {
@@ -46,17 +48,22 @@ export default class utils {
                 return typeof (document) === 'function'
         }
 
-        public static uuid(prefix?: string): string {
-                let buf = [prefix]
+        public static firstUppercase(str: string): string {
+                return utils.str(str).replace(/^[a-z]/i, char => char.toUpperCase())
+        }
 
-                for (let i = 0; i < 36; i++) {
-                        buf.push(utils.hexDigits.substr(Math.floor(Math.random() * 0x10), 1))
+        public static forEach(document: any, fn: (e: any) => any, length: number = 0): any[] {
+                let buffers: any[] = []
+
+                for (let i = 0, items = utils.list(document); i < (length || items.length); i++) {
+                        buffers[i] = fn(items[i])
                 }
 
-                buf[20] = utils.hexDigits.substr((parseInt(buf[20], 16) & 0x3) | 0x8, 1)
-                buf[9] = buf[14] = buf[19] = buf[24] = '-'
+                return buffers
+        }
 
-                return buf.join('')
+        public static cssBackgroundImage(uri: string): any {
+                return utils.nonempty(uri) ? `url(${uri}` : null
         }
 
         public static vwidth(str: string, size: number = 0): number {

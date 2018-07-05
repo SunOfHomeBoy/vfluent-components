@@ -28,7 +28,7 @@ export class Dashboard extends vfluents {
         private stateCollapsed: boolean = false
 
         public render(h: CreateElement): any {
-                let innerElement = this.innerComponents()
+                /*let innerElement = this.innerComponents()
 
                 if (utils.empty(innerElement)) {
                         innerElement = <router-view></router-view>
@@ -68,7 +68,7 @@ export class Dashboard extends vfluents {
                                         <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{innerElement}</div>
                                 </main>
                         </div>
-                )
+                )*/
         }
 
         public eventCollapsed() {

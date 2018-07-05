@@ -1,6 +1,7 @@
 import { Component, CreateElement, Props } from 'vue-component-decorator'
 import { vfluents } from './vfluents'
 import './styles/Icon.scss'
+import utils from './utils';
 
 @Component
 export class Icon extends vfluents {
@@ -23,21 +24,21 @@ export class Icon extends vfluents {
         public render(h: CreateElement): any {
                 let cls = vfluents.cls([
                         vfluents.themePrefix + 'icon',
-                        vfluents.themePrefix + 'icon-' + String(this.$props.name).replace(/^icon/i, ''),
+                        vfluents.themePrefix + 'icon-' + utils.str(this.$props.name).replace(/^icon/i, ''),
                         ['Mini', 'Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
-                                ? vfluents.themePrefix + 'icon-' + String(this.$props.size).toLowerCase()
-                                : null,
+                                ? vfluents.themePrefix + 'icon-' + utils.str(this.$props.size).toLowerCase()
+                                : '',
                         this.$props.className
                 ])
                 let style = { color: this.$props.color, fill: this.$props.color }
 
-                if (!vfluents.useSVGElement) {
+                if (utils.empty(vfluents.useSVGElement)) {
                         return <span id={this.$props.id} class={cls} style={style} onClick={vfluents.eventSafe(this.$props.eventClick)}></span>
                 }
 
                 return (
                         <svg id={this.$props.id} class={cls} style={style} onClick={vfluents.eventSafe(this.$props.eventClick)}>
-                                <use xlinkHref={'#icon' + String(this.$props.name).replace(/^icon/i, '').replace(/^[a-z]/i, s => s.toUpperCase())} />
+                                <use xlinkHref={'#icon' + utils.firstUppercase(utils.str(this.$props.name).replace(/^icon/i, ''))} />
                         </svg>
                 )
         }

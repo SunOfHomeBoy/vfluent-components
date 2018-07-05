@@ -25,8 +25,9 @@ export class Button extends vfluents {
                 outline?: boolean // 邊框樣式 可空 默認值：FALSE
                 active?: boolean // 激活按钮 可空 默認值：FALSE
                 disabled?: boolean // 禁用按钮 可空 默認值：FALSE
-                tooltip?: { text?: string, placement?: string } // 提示文本 可空 默認值：NULL
-                eventClick?: any // 單擊事件 可空 默認值：NULL
+                background?: string // 背景圖片 可空 默認值：空字符串
+                tooltip?: { text?: string, placement?: string } // 提示文本 可空 默認值：空值
+                eventClick?: any // 單擊事件 可空 默認值：空值
         } = {
                         id: null,
                         className: null,
@@ -44,6 +45,7 @@ export class Button extends vfluents {
                         outline: false,
                         active: false,
                         disabled: false,
+                        background: null,
                         tooltip: null,
                         eventClick: null
                 }
@@ -70,7 +72,7 @@ export class Button extends vfluents {
                                 <a
                                         id={this.$props.id}
                                         onClick={this.eventPreClick}
-                                        style={{ width: this.$props.width }}
+                                        style={{ width: this.$props.width, backgroundImage: utils.cssBackgroundImage(this.$props.background) }}
                                         class={vfluents.cls([
                                                 'pure-button',
                                                 vfluents.themePrefix + 'button',
@@ -91,7 +93,26 @@ export class Button extends vfluents {
                                                         : '',
                                                 utils.nonempty(this.$props.block)
                                                         ? vfluents.themePrefix + 'button-block'
-                                                        : ''
+                                                        : '',
+                                                utils.nonempty(this.$props.radius) && utils.empty(this.$props.circle)
+                                                        ? vfluents.themePrefix + 'button-radius'
+                                                        : '',
+                                                utils.nonempty(this.$props.circle) && utils.empty(this.$props.radius)
+                                                        ? vfluents.themePrefix + 'button-circle'
+                                                        : '',
+                                                utils.nonempty(this.$props.outline)
+                                                        ? vfluents.themePrefix + 'button-outline'
+                                                        : '',
+                                                utils.nonempty(this.$props.active) && utils.empty(this.$props.disabled)
+                                                        ? vfluents.themePrefix + 'button-active'
+                                                        : '',
+                                                utils.nonempty(this.$props.disabled) && utils.empty(this.$props.active)
+                                                        ? vfluents.themePrefix + 'button-disabled'
+                                                        : '',
+                                                utils.nonempty(this.$props.background)
+                                                        ? vfluents.themePrefix + 'button-background'
+                                                        : '',
+                                                this.$props.className
                                         ])}
                                 >{innerComponents}</a>
                         </Tooltip>
@@ -102,56 +123,6 @@ export class Button extends vfluents {
                 if (utils.empty(this.$props.disabled) && utils.isFunc(this.$props.eventClick)) {
                         this.$props.eventClick(event)
                 }
-        }
-
-        public render0(h: CreateElement): any {
-                return (
-                        <Tooltip text={tooltipProps.tex} placement={tooltipProps.placement}>
-                                <a
-                                        id={this.$props.id}
-                                        class={vfluents.cls([
-                                                'pure-button',
-                                                vfluents.themePrefix + 'button',
-                                                this.btnTypes.indexOf(this.$props.type) !== -1
-                                                        ? vfluents.themePrefix + 'button-' + String(this.$props.type).toLowerCase()
-                                                        : vfluents.themePrefix + 'button-default',
-                                                ['Small', 'Large', 'Huge'].indexOf(this.$props.size) !== -1
-                                                        ? vfluents.themePrefix + 'button-' + String(this.$props.size).toLowerCase()
-                                                        : null,
-                                                utils.empty(this.$props.icon) === false
-                                                        ? vfluents.themePrefix + 'button-icon'
-                                                        : null,
-                                                utils.empty(this.$props.icon) === false && utils.empty(this.$props.text)
-                                                        ? vfluents.themePrefix + 'button-icon-only'
-                                                        : null,
-                                                ['Left', 'Right', 'Top', 'Bottom'].indexOf(this.$props.align) !== -1
-                                                        ? vfluents.themePrefix + 'button-' + String(this.$props.align).toLowerCase()
-                                                        : null,
-                                                utils.empty(this.$props.block) === false
-                                                        ? vfluents.themePrefix + 'button-block'
-                                                        : null,
-                                                utils.empty(this.$props.radius) === false && utils.empty(this.$props.circle)
-                                                        ? vfluents.themePrefix + 'button-radius'
-                                                        : null,
-                                                utils.empty(this.$props.circle) === false && utils.empty(this.$props.radius)
-                                                        ? vfluents.themePrefix + 'button-circle'
-                                                        : null,
-                                                utils.empty(this.$props.outline) === false
-                                                        ? vfluents.themePrefix + 'button-outline'
-                                                        : null,
-                                                utils.empty(this.$props.active) === false && utils.empty(this.$props.disabled)
-                                                        ? vfluents.themePrefix + 'button-active'
-                                                        : null,
-                                                utils.empty(this.$props.disabled) === false && utils.empty(this.$props.active)
-                                                        ? vfluents.themePrefix + 'button-disabled'
-                                                        : null,
-                                                this.$props.className
-                                        ])}
-                                        style={{ width: this.$props.width }}
-                                        onClick={this.eventPreClick0}
-                                >{innerElement}</a>
-                        </Tooltip>
-                )
         }
 }
 
