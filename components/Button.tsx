@@ -49,7 +49,7 @@ export class Button extends vfluents {
                         tooltip: null,
                         eventClick: null
                 }
-        public readonly btnTypes: string[] = ['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Link', 'Default']
+        public readonly btnTypes: string[] = ['Primary', 'Secondary', 'Success', 'Danger', 'Warning', 'Info', 'Link']
 
         public render(h: CreateElement): any {
                 let innerComponents = [this.$props.text]

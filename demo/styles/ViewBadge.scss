@@ -1,0 +1,13 @@
+@import '../../components/styles/variable.scss';
+
+.#{$themePrefix}view-component-Badge {
+        button {
+                display: inline-block;
+                width: 5rem;
+                height: 2rem;
+                line-height: 2rem;
+                color: $themeColorWhite;
+                background-color: $themeColorAccentDark;
+                border: 0;
+        }
+}

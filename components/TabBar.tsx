@@ -37,7 +37,7 @@ export class TabBar extends vfluents {
                                         ? vfluents.themePrefix + 'tabbar-' + utils.str(this.$props.size).toLowerCase()
                                         : '',
                                 ['Top', 'Bottom', 'Sticky'].indexOf(this.$props.fixed) !== -1
-                                        ? vfluents.themePrefix + 'fixed-' + utils.str(this.$props.fixed).toUpperCase()
+                                        ? vfluents.themePrefix + 'fixed-' + utils.str(this.$props.fixed).toLowerCase()
                                         : '',
                                 this.$props.className
                         ])}>{utils.forEach(this.$props.items, (element: any) => {

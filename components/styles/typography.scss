@@ -2,7 +2,7 @@
 
 // 標題元素樣式
 h1, h2, h3, h4, h5, h6 {
-        margin: 0.625rem 0;
+        margin: 1em 0;
         color: $themeColorGray800;
         font-family: $themeFontFamilySansserif;
         white-space: nowrap;
@@ -44,73 +44,10 @@ h6 {
         font-weight: normal;
 }
 
-// 代碼元素樣式
-code, samp {
-        display: block;
-        position: relative;
-        padding: 2rem 1.5rem 1.5rem 1.5rem;
-        color: $themeColorGray700;
-        font-family: $themeFontFamilyMonospace !important;
-        font-size: 0.9375rem;
-        line-height: 1.25rem;
-        font-weight: normal;
-        background-color: $themeColorGray50;
-        border: 1px solid $themeColorGray300;
-        overflow: auto;
-
-        &::before {
-                content: 'CODE';
-                position: absolute;
-                top: 0.5em;
-                left: 0.75em;
-                color: $themeColorGray600;
-                font-size: 0.75rem;
-                letter-spacing: 0;
-        }
-
-        p {
-                font-family: $themeFontFamilyMonospace !important;
-                white-space: nowrap;
-        }
-
-        .tags, .attr, .info, .text {
-                margin-left: 0;
-                margin-right: 0;
-        }
-
-        .tags {
-                color: $themeColorBlue;
-        }
-
-        .attr {
-                color: $themeColorCyan;
-                padding-left: 0.5em;
-        }
-
-        .info {
-                color: $themeColorPink;
-        }
-
-        .text {
-                color: $themeColorGray600;
-        }
-}
-
-samp {
-        background-color: $themeColorWhite;
-
-        &::before {
-                content: 'EXAMPLE';
-        }
-
-        p {
-                white-space: normal;
-        }
-}
-
 // 段落元素樣式
 p {
-        margin: 0.625rem 0;
+        margin: 1em 0;
+        color: $themeColorGray700;
         font-family: $themeFontFamilySansserif;
         font-size: 0.9375rem;
         line-height: 1.25rem;
@@ -140,7 +77,7 @@ mark {
 }
 
 dfn {
-        color: $themeColorGray700;
+        color: $themeColorGray800;
         font-size: 1.25rem;
         line-height: 1.5rem;
         font-weight: normal;
@@ -212,5 +149,69 @@ footer {
                 &:first-child::before {
                         border-left: 0;
                 }
+        }
+}
+
+// 代碼元素樣式
+code, samp {
+        display: block;
+        position: relative;
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        color: $themeColorGray700;
+        font-family: $themeFontFamilyMonospace !important;
+        font-size: 0.9375rem;
+        line-height: 1.25rem;
+        font-weight: normal;
+        background-color: $themeColorGray50;
+        border: 1px solid $themeColorGray300;
+        overflow: auto;
+
+        &::before {
+                content: 'CODE';
+                position: absolute;
+                top: 0.5em;
+                left: 0.75em;
+                color: $themeColorGray400 !important;
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+        }
+
+        p {
+                font-family: $themeFontFamilyMonospace !important;
+                white-space: nowrap;
+        }
+
+        .tags, .attr, .info, .text {
+                margin-left: 0;
+                margin-right: 0;
+        }
+
+        .tags {
+                color: $themeColorBlue;
+        }
+
+        .attr {
+                color: $themeColorCyan;
+                padding-left: 0.5em;
+        }
+
+        .info {
+                color: $themeColorPink;
+        }
+
+        .text {
+                color: $themeColorGray600;
+        }
+}
+
+samp {
+        background-color: $themeColorWhite;
+
+        &::before {
+                content: 'EXAMPLE';
+        }
+
+        p {
+                white-space: normal;
         }
 }
