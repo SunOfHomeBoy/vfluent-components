@@ -3,8 +3,8 @@
 // 標題元素樣式
 h1, h2, h3, h4, h5, h6 {
         margin: 0.625rem 0;
-        font-family: $themeFontFamilySansserif;
         color: $themeColorGray800;
+        font-family: $themeFontFamilySansserif;
         white-space: nowrap;
 }
 
@@ -49,7 +49,7 @@ code, samp {
         display: block;
         position: relative;
         padding: 2rem 1.5rem 1.5rem 1.5rem;
-        color: $themeColorGray600;
+        color: $themeColorGray700;
         font-family: $themeFontFamilyMonospace !important;
         font-size: 0.9375rem;
         line-height: 1.25rem;
@@ -63,7 +63,7 @@ code, samp {
                 position: absolute;
                 top: 0.5em;
                 left: 0.75em;
-                color: $themeColorGray400;
+                color: $themeColorGray600;
                 font-size: 0.75rem;
                 letter-spacing: 0;
         }
@@ -140,7 +140,7 @@ mark {
 }
 
 dfn {
-        color: $themeColorGray800;
+        color: $themeColorGray700;
         font-size: 1.25rem;
         line-height: 1.5rem;
         font-weight: normal;
@@ -168,7 +168,7 @@ blockquote {
         }
 
         p {
-                color: $themeColorGray800;
+                color: $themeColorGray700;
                 font-size: 1.125rem;
                 line-height: 1.5rem;
         }
@@ -185,7 +185,7 @@ blockquote {
 
 // 底部文本樣式
 footer {
-        color: $themeColorGray600;
+        color: $themeColorGray500;
         font-size: 0.75rem;
         line-height: 1.25rem;
         font-weight: normal;

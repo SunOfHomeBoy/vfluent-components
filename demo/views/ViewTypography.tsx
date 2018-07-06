@@ -3,12 +3,9 @@ import { ViewComponent } from '../components'
 
 @Component
 export class ViewTypography extends ViewComponent {
-        public name: string = 'Typography'
-        public description: string = '標題、段落和頁腳等常用文本元素'
-
         public created() {
-                this.props.name = 'Badge'
-                this.props.description = '徽章展示新的或者未讀的信息條目'
+                this.props.name = 'Typography'
+                this.props.description = '標題、段落和頁腳等常用文本元素'
         }
 
         public renderComponent(h: CreateElement): any {

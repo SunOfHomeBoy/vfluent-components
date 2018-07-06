@@ -17,7 +17,7 @@ export class ViewComponent extends vfluents {
                                 theme.themePrefix + 'view-component-' + this.props.name
                         ])}>
                                 <h1 class={theme.themePrefix + 'view-component-header'}>{this.props.name}</h1>
-                                <h4 class={theme.themePrefix + 'view-component-comment'}>{this.props.description}</h4>
+                                <h5 class={theme.themePrefix + 'view-component-comment'}>{this.props.description}</h5>
                                 {this.renderComponent(h)}
                         </div>
                 )

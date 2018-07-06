@@ -4,7 +4,7 @@
         position: relative;
         height: 3rem;
         padding: 1rem 1rem;
-        color: $themeColorGray600;
+        color: $themeColorGray700;
         background-color: $themeColorGray200;
         font-family: $themeFontFamilySansserif;
         font-size: 0.9375rem;
@@ -22,7 +22,7 @@
                         left: 0.75rem;
                         margin-top: -0.25rem;
                         color: $themeColorGray200;
-                        fill: $themeColorGray600;
+                        fill: $themeColorGray700;
                 }
 
                 &.#{$themePrefix}button-icon-only {

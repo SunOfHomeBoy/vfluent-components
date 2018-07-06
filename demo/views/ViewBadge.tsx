@@ -10,6 +10,10 @@ export class ViewBadge extends ViewComponent {
         }
 
         public renderComponent(h: CreateElement): any {
+
+        }
+
+        public renderComponent0(h: CreateElement): any {
                 return (
                         <article>
                                 <dfn>常用用法</dfn>

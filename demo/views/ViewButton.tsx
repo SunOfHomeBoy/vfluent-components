@@ -5,13 +5,11 @@ import { theme } from '../config';
 
 @Component
 export class ViewButton extends ViewComponent {
-        public name: string = 'Button'
-        public description: string = '常用按鈕組件'
         private stateActive: any = {}
 
         public created() {
-                this.props.name = 'Badge'
-                this.props.description = '徽章展示新的或者未讀的信息條目'
+                this.props.name = 'Button'
+                this.props.description = '常用按鈕組件'
         }
 
         public renderComponent(h: CreateElement): any {

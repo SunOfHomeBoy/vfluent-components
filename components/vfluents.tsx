@@ -6,6 +6,7 @@ export class vfluents extends Vue {
         public static themePrefix: string = 'vfluents-'
         public static useSVGElement: boolean = true
         public static useTooltip: boolean = true
+        public static useAutoLanguage: boolean = false
 
         @Props() public readonly props: { [name: string]: any }
         public render(h: CreateElement): any { }
@@ -30,7 +31,8 @@ export class vfluents extends Vue {
 
         public static init(configures: any = {}) {
                 initBrowsers(Object.assign(Object.assign({}, configures), {
-                        themePrefix: vfluents.themePrefix
+                        themePrefix: vfluents.themePrefix,
+                        autoLanguage: vfluents.useAutoLanguage
                 }))
         }
 

@@ -10,6 +10,7 @@
 
         .#{$themePrefix}view-component-comment {
                 color: $themeColorGray600;
+                font-size: 1.125rem;
                 margin-bottom: 0;
         }
 
@@ -80,7 +81,7 @@
                         }
 
                         td {
-                                color: $themeColorGray600;
+                                color: $themeColorGray700;
                         }
                 }
         }

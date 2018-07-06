@@ -4,8 +4,6 @@ import { ViewComponent } from '../components'
 
 @Component
 export class ViewNavBar extends ViewComponent {
-        public name: string = 'NavBar'
-        public description: string = '導航欄組件'
         private navbarItems: any[] = [
                 {
                         text: '首頁',
@@ -33,8 +31,8 @@ export class ViewNavBar extends ViewComponent {
         ]
 
         public created() {
-                this.props.name = 'Badge'
-                this.props.description = '徽章展示新的或者未讀的信息條目'
+                this.props.name = 'NavBar'
+                this.props.description = '導航欄組件'
         }
 
         public renderComponent(h: CreateElement): any {

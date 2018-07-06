@@ -5,12 +5,9 @@ import { theme } from '../config'
 
 @Component
 export class ViewIcon extends ViewComponent {
-        public name: string = 'Icon'
-        public description: string = '圖標組件'
-
         public created() {
-                this.props.name = 'Badge'
-                this.props.description = '徽章展示新的或者未讀的信息條目'
+                this.props.name = 'Icon'
+                this.props.description = '圖標組件'
         }
 
         public renderComponent(h: CreateElement): any {

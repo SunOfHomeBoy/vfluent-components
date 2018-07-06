@@ -5,7 +5,6 @@ import { NavBar } from './NavBar'
 import { TabBar } from './TabBar'
 import utils from './utils'
 import './styles/Dashboard.scss'
-import { routes } from '../demo/config';
 
 @Component
 export class Dashboard extends vfluents {
