@@ -88,7 +88,7 @@ export class Button extends vfluents {
                                                 utils.nonempty(this.$props.icon) && utils.empty(this.$props.text)
                                                         ? vfluents.themePrefix + 'button-icon-only'
                                                         : '',
-                                                ['Top', 'Right', 'Bottom', 'Left'].indexOf(this.$props.align) === -1
+                                                ['Top', 'Right', 'Bottom', 'Left'].indexOf(this.$props.align) !== -1
                                                         ? vfluents.themePrefix + 'button-' + utils.str(this.$props.align).toLowerCase()
                                                         : '',
                                                 utils.nonempty(this.$props.block)

@@ -1,33 +1,34 @@
 @import './mixins.scss';
 $themePrefix: 'vfluents-';
 $themeAnimation: 0.375s !default;
-$themeColorWeight: 6.25% !default;
+$themeColorWeight: 6.75% !default;
 $themeFontFamilySansserif: 'Segoe UI', SegoeUI, 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 $themeFontFamilyMonospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 
-$themeColorBlue:    #0078d7 !default;
-$themeColorIndigo:  #3498db !default;
-$themeColorCyan:    #00bcd4 !default;
-$themeColorPurple:  #9b59b6 !default;
-$themeColorPink:    #e74c3c !default;
-$themeColorRed:     #e81123 !default;
-$themeColorOrange:  #e67e22 !default;
-$themeColorYellow:  #f1c40f !default;
-$themeColorGreen:   #2ecc71 !default;
-$themeColorTeal:    #1abc9c !default;
+// See: http://getuicolors.com/
+$themeColorBlue:    #2574a9 !default; // Jelly Bean
+$themeColorIndigo:  #3498db !default; // Curious Blue
+$themeColorCyan:    #19b5fe !default; // Dodger Blue
+$themeColorPurple:  #9a12b3 !default; // Seance
+$themeColorPink:    #e74c3c !default; // Cinnabar
+$themeColorRed:     #d91e18 !default; // Thunderbird
+$themeColorOrange:  #e87e04 !default; // Tahiti Gold
+$themeColorYellow:  #f7ca18 !default; // Ripe Lemon
+$themeColorGreen:   #2ecc71 !default; // Shamrock
+$themeColorTeal:    #1ba39c !default; // Light Sae Green
 $themeColorWhite:   #ffffff !default;
-$themeColorGray50:  #fafafa !default;
-$themeColorGray100: #f5f5f5 !default;
-$themeColorGray200: #eaeaea !default;
-$themeColorGray300: #e0e0e0 !default;
-$themeColorGray400: #bdbdbd !default;
+$themeColorGray50:  #fafafa !default; 
+$themeColorGray100: #f2f2f2 !default;
+$themeColorGray200: #eaeaea !default; 
+$themeColorGray300: #e4e4e4 !default;
+$themeColorGray400: #cccccc !default;
 $themeColorGray500: #999999 !default;
-$themeColorGray600: #7a7a7a !default;
-$themeColorGray700: #666666 !default;
+$themeColorGray600: #767676 !default;
+$themeColorGray700: #666666 !default; 
 $themeColorGray800: #333333 !default;
 $themeColorGray900: #171717 !default;
 $themeColorBlack:   #000000 !default;
-$themeColorAccentLight: #00aff0 !default;
+$themeColorAccentLight: #55acee !default; // Twitter Blue
 $themeColorAccentDark: darken($themeColorAccentLight, $themeColorWeight) !default;
 
 $themeZindexDropdown:      1000 !default;

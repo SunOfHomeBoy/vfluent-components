@@ -33,7 +33,7 @@ export class ViewBadge extends ViewComponent {
                                         &nbsp;&nbsp;
                                         <span>回覆</span><Badge text="Hot" />
                                 </samp>
-                                <code></code>
+                                <code>小圓點型</code>
                         </article>
                 )
         }

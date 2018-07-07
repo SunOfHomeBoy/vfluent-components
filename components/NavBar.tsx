@@ -93,14 +93,14 @@ export class NavBar extends vfluents {
                                         : '',
                                 this.$props.className
                         ])}>
-                                {utils.empty(this.$props.brandName) ? null : (
+                                {utils.empty(this.$props.brandName) && utils.empty(this.$props.brandLogo) ? null : (
                                         <Button
                                                 type="Primary"
                                                 align="Left"
                                                 size={this.$props.size}
                                                 icon={this.$props.brandLogo}
                                                 text={this.$props.brandName}
-                                                className={vfluents.cls([vfluents.themePrefix + 'navbar', this.$props.brandCls])}
+                                                className={vfluents.cls([vfluents.themePrefix + 'navbar-brand', this.$props.brandCls])}
                                                 eventClick={() => this.eventPreClick(this.$props.brandHref, this.$props.eventBrand)}
                                         />
                                 )}

@@ -6,7 +6,7 @@ export class vfluents extends Vue {
         public static themePrefix: string = 'vfluents-'
         public static useSVGElement: boolean = true
         public static useTooltip: boolean = true
-        public static useAutoLanguage: boolean = false
+        public static useAutoLanguage: boolean = true
 
         @Props() public readonly props: { [name: string]: any }
         public render(h: CreateElement): any { }

@@ -90,7 +90,7 @@
                 }
 
                 .#{$themePrefix}dashboard-main {
-                        padding-bottom: 0;
+                        padding-bottom: 0 !important;
                         flex: auto;
 
                         .#{$themePrefix}dashboard-bbar {
@@ -121,10 +121,18 @@
                                 .#{$themePrefix}mask {
                                         display: none !important;
                                 }
+
+                                .#{$themePrefix}dashboard-tbar .#{$themePrefix}navbar-brand {
+                                        max-width: 3rem;
+                                }
                         }
 
                         &.#{$themePrefix}dashboard-small {
                                 .#{$themePrefix}dashboard-side {
+                                        max-width: 2rem;
+                                }
+
+                                .#{$themePrefix}dashboard-tbar .#{$themePrefix}navbar-brand {
                                         max-width: 2rem;
                                 }
                         }
@@ -133,10 +141,18 @@
                                 .#{$themePrefix}dashboard-side {
                                         max-width: 4rem;
                                 }
+
+                                .#{$themePrefix}dashboard-tbar .#{$themePrefix}navbar-brand {
+                                        max-width: 4rem;
+                                }
                         }
                 
                         &.#{$themePrefix}dashboard-huge {
                                 .#{$themePrefix}dashboard-side {
+                                        max-width: 5rem;
+                                }
+
+                                .#{$themePrefix}dashboard-tbar .#{$themePrefix}navbar-brand {
                                         max-width: 5rem;
                                 }
                         }

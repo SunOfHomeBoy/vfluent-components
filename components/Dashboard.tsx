@@ -54,6 +54,20 @@ export class Dashboard extends vfluents {
                                         'pure-u-1 pure-u-md-2-3 pure-u-lg-3-4 pure-u-xl-5-6',
                                         vfluents.themePrefix + 'dashboard-main'
                                 ])}>
+                                        <NavBar
+                                                fixed="Top"
+                                                size={this.props.size || 'Default'}
+                                                className={vfluents.themePrefix + 'dashboard-tbar'}
+                                                brandLogo={this.props.brandLogo || this.props.startIcon || 'Hierarchy'}
+                                                brandName={this.stateCollapsed ? null : this.props.brandName}
+                                                brandHref={this.props.brandHref}
+                                                eventBrand={this.eventCollapsed}
+                                                brandCls={vfluents.cls([
+                                                        'pure-u-4-5 pure-u-md-1-3 pure-u-lg-1-4 pure-u-xl-1-6',
+                                                        vfluents.themePrefix + 'd-none',
+                                                        vfluents.themePrefix + 'd-md-inline-block'
+                                                ])}
+                                        >{this.props.brandName}</NavBar>
                                         <TabBar fixed="Bottom" size={this.props.size} items={this.props.bbarItems} className={vfluents.themePrefix + 'dashboard-bbar'} />
                                         <div class={vfluents.themePrefix + 'mask'} onClick={this.eventCollapsed}></div>
                                         <div class={vfluents.themePrefix + 'dashboard-main-inner'}>{innerComponents}</div>
