@@ -2,6 +2,7 @@
 
 .#{$themePrefix}badge {
         display: inline-block;
+        position: absolute;
         height: 1.25rem;
         padding: 0 0.375rem;
         color: $themeColorWhite;
@@ -14,11 +15,11 @@
         box-sizing: border-box;
 
         &.#{$themePrefix}badge-top {
-                vertical-align: 50%;
+                margin-top: -0.625rem;
         }
 
         &.#{$themePrefix}badge-bottom {
-                vertical-align: -50%;
+                vertical-align: sub;
         }
 
         &.#{$themePrefix}badge-center {
