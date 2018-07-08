@@ -16,24 +16,31 @@ export class ViewBadge extends ViewComponent {
                                 <dfn>基本用法<small>展示新消息數量</small></dfn>
                                 <samp>
                                         <span>評論</span><Badge text={12} />
-                                        &nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
                                         <span>回覆</span><Badge text={3} />
                                 </samp>
                                 <code></code>
                                 <dfn>最大數值<small>超過最大數值則顯示&nbsp;<strong>&#123;max&#125;+</strong>&nbsp;格式</small></dfn>
                                 <samp>
                                         <span>評論</span><Badge text={123} />
-                                        &nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
                                         <span>回覆</span><Badge text={12} max={10} />
                                 </samp>
                                 <code></code>
                                 <dfn>自定義型<small>顯示任何文本內容</small></dfn>
                                 <samp>
                                         <span>評論</span><Badge text="New" />
-                                        &nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
                                         <span>回覆</span><Badge text="Hot" />
                                 </samp>
-                                <code>小圓點型</code>
+                                <code></code>
+                                <dfn>小圓點型<small></small></dfn>
+                                <samp>
+                                        <span>評論</span><Badge text=" " />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span>回覆</span><Badge text=" " />
+                                </samp>
+                                <code></code>
                         </article>
                 )
         }
