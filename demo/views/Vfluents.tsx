@@ -6,7 +6,7 @@ import { theme } from '../config'
 export class Vfluents extends Dashboard {
         public created() {
                 this.props = Object.assign(this.props, {
-                        size: 'Small',
+                        size: 'Default',
                         collapsed: false,
                         brandLogo: 'Hierarchy',
                         brandName: 'vFluents',

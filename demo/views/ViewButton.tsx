@@ -9,65 +9,158 @@ export class ViewButton extends ViewComponent {
 
         public created() {
                 this.props.name = 'Button'
-                this.props.description = '常用按鈕組件'
+                this.props.description = '常用的操作按鈕組件'
+        }
+
+        public setActive(name: string) {
+                if (this.stateActive[name]) {
+                        return this.stateActive = {}
+                }
+
+                this.stateActive = {}
+                this.stateActive[name] = true
         }
 
         public renderComponent(h: CreateElement): any {
                 return (
                         <article>
-                                <dfn>按鈕類型</dfn>
+                                <dfn>默認樣式<small>採用預定於背景顏色表示按鈕的語義用途</small></dfn>
                                 <samp>
-                                        <Button width="15rem" type="Primary" text="Primary" />
-                                        <Button width="15rem" type="Secondary" text="Secondary" />
-                                        <Button width="15rem" type="Success" text="Success" />
-                                        <Button width="15rem" type="Danger" text="Danger" />
-                                        <Button width="15rem" type="Warning" text="Warning" />
-                                        <Button width="15rem" type="Info" text="Info" />
-                                        <Button width="15rem" type="Link" text="Link" />
-                                        <Button width="15rem" type="Default" text="Default" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Primary" text="Primary" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Secondary" text="Secondary" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Success" text="Success" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Danger" text="Danger" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Warning" text="Warning" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Info" text="Info" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Link" text="Link" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Default" text="Default" />
                                         <br />
-                                        <Button width="15rem" type="Primary" text="Primary" icon="Github" />
-                                        <Button width="15rem" type="Secondary" text="Secondary" icon="Github" />
-                                        <Button width="15rem" type="Success" text="Success" icon="Github" />
-                                        <Button width="15rem" type="Danger" text="Danger" icon="Github" />
-                                        <Button width="15rem" type="Warning" text="Warning" icon="Github" />
-                                        <Button width="15rem" type="Info" text="Info" icon="Github" />
-                                        <Button width="15rem" type="Link" text="Link" icon="Github" />
-                                        <Button width="15rem" type="Default" text="Default" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Primary" text="Primary" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Secondary" text="Secondary" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Success" text="Success" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Danger" text="Danger" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Warning" text="Warning" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Info" text="Info" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Link" text="Link" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Default" text="Default" icon="Github" />
                                 </samp>
-                                <code>
-                                        <p>
-                                                <span class="tags">&lt;Button</span>
-                                                <span class="attr">type=</span>
-                                                <span class="info">"Primary"</span>
+                                <code></code>
+                                <dfn>簡單樣式<small>採用預定於文本邊框顏色表示按鈕的語義用途</small></dfn>
+                                <samp>
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Primary" text="Primary" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Secondary" text="Secondary" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Success" text="Success" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Danger" text="Danger" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Warning" text="Warning" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Info" text="Info" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Link" text="Link" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Default" text="Default" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Primary" text="Primary" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Secondary" text="Secondary" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Success" text="Success" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Danger" text="Danger" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Warning" text="Warning" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Info" text="Info" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Link" text="Link" icon="Github" />
+                                        <Button className={theme.themePrefix + 'responsive'} outline={true} type="Default" text="Default" icon="Github" />
+                                </samp>
+                                <code></code>
+                                <dfn>按鈕尺寸<small>提供四種尺寸可以在不同場景下合理使用</small></dfn>
+                                <samp>
+                                        <Button className={theme.themePrefix + 'responsive'} type="Primary" icon="Github" size="Small" text="Small" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Primary" icon="Github" size="Default" text="Default" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Primary" icon="Github" size="Large" text="Large" />
+                                        <Button className={theme.themePrefix + 'responsive'} type="Primary" icon="Github" size="Huge" text="Huge" />
+                                </samp>
+                                <code></code>
+                                <dfn>圖標按鈕<small>帶圖標的按鈕可以增強識別度或者節省空間</small></dfn>
+                                <samp>
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Small" text="Icon+Small" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Default" text="Icon+Default" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Large" text="Icon+Large" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Huge" text="Icon+Huge" />
+                                        <br />
+                                        <Button icon="Github" type="Primary" size="Small" />
+                                        <Button icon="Github" type="Primary" size="Default" />
+                                        <Button icon="Github" type="Primary" size="Large" />
+                                        <Button icon="Github" type="Primary" size="Huge" />
+                                </samp>
+                                <code></code>
+                                <dfn>圖標位置<small>提供四個位置可以在不同場景下合理使用</small></dfn>
+                                <samp>
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Small" align="Left" text="Small+Left" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Small" align="Right" text="Small+Right" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Small" align="Top" text="Small+Top" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Small" align="Bottom" text="Small+Bottom" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Default" align="Left" text="Default+Left" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Default" align="Right" text="Default+Right" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Default" align="Top" text="Default+Top" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Default" align="Bottom" text="Default+Bottom" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Large" align="Left" text="Large+Left" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Large" align="Right" text="Large+Right" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Large" align="Top" text="Large+Top" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Large" align="Bottom" text="Large+Bottom" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Huge" align="Left" text="Huge+Left" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Huge" align="Right" text="Huge+Right" />
+                                        <br />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Huge" align="Top" text="Huge+Top" />
+                                        <Button className={theme.themePrefix + 'responsive'} icon="Github" type="Primary" size="Huge" align="Bottom" text="Huge+Bottom" />
+                                </samp>
+                                <code></code>
+                        </article>
+                )
+        }
+        /*
+public renderComponent0(h: CreateElement): any {
+return (
+        <article>
+                        <dfn>按鈕類型</dfn>
+                        <samp>
+                                <Button width="15rem" type="Primary" text="Primary" />
+                                <Button width="15rem" type="Secondary" text="Secondary" />
+                                <Button width="15rem" type="Success" text="Success" />
+                                <Button width="15rem" type="Danger" text="Danger" />
+                                <Button width="15rem" type="Warning" text="Warning"
+                        <Button width="15rem" type="Primary" text="Primary" icon="Github" />
+                        <Button width="15rem" type="Secondary" text="Secondary" icon="Github" />
+                                <Button width="15rem" type="Success" text="Success" icon="Github" />
+                                <Button width="15rem" type="Danger" text="Danger" icon="Github" />
+                                <Button width="15rem" type="Warning" text="Warning" icon="Github" />
+                                <Button width="15rem" type="Info" text="Info" icon="Github" />
+                                <Button width="15rem" type="Link" text="Link" icon="Github" />
+                                <Button width="15rem" type="Default" text="Default" icon="Github" />
+                        </samp>
+                        <code>
+                                <p>
+                                        <span class="tags">&lt;Button</span>
+                                        <span class="attr">type=</span>
+                                        <span class="info">"Primary"</span>
+                                        <span class="attr">text=</span>
+                                        <span class="info">"Primary"</span>
+                                        <span class="tags">&nbsp;/&gt;</span>
+                                </p>
+                                <p>
+                                        <span class="tags">&lt;Button</span>
+                                        <span class="attr">type=</span>
+                                        <span class="info">"Secondary"</span>
+                                        <span class="attr">text=</span>
+                                        <span class="info">"Secondary"</span>
+                                        <span class="tags">&nbsp;/&gt;</span>
+                                </p>
+                                <p>
+                                        <span class="tags">&lt;Bu
+                                <span class="info">"Danger"</span>
                                                 <span class="attr">text=</span>
-                                                <span class="info">"Primary"</span>
-                                                <span class="tags">&nbsp;/&gt;</span>
-                                        </p>
-                                        <p>
-                                                <span class="tags">&lt;Button</span>
-                                                <span class="attr">type=</span>
-                                                <span class="info">"Secondary"</span>
-                                                <span class="attr">text=</span>
-                                                <span class="info">"Secondary"</span>
-                                                <span class="tags">&nbsp;/&gt;</span>
-                                        </p>
-                                        <p>
-                                                <span class="tags">&lt;Button</span>
-                                                <span class="attr">type=</span>
-                                                <span class="info">"Success"</span>
-                                                <span class="attr">text=</span>
-                                                <span class="info">"Success"</span>
-                                                <span class="tags">&nbsp;/&gt;</span>
-                                        </p>
-                                        <p>
-                                                <span class="tags">&lt;Button</span>
-                                                <span class="attr">type=</span>
                                                 <span class="info">"Danger"</span>
-                                                <span class="attr">text=</span>
-                                                <span class="info">"Danger"</span>
                                                 <span class="tags">&nbsp;/&gt;</span>
-                                        </p>
+                        </p>
                                         <p>
                                                 <span class="tags">&lt;Button</span>
                                                 <span class="attr">type=</span>
@@ -100,7 +193,7 @@ export class ViewButton extends ViewComponent {
                                                 <span class="info">"Default"</span>
                                                 <span class="tags">&nbsp;/&gt;</span>
                                         </p>
-                                </code>
+                </code>
                                 <dfn>邊框樣式</dfn>
                                 <samp>
                                         <Button width="15rem" outline={true} type="Primary" text="Primary" />
@@ -399,16 +492,9 @@ export class ViewButton extends ViewComponent {
                                         </ButtonGroup>
                                 </samp>
                                 <code></code>
-                        </article>
-                )
-        }
-
-        private setActive(name: string) {
-                if (this.stateActive[name]) {
-                        return this.stateActive = {}
+        </article>
+                        )
                 }
+        */
 
-                this.stateActive = {}
-                this.stateActive[name] = true
-        }
 }

@@ -4,4 +4,24 @@
         .#{$themePrefix}button {
                 margin: 0.5rem;
         }
+
+        .#{$themePrefix}responsive {
+                display: block;
+        }
+
+        br {
+                display: none;
+        }
+}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}view-component-Button {
+                .#{$themePrefix}responsive {
+                        display: inline-block;
+                        width: 15rem;
+                }
+
+                br {
+                        display: block;
+                }
+        }
 }
