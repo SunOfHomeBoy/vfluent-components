@@ -4,6 +4,7 @@ import utils from './utils'
 
 export class vfluents extends Vue {
         public static themePrefix: string = 'vfluents-'
+        public static useBadgeLimit: number = 99
         public static useSVGElement: boolean = true
         public static useTooltip: boolean = true
         public static useAutoLanguage: boolean = true

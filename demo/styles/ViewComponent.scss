@@ -50,7 +50,7 @@
 
                         table.#{$themePrefix}box {
                                 width: auto;
-                                margin: 4rem auto;
+                                margin: 3rem auto 2rem auto;
 
                                 th {
                                         width: 5rem;
@@ -88,5 +88,10 @@
                                 color: $themeColorGray700;
                         }
                 }
+        }
+}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}view-component {
+                padding: 0.5rem 2rem;
         }
 }

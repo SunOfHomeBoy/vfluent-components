@@ -15,8 +15,7 @@
 }
 @include media-breakpoint-up(md) {
         .#{$themePrefix}view-component-Button {
-                .#{$themePrefix}responsive {
-                        display: inline-block;
+                .#{$themePrefix}button-responsive {
                         width: 15rem;
                 }
 

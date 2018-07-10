@@ -16,7 +16,6 @@ export class Button extends vfluents {
                 text?: string // 按鈕文本 可空 默認值：空字符串
                 icon?: string // 按鈕圖標 可空 默認值：空字符串
                 align?: string // 圖標對齊 可空 默認值：Default 可選值：Default | Top | Right | Bottom | Left
-                badge?: string // 按鈕徽章 可空 默認值：空字符串
                 title?: string // 提示文本 可空 默認值：空字符串
                 width?: string // 按鈕寬度 可空 默認值：空字符串
                 block?: boolean // 100%寬度 可空 默認值：FALSE
@@ -25,7 +24,9 @@ export class Button extends vfluents {
                 outline?: boolean // 邊框樣式 可空 默認值：FALSE
                 active?: boolean // 激活按钮 可空 默認值：FALSE
                 disabled?: boolean // 禁用按钮 可空 默認值：FALSE
+                responsive?: boolean // 響應模式 可空 默認值：FALSE
                 background?: string // 背景圖片 可空 默認值：空字符串
+                badge?: string | number // 按鈕徽章 可空 默認值：空字符串
                 tooltip?: { text?: string, placement?: string } // 提示文本 可空 默認值：空值
                 eventClick?: any // 單擊事件 可空 默認值：空值
         } = {
@@ -36,7 +37,6 @@ export class Button extends vfluents {
                         text: null,
                         icon: null,
                         align: 'Default',
-                        badge: null,
                         title: null,
                         width: null,
                         block: false,
@@ -45,7 +45,9 @@ export class Button extends vfluents {
                         outline: false,
                         active: false,
                         disabled: false,
+                        responsive: false,
                         background: null,
+                        badge: null,
                         tooltip: null,
                         eventClick: null
                 }
@@ -64,7 +66,13 @@ export class Button extends vfluents {
                 }
 
                 if (utils.nonempty(this.$props.badge)) {
-                        innerComponents[this.$props.align === 'Top' ? 0 : 3] = <Badge text={this.$props.badge} />
+                        let align = 'Top'
+
+                        if (utils.nonempty(this.$props.block) && ['Top', 'Right', 'Bottom'].indexOf(this.$props.align) === -1) {
+                                align = 'Center'
+                        }
+
+                        innerComponents[this.$props.align === 'Top' ? 0 : 3] = <Badge text={this.$props.badge} align={align} />
                 }
 
                 return (
@@ -88,7 +96,7 @@ export class Button extends vfluents {
                                                 utils.nonempty(this.$props.icon) && utils.empty(this.$props.text)
                                                         ? vfluents.themePrefix + 'button-icon-only'
                                                         : '',
-                                                ['Top', 'Right', 'Bottom', 'Left'].indexOf(this.$props.align) !== -1
+                                                ['Left', 'Top', 'Right', 'Bottom'].indexOf(this.$props.align) !== -1 && utils.nonempty(this.$props.text)
                                                         ? vfluents.themePrefix + 'button-' + utils.str(this.$props.align).toLowerCase()
                                                         : '',
                                                 utils.nonempty(this.$props.block)
@@ -111,6 +119,9 @@ export class Button extends vfluents {
                                                         : '',
                                                 utils.nonempty(this.$props.background)
                                                         ? vfluents.themePrefix + 'button-background'
+                                                        : '',
+                                                utils.nonempty(this.$props.responsive)
+                                                        ? vfluents.themePrefix + 'button-responsive'
                                                         : '',
                                                 this.$props.className
                                         ])}

@@ -15,7 +15,7 @@ export class Badge extends vfluents {
                         id: null,
                         className: null,
                         text: null,
-                        max: 99,
+                        max: vfluents.useBadgeLimit,
                         align: 'Top'
                 }
 

@@ -28,12 +28,47 @@
 
                 &.#{$themePrefix}button-icon-only {
                         padding-right: 0;
+
+                        .#{$themePrefix}badge {
+                                left: 50%;
+                                margin-left: 0.25rem;
+                        }
                 }
         }
 
         &.#{$themePrefix}button-radius { border-radius: 0.25rem }
         &.#{$themePrefix}button-circle { border-radius: 3rem }
-        &.#{$themePrefix}button-block { width: 100% }
+        &.#{$themePrefix}button-responsive { display: block }
+        &.#{$themePrefix}button-background {
+                background-position: center;
+                background-size: 100%;
+        }
+        
+        &.#{$themePrefix}button-block {
+                width: 100%;
+
+                .#{$themePrefix}badge-center {
+                        margin-left: 0.25rem;
+                }
+
+                &.#{$themePrefix}button-icon {
+                        .#{$themePrefix}badge-center {
+                                right: 0.75rem;
+                        }
+
+                        &.#{$themePrefix}button-small .#{$themePrefix}badge-center {
+                                right: 0.25rem;
+                        }
+
+                        &.#{$themePrefix}button-large .#{$themePrefix}badge-center {
+                                right: 1.25rem;
+                        }
+
+                        &.#{$themePrefix}button-huge .#{$themePrefix}badge-center {
+                                right: 1.75rem;
+                        }
+                }
+        }
         
         &:hover, &:focus, &:active, &.#{$themePrefix}button-active {
                 background-color: $themeColorGray300;
@@ -81,24 +116,20 @@
                 }
 
                 .#{$themePrefix}badge {
-                        position: absolute;
-                        top: 0.25rem;
-                        right: 0.25rem;
+                        left: 100%;
+                        margin-left: -1.25rem;
                 }
 
                 &.#{$themePrefix}button-small .#{$themePrefix}badge {
-                        top: -0.25rem;
-                        right: -0.25rem;
+                        margin-left: -0.75rem;
                 }
 
                 &.#{$themePrefix}button-large .#{$themePrefix}badge {
-                        top: 0.75rem;
-                        right: 0.75rem;
+                        margin-left: -1.75rem;
                 }
 
                 &.#{$themePrefix}button-huge .#{$themePrefix}badge {
-                        top: 1.25rem;
-                        right: 1.25rem;
+                        margin-left: -2.25rem;
                 }
         }
         &.#{$themePrefix}button-top.#{$themePrefix}button-icon,
@@ -125,22 +156,12 @@
                 }
 
                 .#{$themePrefix}badge {
-                        position: absolute;
-                        top: 0.25rem;
+                        margin-top: -0.25rem;
                         margin-left: 0.25rem;
-                        z-index: $themeZindexFixed;
                 }
 
                 &.#{$themePrefix}button-small .#{$themePrefix}badge {
-                        top: 0;
-                }
-
-                &.#{$themePrefix}button-large .#{$themePrefix}badge {
-                        top: 0.75rem;
-                }
-
-                &.#{$themePrefix}button-huge .#{$themePrefix}badge {
-                        top: 1.25rem;
+                        margin-top: -0.5rem;
                 }
         }
         &.#{$themePrefix}button-bottom.#{$themePrefix}button-icon {
@@ -149,21 +170,12 @@
                 }
 
                 .#{$themePrefix}badge {
-                        position: absolute;
-                        top: 1.5rem;
+                        margin-top: -2rem;
                         margin-left: 0.25rem;
                 }
 
                 &.#{$themePrefix}button-small .#{$themePrefix}badge {
-                        top: 0.75rem;
-                }
-
-                &.#{$themePrefix}button-large .#{$themePrefix}badge {
-                        top: 2rem;
-                }
-
-                &.#{$themePrefix}button-huge .#{$themePrefix}badge {
-                        top: 2.5rem;
+                        margin-top: -1.875rem;
                 }
         }
 
@@ -588,6 +600,11 @@
                         color: $themeColorIndigo;
                         @include border-shadow(all, rgba($themeColorIndigo, 0.5), !important);
                 }
+        }
+}
+@include media-breakpoint-up(md) {
+        .#{$themePrefix}button {
+                &.#{$themePrefix}button-responsive { display: inline-block }
         }
 }
 
