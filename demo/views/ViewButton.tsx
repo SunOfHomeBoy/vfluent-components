@@ -243,7 +243,7 @@ export class ViewButton extends ViewComponent {
                                         <Button responsive={true} type="Primary" text="Click+Unenable" eventClick={() => window.alert('Are you OK~')} disabled={true} />
                                 </samp>
                                 <code></code>
-                                <dfn>按鈕組<small>常用於多項類似操作的按鈕</small></dfn>
+                                <dfn>按鈕組<small>通常按鈕組B</small></dfn>
                                 <samp></samp>
                                 <code></code>
                         </article>
