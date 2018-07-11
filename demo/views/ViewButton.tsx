@@ -2,6 +2,7 @@ import { Component, CreateElement } from 'vue-component-decorator'
 import { Button, ButtonGroup } from '../../components'
 import { ViewComponent } from '../components'
 import { theme } from '../config';
+import utils from '../../components/utils';
 
 @Component
 export class ViewButton extends ViewComponent {
@@ -235,6 +236,15 @@ export class ViewButton extends ViewComponent {
                                                 </tr>
                                         </table>
                                 </samp>
+                                <code></code>
+                                <dfn>單擊事件<small>當&nbsp;<strong>Disabled</strong>&nbsp;狀態時其單擊事件是無效的</small></dfn>
+                                <samp>
+                                        <Button responsive={true} type="Primary" text="Click+Enable" eventClick={() => window.alert('Are you OK~')} />
+                                        <Button responsive={true} type="Primary" text="Click+Unenable" eventClick={() => window.alert('Are you OK~')} disabled={true} />
+                                </samp>
+                                <code></code>
+                                <dfn>按鈕組<small>常用於多項類似操作的按鈕</small></dfn>
+                                <samp></samp>
                                 <code></code>
                         </article>
                 )
